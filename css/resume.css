@@ -1,0 +1,66 @@
+body {font-family:Microsoft Yahei, Simhei, sans-serif;}
+
+.return {background:#333; font-size:14px; line-height:40px;}
+.return a {display:block; width:150px; color:#d7d7d7; text-align:center; -webkit-transition:all 0.3s ease;}
+.return a:hover {color:#fff; background:#666;}
+
+.download {display:block; width:122px; height:123px; background:url(../images/downloadResume.png) no-repeat; position:absolute; top:0; right:0; text-indent:-9999em;}
+
+.grid {width:940px; margin:0 auto; position:relative;}
+.grid h2 {font-size:24px; line-height:40px; font-weight:400; border-bottom:2px solid #e1e1e1;}
+.grid h2 span {float:left; width:140px; padding-bottom:10px; margin-bottom:-2px; border-bottom:2px solid #5497c7; text-align:center;}
+
+.brief {width:100%; padding:20px 0; margin-bottom:20px; background:#5497c7; color:#fff;}
+.brief .grid {width:960px;}
+.brief .avator {width:120px; height:120px; padding:5px; background:#fff; border-radius:100px; position:absolute; top:10px; left:10px;}
+.brief .avator img {width:120px; height:120px; border-radius:100px; position:relative; z-index:2;}
+.brief .avator i {display:block; width:10px; height:10px; background:#fff; -webkit-transform:rotate(45deg); position:absolute; top:125px; left:60px; z-index:1;}
+.brief .info {margin-left:170px; font-size:16px; line-height:30px;}
+.brief .info h1 {padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid #467ca8; font-size:30px; line-height:40px; font-weight:400;}
+.brief .info p {margin-bottom:10px;}
+.brief .info ul {width:600px;}
+.brief .info ul li {float:left; width:300px;}
+.brief .info ul li a {color:#fff; text-decoration:none; -webkit-transition:all 0.5s ease;}
+.brief .info ul li a:hover {color:#5497c7; background:#f7f7f7;}
+
+.timeline {margin-bottom:20px; font-size:16px; line-height:30px;}
+.timeline dl {margin-left:70px; padding:20px; padding-bottom:0; border-left:2px solid #5497c7;}
+.timeline dt {float:left; width:160px; position:relative;}
+.timeline dt i {display:block; width:10px; height:10px; background:#fff; border:2px solid #5497c7; border-radius:10px; position:absolute; top:7px; left:-28px;}
+.timeline dd {margin-left:180px;}
+
+.skill .item {margin:20px 0 20px 20px;}
+.skill .item h3 {float:left; width:100px; font-weight:700; font-size:20px; line-height:30px; text-align:center;}
+.skill .item .rating {float:left; width:210px; padding:7px 20px 8px;}
+.skill .item .rating i {display:inline-block; width:15px; height:15px; background:#d9d9d9;}
+.skill .item .rating .point {background:#5497c7;}
+.skill .item .desc {float:left; font-size:16px; line-height:30px;}
+
+.summary {width:100%; padding:20px 0; background:#5497c7; color:#fff;}
+.summary p {font-size:16px; line-height:40px;}
+.summary .pri-high {font-size:24px;}
+.summary .pri-mid {font-size:20px;}
+.summary .pri-low {font-size:18px;}
+.summary .text {float:left;}
+.summary .qrcode {float:right; margin-top:15px;}
+
+/*Responsive*/
+@media (max-width: 1024px)  {
+.download {display:none;}
+.grid {width:100%;}
+.brief .grid {width:100%;}
+.brief .avator {display:none;}
+.brief .info {margin:10px;}
+.brief .info ul {width:auto;}
+.brief .info ul li {float:none;}
+.timeline dl {margin-left:10px; padding:10px; border-left:0; border-bottom:1px dotted #ccc;}
+.timeline dt {float:none; color:#999;}
+.timeline dt i {display:none;}
+.timeline dd {margin-left:0;}
+.skill .item {margin:20px 10px;}
+.skill .item h3 {float:none;}
+.skill .item .rating {display:none;}
+.skill .item .desc {float:none; margin-left:50px;}
+.summary .text {float:none; margin:10px;}
+.summary .qrcode {display:none;}
+}
