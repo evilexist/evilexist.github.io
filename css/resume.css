@@ -27,7 +27,8 @@ body {font-family:Microsoft Yahei, Simhei, sans-serif;}
 .timeline dl {margin-left:70px; padding:20px; padding-bottom:0; border-left:2px solid #5497c7;}
 .timeline dt {float:left; width:160px; position:relative;}
 .timeline dt i {display:block; width:10px; height:10px; background:#fff; border:2px solid #5497c7; border-radius:10px; position:absolute; top:7px; left:-28px;}
-.timeline dd {margin-left:180px;}
+.timeline dd {margin-left:180px; color:#999;}
+.timeline .last {color:#333;}
 
 .skill .item {margin:20px 0 20px 20px;}
 .skill .item h3 {float:left; width:100px; font-weight:700; font-size:20px; line-height:30px; text-align:center;}

@@ -169,6 +169,8 @@ animation:bounce 1s linear 10;
 .content .works .text {float:right; width:380px;}
 .content .works h2 {margin:10px 0; font:24px/40px 'Roboto', Tahoma, Microsoft Yahei, SimHei, sans-serif;}
 .content .works p {margin-bottom:20px; font-size:14px; color:#777; text-align:left;}
+.content .works a {color:#5c8198;}
+.content .works a:hover {border-bottom:1px solid #5c8198;}
 .content .works .note {text-align:center; color:#999;}
 .content .works .tag {display:inline-block; padding:0 3px 0 5px; margin-right:5px; background:#5c8198; border-radius:4px; color:#fff; cursor:default; -webkit-transition:all .1s ease-in; -moz-transition:all .1s ease-in; transition:all .1s ease-in;}
 .content .works .tag:hover {background:#00cae9;}
@@ -191,6 +193,7 @@ animation:bounce 1s linear 10;
 .content .contact h2 {margin:20px 0; font:30px/40px 'Roboto', Tahoma, Microsoft Yahei, SimHei, sans-serif;}
 .content .contact p {font:24px/40px 'Roboto', Tahoma, Microsoft Yahei, SimHei, sans-serif;}
 .content .contact p a {color:#5c8198;}
+.content .contact p a:hover {border-bottom:1px solid #5c8198;}
 
 /*Responsive*/
 @media (max-width: 1024px)  {
