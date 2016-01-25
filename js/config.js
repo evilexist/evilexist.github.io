@@ -17,7 +17,7 @@ $(function() {
 		// Navigation items
 		siteNavItems: [
 			{ name: 'Github', href: 'https://github.com/evilexist', newWindow: true},
-			{ name: 'About'}
+			{ name: 'About', href: 'http://evilexist.com/'}
 		],
 
 		// Posts folder name
