@@ -40,7 +40,7 @@ $(function() {
 		mode: 'Github',
 
 		// If Github mode is set, your Github username and repo name. Defaults
-		// to Github pages branch (gh-pages)
+		// to Github pages branch (master)
 		githubUserSettings: {
 			username: 'evilexist',
 			repo: 'evilexist.github.io'
