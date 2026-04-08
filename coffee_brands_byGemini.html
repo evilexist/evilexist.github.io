@@ -3,225 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Coffee Roasters Index</title>
+    <title>Global Specialty Coffee Roasters Archive</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            scroll-behavior: smooth;
-        }
-
-        /* 筛选按钮基础样式 */
-        .filter-btn {
-            background: white;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .filter-btn:hover {
-            border-color: #cbd5e1;
-            color: #0f172a;
-        }
-        .filter-btn.active {
-            background: #0f172a;
-            color: white;
-            border-color: #0f172a;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-        }
-
-        /* 卡片动画容器 */
-        .brand-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-            transform: scale(1);
-        }
-        .brand-card.hidden-item {
-            display: none;
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        /* LOGO 盒子 */
-        .logo-box {
-            width: 52px;
-            height: 52px;
-            background: #ffffff;
-            border: 1px solid #f1f5f9;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .glass-card {
-            background: white;
-            border: 1px solid #eff2f5;
-        }
-        .glass-card:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; color: #1a1a1a; }
+        .filter-btn { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #eee; background: white; color: #666; }
+        .filter-btn.active { background: #000; color: #fff; border-color: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .brand-card { transition: all 0.4s ease; opacity: 1; transform: translateY(0); }
+        .brand-card.hidden-item { display: none; opacity: 0; transform: translateY(10px); }
+        .logo-box { width: 52px; height: 52px; background: #fff; border: 1px solid #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .glass-card { background: white; border: 1px solid #f1f1f1; border-radius: 24px; padding: 2rem; height: 100%; display: flex; flex-direction: column; }
+        .glass-card:hover { border-color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.03); transform: translateY(-4px); }
+        .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="max-w-7xl mx-auto px-6 pt-24 pb-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 leading-tight">
-                Global Specialty Coffee <br class="hidden md:block">Roasters Index
-            </h1>
-            <p class="text-slate-500 max-w-2xl mx-auto font-light text-lg">
-                汇集 31 家活跃于中国精品咖啡圈的顶级烘焙品牌，涵盖从北欧极简到科学烘焙的全流派坐标。
-            </p>
+    <header class="max-w-7xl mx-auto px-6 pt-24 pb-16 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Coffee Roasters <span class="text-gray-300">Archive</span></h1>
+        <p class="text-gray-500 max-w-2xl mx-auto font-light text-lg mb-12">
+            汇集全球精品咖啡领域的顶级烘焙品牌，旨在探索与致敬杯中风土的无限可能。
+        </p>
+        <div class="flex flex-wrap justify-center gap-3" id="filter-wrapper">
+            <button class="filter-btn active px-6 py-2 rounded-full text-sm font-medium" data-country="all">All Brands</button>
         </div>
-
-        <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-wrapper">
-            <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium" data-country="all">全部品牌</button>
-            </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 pb-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="brand-grid">
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="brand-grid"></div>
     </main>
 
     <script>
         const brands = [
-            { name: "Tim Wendelboe", country: "挪威", founder: "Tim Wendelboe", style: "北欧极浅烘焙 (Nordic Style)", honor: "WBC冠军；浅烘鼻祖", url: "timwendelboe.no", domain: "timwendelboe.no" },
-            { name: "The Barn", country: "德国", founder: "Ralf Rüller", style: "纯净、无妥协的浅烘", honor: "欧洲最佳精品咖啡烘焙商", url: "thebarn.de", domain: "thebarn.de" },
-            { name: "April Coffee", country: "丹麦", founder: "Patrik Rolf", style: "平衡且极具表现力", honor: "WBrC亚军；April滤杯设计者", url: "aprilcoffeeroasters.com", domain: "aprilcoffeeroasters.com" },
-            { name: "Glitch Coffee", country: "日本", founder: "铃木清和", style: "极致浅烘焙 (Ultra-Light)", honor: "东京精品咖啡朝圣地", url: "glitchcoffee.com", domain: "glitchcoffee.com" },
-            { name: "Onyx Coffee Lab", country: "美国", founder: "Jon & Andrea Allen", style: "科学派、实验性处理法", honor: "美国咖啡赛事常胜将军", url: "onyxcoffeelab.com", domain: "onyxcoffeelab.com" },
-            { name: "Gardelli", country: "意大利", founder: "Rubens Gardelli", style: "高辨识度、极致风味", honor: "WCRC世界烘焙冠军", url: "gardellicoffee.com", domain: "gardellicoffee.com" },
-            { name: "Sey Coffee", country: "美国", founder: "Tobin & Lance", style: "超浅烘焙、极高透明度", honor: "纽约精品咖啡天花板", url: "seycoffee.com", domain: "seycoffee.com" },
-            { name: "Coffee Collective", country: "丹麦", founder: "Klaus Thomsen等", style: "优雅平衡、直接贸易", honor: "WBC冠军团队；B Corp", url: "coffeecollective.dk", domain: "coffeecollective.dk" },
-            { name: "Leaves Coffee", country: "日本", founder: "石井康雄", style: "高清晰度、职人精神", honor: "亚洲顶级流量职人店", url: "leavescoffee.jp", domain: "leavescoffee.jp" },
-            { name: "Friedhats", country: "荷兰", founder: "Lex Wenneker", style: "明亮活泼、前卫风格", honor: "WBC亚军；药瓶包装", url: "friedhats.com", domain: "friedhats.com" },
-            { name: "Prodigal Coffee", country: "美国", founder: "Scott Rao", style: "数据化、零瑕疵烘焙", honor: "烘焙理论奠基人创立", url: "getprodigal.com", domain: "getprodigal.com" },
-            { name: "Dak Coffee", country: "荷兰", founder: "Louis-Philippe", style: "爆炸花果香、高甜度", honor: "视觉系网红包装", url: "dakcoffeeroasters.com", domain: "dakcoffeeroasters.com" },
-            { name: "La Cabra", country: "丹麦", founder: "Esben Piper", style: "极简、现代、地标感", honor: "咖啡美学先驱", url: "lacabra.dk", domain: "lacabra.dk" },
-            { name: "Manhattan", country: "荷兰", founder: "Ben & Esther", style: "擅长高端竞赛豆", honor: "荷兰赛事级烘焙商", url: "manhattancoffeeroasters.com", domain: "manhattancoffeeroasters.com" },
-            { name: "Mame", country: "瑞士", founder: "Emi & Mathieu", style: "风味色块引导法", honor: "双料世界冠军主理", url: "mame.coffee", domain: "mame.coffee" },
-            { name: "Ona Coffee", country: "澳大利亚", founder: "Sasa Sestic", style: "创新处理法、硬核竞技", honor: "WBC冠军；《咖啡师》", url: "onacoffee.com.au", domain: "onacoffee.com.au" },
-            { name: "Nomad Coffee", country: "西班牙", founder: "Jordi Mestre", style: "清爽、现代风格", honor: "西班牙精品咖啡标杆", url: "nomadcoffee.es", domain: "nomadcoffee.es" },
-            { name: "Father's Coffee", country: "捷克", founder: "Petr & Eliška", style: "细腻温润的浅烘", honor: "欧洲精品咖啡黑马", url: "fathers.cz/?lang=en", domain: "fathers.cz" },
-            { name: "Square Mile", country: "英国", founder: "James Hoffmann", style: "稳健教科书式烘焙", honor: "咖啡教父霍夫曼创立", url: "squaremilecoffee.com", domain: "squaremilecoffee.com" },
-            { name: "Momos Coffee", country: "韩国", founder: "Joo-yeon Jeon", style: "极致平衡与品质感", honor: "WBC首位女性世界冠军", url: "momos.co.kr", domain: "momos.co.kr" },
-            { name: "Passenger", country: "美国", founder: "Chris & David", style: "追求极致产地甜度", honor: "精品咖啡透明度典范", url: "passengercoffee.com", domain: "passengercoffee.com" },
-            { name: "Fuglen", country: "挪威/日本", founder: "Einar & Halvor", style: "复古浅烘、生活方式", honor: "北欧复古文化代表", url: "fuglen.no", domain: "fuglen.no" },
-            { name: "Drop Coffee", country: "瑞典", founder: "Joanna Alm", style: "产地属性、纯净度", honor: "WCRC多次获奖", url: "dropcoffee.com", domain: "dropcoffee.com" },
-            { name: "Weekenders", country: "日本", founder: "金子将博", style: "京都风格、轻盈深邃", honor: "京都职人咖啡精神", url: "weekenderscoffee.com", domain: "weekenderscoffee.com" },
-            { name: "Lilo Coffee", country: "日本", founder: "中村圭太", style: "风格多变、极具亲和力", honor: "大阪插画风格名片", url: "lilocoffee.shop", domain: "lilocoffee.shop" },
-            { name: "Koppi", country: "瑞典", founder: "Anne & Charles", style: "活泼、清爽、明亮", honor: "瑞典顶尖精品烘焙", url: "koppi.se", domain: "koppi.se" },
-            { name: "Five Elephant", country: "德国", founder: "Kris & Sophie", style: "经典产地风味", honor: "柏林地标、精品之作", url: "fiveelephant.com", domain: "fiveelephant.com" },
-            { name: "Coffee Libre", country: "韩国", founder: "Pil-hoon Seung", style: "直接贸易、坚实品质", honor: "韩国精品咖啡先驱", url: "coffeelibre.kr", domain: "coffeelibre.kr" },
-            { name: "Kurasu", country: "日本", founder: "Yohei Nakada", style: "器具美学与烘焙结合", honor: "将日本咖啡推向全球", url: "kurasu.kyoto", domain: "kurasu.kyoto" },
-            { name: "Workshop", country: "英国", founder: "James Dickson", style: "追求一致性与净度", honor: "伦敦顶级职人代表", url: "workshopcoffee.com", domain: "workshopcoffee.com" },
-            { name: "Proud Mary", country: "澳大利亚", founder: "Nolan Hirte", style: "能量感、外放风味", honor: "澳/美双线顶级品牌", url: "proudmarycoffee.com.au", domain: "proudmarycoffee.com.au" }
+            // 第一梯队：行业宗师
+            { name: "Tim Wendelboe", country: "挪威", founder: "Tim Wendelboe", style: "北欧极浅烘焙鼻祖", honor: "WBC冠军；极致透明度标杆", url: "timwendelboe.no", domain: "timwendelboe.no" },
+            { name: "Prodigal Coffee", country: "美国", founder: "Scott Rao", style: "科学派烘焙、追求零瑕疵感官", honor: "精品咖啡理论宗师 Scott Rao 亲笔作", url: "getprodigal.com", domain: "getprodigal.com" },
+            
+            // 第二梯队：新锐极客
+            { name: "TANAT Coffee", country: "法国", founder: "Alexis & Sammy", style: "极度纯净、感官实验 (原KAWA)", honor: "2025更名；巴黎新浪潮巅峰", url: "tanat.coffee/en/", domain: "tanat.coffee" },
+            { name: "Manhattan", country: "荷兰", founder: "Ben & Esther", style: "处理法玩家、竞赛级豆单", honor: "荷兰顶级竞技烘焙商", url: "manhattancoffeeroasters.com", domain: "manhattancoffeeroasters.com" },
+            { name: "Dak Coffee", country: "荷兰", founder: "Louis-Philippe", style: "现代发酵风味、高甜度", honor: "阿姆斯特丹新锐视觉系", url: "dakcoffeeroasters.com", domain: "dakcoffeeroasters.com" },
+            
+            // 第三梯队：亚洲审美
+            { name: "Glitch Coffee", country: "日本", founder: "铃木清和", style: "极致浅烘、发掘生豆隐藏风味", honor: "东京精品咖啡朝圣之所", url: "glitchcoffee.com", domain: "glitchcoffee.com" },
+            { name: "Anthracite", country: "韩国", founder: "金演浩", style: "深邃叙事、工业废墟美学", honor: "首尔审美天花板；最具诗意的拼配哲学", url: "anthracitecoffee.com", domain: "anthracitecoffee.com" },
+            { name: "Leaves Coffee", country: "日本", founder: "石井康雄", style: "高清晰度、职人极简", honor: "东京藏前新贵；顶尖竞技豆", url: "leavescoffee.jp", domain: "leavescoffee.jp" },
+
+            // 第四梯队：澳洲权杖
+            { name: "Ona Coffee", country: "澳大利亚", founder: "Sasa Sestic", style: "全产业链控制、硬核竞技", honor: "WBC冠军背景；生豆溯源先驱", url: "onacoffee.com.au", domain: "onacoffee.com.au" },
+            { name: "Seven Seeds", country: "澳大利亚", founder: "Mark Dundon", style: "教科书级平衡、高甜感、奶油触感", honor: "澳洲精品咖啡奠基者；技术流先驱", url: "sevenseeds.com.au", domain: "sevenseeds.com.au" },
+            
+            // 第五梯队：欧美纯净主义
+            { name: "Sey Coffee", country: "美国", founder: "Tobin & Lance", style: "极致透明、高茶感浅烘", honor: "纽约布鲁克林极客最爱", url: "seycoffee.com", domain: "seycoffee.com" },
+            { name: "The Barn", country: "德国", founder: "Ralf Rüller", style: "纯净无妥协、产地驱动", honor: "欧洲最佳烘焙商", url: "thebarn.de", domain: "thebarn.de" },
+            { name: "Right Side Coffee", country: "西班牙", founder: "Joaquín Parra", style: "极致透明度、产地洁净度", honor: "西班牙精品浪潮核心；欧洲名店之选", url: "rightsidecoffee.com", domain: "rightsidecoffee.com" },
+            
+            // 第六梯队：北欧继任者
+            { name: "Prolog", country: "丹麦", founder: "Sebastian & Jonas", style: "温润平衡、高甜感浅烘", honor: "哥本哈根极简审美；Noma合作伙伴", url: "prologcoffee.com", domain: "prologcoffee.com" },
+            { name: "April Coffee", country: "丹麦", founder: "Patrik Rolf", style: "现代平衡、高精准烘焙", honor: "WBrC亚军；April滤杯发明者", url: "aprilcoffeeroasters.com", domain: "aprilcoffeeroasters.com" },
+            { name: "La Cabra", country: "丹麦", founder: "Esben Piper", style: "纯净地域感、现代风格", honor: "丹麦精品咖啡美学传播者", url: "lacabra.dk", domain: "lacabra.dk" },
+
+            // 第七梯队：冠军品牌
+            { name: "Gardelli", country: "意大利", founder: "Rubens Gardelli", style: "高海拔豆的极致挖掘", honor: "WCRC世界烘焙冠军", url: "gardellicoffee.com", domain: "gardellicoffee.com" },
+            { name: "Mame", country: "瑞士", founder: "Emi & Mathieu", style: "风味色块引导、极致纯净", honor: "世界冠军夫妇联手打造", url: "mame.coffee", domain: "mame.coffee" },
+            { name: "Momos Coffee", country: "韩国", founder: "Joo-yeon Jeon", style: "极致平衡、顶级品控", honor: "韩国首位WBC冠军", url: "momos.co.kr", domain: "momos.co.kr" },
+
+            // 第八梯队：生活方式
+            { name: "Fuglen", country: "挪威/日本", founder: "Einar & Halvor", style: "复古浅烘焙、文化交融", honor: "北欧与日系美学的交汇点", url: "fuglen.no", domain: "fuglen.no" },
+            { name: "Fritz Coffee", country: "韩国", founder: "Park Sangeun", style: "复古美学、极佳甜度平衡", honor: "韩国精品咖啡文化图腾", url: "fritz.co.kr", domain: "fritz.co.kr" },
+            { name: "Market Lane", country: "澳大利亚", founder: "Fleur Studd", style: "清新、产地透明、明亮果酸", honor: "墨尔本精品咖啡灵魂；只售当季豆", url: "marketlane.com.au", domain: "marketlane.com.au" },
+            
+            // 第九梯队：行业基石
+            { name: "Onyx Coffee Lab", country: "美国", founder: "Jon Allen", style: "科学派、多变实验风格", honor: "美国咖啡赛事霸榜品牌", url: "onyxcoffeelab.com", domain: "onyxcoffeelab.com" },
+            { name: "Square Mile", country: "英国", founder: "James Hoffmann", style: "严谨、均衡、教科书式", honor: "咖啡教父 James Hoffmann 创立", url: "squaremilecoffee.com", domain: "squaremilecoffee.com" },
+            { name: "Coffee Collective", country: "丹麦", founder: "Klaus Thomsen", style: "B Corp 认证、可持续平衡", honor: "直接贸易与透明度先锋", url: "coffeecollective.dk", domain: "coffeecollective.dk" },
+
+            // 第十梯队：区域标杆
+            { name: "Nomad Coffee", country: "西班牙", founder: "Jordi Mestre", style: "清新、明亮、充满阳光感", honor: "巴塞罗那精品咖啡先锋", url: "nomadcoffee.es", domain: "nomadcoffee.es" },
+            { name: "Friedhats", country: "荷兰", founder: "Lex Wenneker", style: "前卫活泼、先锋包装", honor: "WBC亚军；荷兰鬼才烘焙", url: "friedhats.com", domain: "friedhats.com" },
+            { name: "St. Ali", country: "澳大利亚", founder: "Salvatore Malatesta", style: "大胆、浓郁、风味冲击力强", honor: "澳洲精品浪潮先驱；艺术与咖啡的融合", url: "stali.com.au", domain: "stali.com.au" },
+            { name: "Passenger", country: "美国", founder: "Chris & David", style: "极致产地甜度呈现", honor: "生豆采购透明度典范", url: "passengercoffee.com", domain: "passengercoffee.com" },
+            { name: "Drop Coffee", country: "瑞典", founder: "Joanna Alm", style: "瑞典纯净主义、产地属性", honor: "WCRC多次获奖老牌名店", url: "dropcoffee.com", domain: "dropcoffee.com" },
+            { name: "Weekenders", country: "日本", founder: "金子将博", style: "京都韵味、轻盈通透", honor: "京都职人精神代表", url: "weekenderscoffee.com", domain: "weekenderscoffee.com" },
+            { name: "Lilo Coffee", country: "日本", founder: "Keita Nakamura", style: "个性插画、风味多元", honor: "大阪精品咖啡名片", url: "lilocoffee.shop", domain: "lilocoffee.shop" },
+            { name: "Koppi", country: "瑞典", founder: "Anne & Charles", style: "活力、清爽明亮", honor: "瑞典精品烘焙先驱", url: "koppi.se", domain: "koppi.se" },
+            { name: "Five Elephant", country: "德国", founder: "Kris & Sophie", style: "经典产地风味、高一致性", honor: "柏林精品咖啡地标", url: "fiveelephant.com", domain: "fiveelephant.com" },
+            { name: "Coffee Libre", country: "韩国", founder: "Pil-hoon Seung", style: "直接贸易、坚实品质", honor: "韩国精品咖啡运动推手", url: "coffeelibre.kr", domain: "coffeelibre.kr" },
+            { name: "Kurasu", country: "日本", founder: "Yohei Nakada", style: "京都美学、全球传播", honor: "将日本咖啡文化推向全球", url: "kurasu.kyoto", domain: "kurasu.kyoto" },
+            { name: "Workshop", country: "英国", founder: "James Dickson", style: "高净度、一致性极强", honor: "伦敦顶级职人品牌", url: "workshopcoffee.com", domain: "workshopcoffee.com" },
+            { name: "Proud Mary", country: "澳大利亚", founder: "Nolan Hirte", style: "外向、高能量风味特质", honor: "澳洲精品咖啡全球化代表", url: "proudmarycoffee.com.au", domain: "proudmarycoffee.com.au" }
         ];
 
         const grid = document.getElementById('brand-grid');
         const filterWrapper = document.getElementById('filter-wrapper');
 
-        // 初始化国家筛选按钮
         function initFilters() {
-            const countries = [...new Set(brands.map(b => b.country))];
+            const countries = [...new Set(brands.map(b => b.country))].sort();
             countries.forEach(country => {
                 const btn = document.createElement('button');
-                btn.className = 'filter-btn px-5 py-2 rounded-full text-sm font-medium';
+                btn.className = 'filter-btn px-6 py-2 rounded-full text-sm font-medium';
                 btn.textContent = country;
                 btn.dataset.country = country;
                 filterWrapper.appendChild(btn);
             });
         }
 
-        // 初始化品牌卡片
         function initCards() {
             brands.forEach(brand => {
                 const card = document.createElement('div');
-                card.className = 'brand-card glass-card p-8 rounded-[2rem] flex flex-col h-full';
+                card.className = 'brand-card';
                 card.dataset.country = brand.country;
-
-                // 优化后的 LOGO 加载方案
-                // 方案 A: Google Favicon (稳定)
-                // 方案 B: Clearbit (美观)
                 const logoA = `https://www.google.com/s2/favicons?sz=128&domain_url=${brand.domain}`;
-                const logoB = `https://logo.clearbit.com/${brand.domain}`;
 
                 card.innerHTML = `
-                    <div class="flex items-start justify-between mb-8">
-                        <div class="logo-box">
-                            <img src="${logoA}" 
-                                 onerror="this.onerror=null;this.src='${logoB}';this.parentElement.innerHTML='<span class=\'text-lg font-bold text-slate-300\'>${brand.name.charAt(0)}</span>'"
-                                 class="w-8 h-8 object-contain">
+                    <div class="glass-card">
+                        <div class="flex items-start justify-between mb-8">
+                            <div class="logo-box">
+                                <img src="${logoA}" onerror="this.parentElement.innerHTML='<span class=\'text-lg font-bold text-gray-300\'>${brand.name.charAt(0)}</span>'" class="w-8 h-8 object-contain">
+                            </div>
+                            <span class="tag bg-gray-50 text-gray-400 border border-gray-100">${brand.country}</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-50 px-3 py-1 rounded-full border border-slate-100">${brand.country}</span>
-                    </div>
-
-                    <div class="mb-6">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-1">${brand.name}</h2>
-                        <p class="text-slate-400 text-xs font-medium">FOUNDER: ${brand.founder}</p>
-                    </div>
-
-                    <div class="space-y-4 flex-grow">
-                        <div>
-                            <span class="text-[9px] uppercase font-bold text-blue-500 tracking-wider block mb-1">Roast Style</span>
-                            <p class="text-sm text-slate-600 leading-relaxed">${brand.style}</p>
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-1">${brand.name}</h2>
+                            <p class="text-gray-400 text-[10px] font-bold tracking-widest uppercase">FOUNDER: ${brand.founder}</p>
                         </div>
-                        <div>
-                            <span class="text-[9px] uppercase font-bold text-emerald-500 tracking-wider block mb-1">Key Recognition</span>
-                            <p class="text-sm text-slate-600 leading-relaxed">${brand.honor}</p>
+                        <div class="space-y-6 flex-grow">
+                            <div>
+                                <span class="block text-[9px] font-bold text-blue-600 mb-2 tracking-widest uppercase">Philosophy</span>
+                                <p class="text-sm text-gray-600 leading-relaxed font-medium">${brand.style}</p>
+                            </div>
+                            <div>
+                                <span class="block text-[9px] font-bold text-emerald-600 mb-2 tracking-widest uppercase">Context</span>
+                                <p class="text-sm text-gray-500 leading-relaxed">${brand.honor}</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="mt-8 pt-6 border-t border-slate-50">
-                        <a href="${brand.url.includes('?') ? brand.url : 'https://' + brand.url}" target="_blank" 
-                           class="inline-flex items-center text-xs font-bold text-slate-900 group">
-                            VISIT OFFICIAL SITE
-                            <svg class="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                        </a>
+                        <div class="mt-10 pt-6 border-t border-gray-50">
+                            <a href="https://${brand.url}" target="_blank" class="inline-flex items-center text-xs font-bold hover:gap-2 transition-all group">
+                                EXPLORE OFFICIAL SITE
+                                <svg class="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                            </a>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // 核心筛选逻辑 (修复版)
         filterWrapper.addEventListener('click', (e) => {
             const target = e.target.closest('.filter-btn');
             if (!target) return;
-
-            // 1. 更新按钮视觉状态
-            const allBtns = document.querySelectorAll('.filter-btn');
-            allBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             target.classList.add('active');
-
-            // 2. 执行卡片过滤
-            const selectedCountry = target.dataset.country;
-            const allCards = document.querySelectorAll('.brand-card');
-
-            allCards.forEach(card => {
-                if (selectedCountry === 'all' || card.dataset.country === selectedCountry) {
+            const country = target.dataset.country;
+            document.querySelectorAll('.brand-card').forEach(card => {
+                if (country === 'all' || card.dataset.country === country) {
                     card.classList.remove('hidden-item');
-                } else {
-                    card.classList.add('hidden-item');
-                }
+                } else { card.classList.add('hidden-item'); }
             });
         });
 
-        // 启动
         initFilters();
         initCards();
     </script>
-
-    <footer class="max-w-7xl mx-auto px-6 py-24 text-center">
-        <div class="h-px w-12 bg-slate-200 mx-auto mb-8"></div>
-        <p class="text-slate-400 text-[10px] tracking-[0.2em] uppercase">Specialty Coffee Archive 2026</p>
-    </footer>
 </body>
 </html>
