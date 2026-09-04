@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>大同 4天3晚 · 古建慢游手册（可交互版）| 2026.9.8 - 9.11</title>
+<script>try{var _t=localStorage.getItem("datong2026.v1");if(_t){var _o=JSON.parse(_t);if(_o&&_o.v===1&&_o.theme==="dark")document.documentElement.dataset.theme="dark";}}catch(e){}</script>
+<style>
+  :root{
+    --paper:#faf7f2; --paper-2:#ffffff; --ink:#2b2723; --ink-2:#5c554c; --ink-3:#8a8177;
+    --line:#e3dcd0; --line-2:#efe9de;
+    --red:#a8322d; --red-soft:#f6e9e6; --gold:#b07d2b; --gold-soft:#faf1de;
+    --slate:#5a6b70; --slate-soft:#eaf0f1; --green:#4a7a52; --green-soft:#eaf3ec;
+    --color-text-primary:#2b2723; --color-text-secondary:#5c554c; --color-background-primary:#ffffff;
+    --svg-gold-bg:#faf1de; --svg-gold-line:#b07d2b; --svg-gold-text:#8a5e1c;
+    --svg-red-bg:#f6e9e6; --svg-red-line:#a8322d; --svg-red-text:#8a2b26;
+    --side-bg:#221f1a; --side-ink:#e9e2d8; --side-ink-2:#a89e90; --side-line:#3a342c;
+    --accent:#b07d2b;
+  }
+  :root[data-theme="dark"]{
+    --paper:#1d1a16; --paper-2:#26221d; --ink:#ece6dc; --ink-2:#bcb3a6; --ink-3:#8a8177;
+    --line:#3a342c; --line-2:#2c2722;
+    --red:#c8584f; --red-soft:#3a2421; --gold:#cf9a44; --gold-soft:#332a1c;
+    --slate:#8aa6ab; --slate-soft:#223035; --green:#73a382; --green-soft:#20342a;
+    --color-text-primary:#ece6dc; --color-text-secondary:#bcb3a6; --color-background-primary:#26221d;
+    --svg-gold-bg:#332a1c; --svg-gold-line:#6e4f1c; --svg-gold-text:#e6c98a;
+    --svg-red-bg:#3a2421; --svg-red-line:#c8584f; --svg-red-text:#e89a93;
+    --side-bg:#14110d; --side-ink:#ece6dc; --side-ink-2:#a89e90; --side-line:#322d27;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .figure{margin:24px 0 28px;}
+  .figure svg{display:block;width:100%;height:auto;}
+  .figure figcaption{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.8;padding-left:12px;border-left:2px solid var(--line);}
+  html,body{height:100%;}
+  body{font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+  /* ===== layout ===== */
+  .app{display:flex;min-height:100vh;}
+  .sidebar{width:256px;flex-shrink:0;background:var(--side-bg);color:var(--side-ink);position:sticky;top:0;height:100vh;
+    display:flex;flex-direction:column;padding:22px 16px;overflow-y:auto;}
+  .brand{font-family:-apple-system,"PingFang SC",sans-serif;font-weight:700;font-size:17px;letter-spacing:.04em;color:var(--side-ink);}
+  .brand small{display:block;font-weight:400;font-size:11px;color:var(--side-ink-2);margin-top:5px;letter-spacing:.06em;}
+  .progress-mini{margin:16px 0;font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;color:var(--side-ink-2);
+    background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .progress-mini b{color:var(--gold);}
+  .nav{flex:1;font-family:-apple-system,"PingFang SC",sans-serif;}
+  .nav>a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:8px;color:var(--side-ink-2);
+    text-decoration:none;font-size:14.5px;cursor:pointer;margin-bottom:3px;transition:background .15s;}
+  .nav>a:hover{background:rgba(255,255,255,.06);color:var(--side-ink);}
+  .nav>a.active{background:var(--gold);color:#fff;font-weight:600;}
+  .nav .sub{margin:0 0 4px 14px;padding-left:12px;border-left:1px solid var(--side-line);display:none;}
+  .nav .sub.show{display:block;}
+  .nav .sub>a{display:block;padding:7px 12px;border-radius:6px;color:var(--side-ink-2);text-decoration:none;font-size:13px;cursor:pointer;}
+  .nav .sub>a:hover{background:rgba(255,255,255,.06);color:var(--side-ink);}
+  .nav .sub>a.active{color:var(--gold);font-weight:600;}
+  .side-foot{display:flex;gap:8px;margin-top:14px;}
+  .side-foot button{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--side-line);color:var(--side-ink-2);
+    border-radius:7px;padding:9px;font-size:12.5px;cursor:pointer;font-family:-apple-system,"PingFang SC",sans-serif;}
+  .side-foot button:hover{background:rgba(255,255,255,.12);color:var(--side-ink);}
+  .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;}
+
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .topbar{display:none;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);
+    background:var(--paper);position:sticky;top:0;z-index:30;}
+  .topbar .hamburger{font-size:20px;border:none;background:none;cursor:pointer;color:var(--ink);}
+  .crumb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--ink-2);flex:1;}
+  .topbar-actions{display:flex;gap:8px;}
+  .topbar-actions button{border:1px solid var(--line);background:var(--paper-2);border-radius:20px;padding:6px 12px;
+    font-size:12px;cursor:pointer;font-family:-apple-system,"PingFang SC",sans-serif;color:var(--ink-2);}
+  .cd-pill{background:var(--red-soft)!important;color:var(--red)!important;border-color:var(--red)!important;font-weight:700;}
+  .views{max-width:1080px;width:100%;margin:0 auto;padding:40px 32px 80px;flex:1;}
+  .view{display:none;}
+  .view.is-active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .skip{position:absolute;left:-999px;}
+  .skip:focus{left:8px;top:8px;z-index:99;background:var(--ink);color:#fff;padding:8px 12px;border-radius:6px;}
+
+  /* ===== content (reuse original design system) ===== */
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:38px 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .sec-head:first-child{margin-top:0;}
+  h2{font-size:25px;letter-spacing:.05em;font-weight:600;}
+  .sec-note{font-size:13px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;margin-left:auto;}
+  .sec-sub{font-size:13px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;margin:-12px 0 22px;}
+
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:16px 14px;}
+  .card .lab{font-family:-apple-system,"PingFang SC",sans-serif;font-size:11px;letter-spacing:.12em;color:var(--ink-3);margin-bottom:7px;}
+  .card .val{font-size:19px;font-weight:600;letter-spacing:.02em;line-height:1.35;}
+  .card .sub{font-size:12px;color:var(--ink-3);margin-top:6px;font-family:-apple-system,"PingFang SC",sans-serif;line-height:1.6;}
+
+  .alert{background:var(--red-soft);border:1px solid #e8cdc7;border-left:4px solid var(--red);border-radius:6px;padding:22px 24px;margin:18px 0;}
+  .alert h3{font-size:17px;color:var(--red);margin-bottom:14px;letter-spacing:.04em;}
+  .alert ol{margin:0;padding-left:20px;} .alert li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--ink-2);margin-bottom:12px;line-height:1.8;}
+  .alert li:last-child{margin-bottom:0;} .alert strong{color:var(--ink);}
+  .deadline{display:inline-block;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:3px;margin-right:8px;letter-spacing:.05em;font-family:-apple-system,sans-serif;}
+  .deadline.gray{background:var(--ink-3);} .deadline.green{background:var(--green);} .deadline.gold{background:var(--gold);}
+
+  .note{background:var(--gold-soft);border:1px solid #ecd9b0;border-left:4px solid var(--gold);border-radius:6px;padding:18px 22px;margin:18px 0;}
+  .note h4{font-size:15px;color:var(--gold);margin-bottom:9px;letter-spacing:.04em;} .note p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#6b4d18;line-height:1.9;}
+  .ok-note{background:var(--green-soft);border:1px solid #cfe3d3;border-left:4px solid var(--green);border-radius:6px;padding:18px 22px;margin:18px 0;}
+  .ok-note h4{font-size:15px;color:var(--green);margin-bottom:9px;letter-spacing:.04em;} .ok-note p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#2f5d38;line-height:1.9;} .ok-note ol{margin:8px 0 0 18px;} .ok-note li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#2f5d38;line-height:1.9;}
+
+  .day{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;margin:18px 0;overflow:hidden;}
+  .day-head{padding:20px 26px;border-bottom:1px solid var(--line-2);background:linear-gradient(180deg,#fdfbf7,#f7f3ec);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  :root[data-theme="dark"] .day-head{background:linear-gradient(180deg,#2a251f,#241f1a);}
+  .day-badge{background:var(--ink);color:var(--paper);width:52px;height:52px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+  .day-badge .d{font-size:19px;font-weight:700;line-height:1;} .day-badge .w{font-size:10px;letter-spacing:.1em;margin-top:3px;opacity:.75;}
+  .day-title{flex:1;min-width:200px;} .day-title h3{font-size:20px;letter-spacing:.04em;font-weight:600;} .day-title p{font-size:13px;color:var(--ink-3);margin-top:3px;font-family:-apple-system,"PingFang SC",sans-serif;}
+  .day-tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{font-family:-apple-system,"PingFang SC",sans-serif;font-size:11.5px;padding:3px 9px;border-radius:20px;background:var(--gold-soft);color:var(--gold);border:1px solid #ecd9b0;}
+  .tag.gray{background:var(--slate-soft);color:var(--slate);border-color:#d3e0e2;} .tag.red{background:var(--red-soft);color:var(--red);border-color:#e8cdc7;} .tag.green{background:var(--green-soft);color:var(--green);border-color:#cfe3d3;}
+
+  .day-weather{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 26px;background:var(--slate-soft);border-bottom:1px solid var(--line-2);
+    font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink-2);}
+  .day-weather.rain{background:var(--red-soft);border-left:4px solid var(--red);}
+  .day-weather b{font-size:14px;} .day-weather .wico{font-size:18px;}
+
+  .tl{padding:8px 26px 22px;}
+  .item{display:flex;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line-2);scroll-margin-top:80px;}
+  .item:last-child{border-bottom:none;}
+  .time{width:60px;flex-shrink:0;font-family:-apple-system,sans-serif;font-size:13.5px;font-weight:700;color:var(--red);padding-top:2px;font-variant-numeric:tabular-nums;}
+  .body{flex:1;min-width:0;} .body h4{font-size:15.5px;font-weight:600;margin-bottom:5px;letter-spacing:.02em;}
+  .body p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-2);line-height:1.85;}
+  .body .meta{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;color:var(--ink-3);margin-top:5px;} .body .meta span{margin-right:14px;white-space:nowrap;}
+  .spot{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 12px;margin-top:9px;border-radius:0 4px 4px 0;color:#6b4d18;line-height:1.8;}
+  .spot b{color:var(--ink);}
+  .warn{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;background:var(--red-soft);border-left:3px solid var(--red);padding:8px 12px;margin-top:9px;border-radius:0 4px 4px 0;color:#8a2b26;line-height:1.8;}
+  .ok{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;background:var(--green-soft);border-left:3px solid var(--green);padding:8px 12px;margin-top:9px;border-radius:0 4px 4px 0;color:#2f5d38;line-height:1.8;}
+  :root[data-theme="dark"] .spot{color:#e6c98a;} :root[data-theme="dark"] .warn{color:#e89a93;} :root[data-theme="dark"] .ok{color:#9ec9ab;}
+  :root[data-theme="dark"] .note p{color:#d8c39a;} :root[data-theme="dark"] .ok-note p{color:#9ec9ab;} :root[data-theme="dark"] .alert li{color:#cabfb2;}
+
+  table{width:100%;border-collapse:collapse;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px;}
+  .table-wrap{overflow-x:auto;margin:18px 0;}
+  th{background:#f4efe6;text-align:left;padding:12px 14px;font-size:12.5px;letter-spacing:.06em;color:var(--ink-2);font-weight:600;border-bottom:1px solid var(--line);font-family:-apple-system,"PingFang SC",sans-serif;}
+  :root[data-theme="dark"] th{background:#2e2923;}
+  td{padding:12px 14px;border-bottom:1px solid var(--line-2);vertical-align:top;font-family:-apple-system,"PingFang SC",sans-serif;color:var(--ink-2);line-height:1.7;}
+  tbody tr:last-child td{border-bottom:none;} td b{color:var(--ink);font-weight:600;}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  tfoot td{background:#f7f3ec;font-weight:600;color:var(--ink);border-top:2px solid var(--line);}
+  :root[data-theme="dark"] tfoot td{background:#2a251f;}
+  .mono{font-family:-apple-system,"PingFang SC",sans-serif;font-variant-numeric:tabular-nums;}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:20px 22px;}
+  .panel h4{font-size:15.5px;margin-bottom:12px;letter-spacing:.03em;padding-bottom:9px;border-bottom:1px solid var(--line-2);}
+  .panel ul{list-style:none;} .panel li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-2);padding:6px 0 6px 15px;position:relative;line-height:1.8;}
+  .panel li::before{content:"—";position:absolute;left:0;color:var(--ink-3);} .panel li b{color:var(--ink);}
+
+  .check{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  .check-row{display:flex;gap:14px;align-items:flex-start;padding:14px 20px;border-bottom:1px solid var(--line-2);cursor:pointer;}
+  .check-row:last-child{border-bottom:none;} .check-row:hover{background:var(--line-2);}
+  .check-row .ct{flex:1;} .check-row .ct b{font-size:14.5px;display:block;margin-bottom:3px;} .check-row .ct span{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink-3);line-height:1.7;}
+  input.box{width:17px;height:17px;border:1.5px solid var(--ink-3);border-radius:3px;flex-shrink:0;margin-top:4px;appearance:none;-webkit-appearance:none;cursor:pointer;background:var(--paper-2);position:relative;}
+  input.box:checked{background:var(--green);border-color:var(--green);}
+  input.box:checked::after{content:"✓";color:#fff;font-size:12px;position:absolute;left:2.5px;top:-3px;}
+
+  footer{max-width:1080px;margin:70px auto 0;padding:26px 32px 44px;border-top:3px double var(--line);font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink-3);line-height:2;}
+  footer b{color:var(--ink-2);}
+
+  /* ===== foldables ===== */
+  .fold{border-left:3px solid var(--gold);border-radius:0 4px 4px 0;margin-top:9px;font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;line-height:1.8;background:var(--gold-soft);}
+  .fold.spot{border-color:var(--gold);background:var(--gold-soft);color:#6b4d18;}
+  .fold.warn{border-color:var(--red);background:var(--red-soft);color:#8a2b26;}
+  .fold.ok{border-color:var(--green);background:var(--green-soft);color:#2f5d38;}
+  :root[data-theme="dark"] .fold.spot{color:#e6c98a;} :root[data-theme="dark"] .fold.warn{color:#e89a93;} :root[data-theme="dark"] .fold.ok{color:#9ec9ab;}
+  .fold>summary{padding:8px 12px;cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:6px;}
+  .fold>summary::-webkit-details-marker{display:none;} .fold>summary::before{content:"▸";font-size:11px;}
+  .fold[open]>summary::before{content:"▾";} .fold-body{padding:0 12px 9px;}
+  .fold-body b{color:var(--ink);}
+
+  /* ===== svg interactivity ===== */
+  .svg-hit{cursor:pointer;transition:opacity .15s;} .svg-hit:hover{opacity:.82;}
+  .svg-node{cursor:pointer;transition:stroke .15s,stroke-width .15s;} .svg-node:hover{stroke:var(--red);stroke-width:3;}
+  .svg-node.on{stroke:var(--red);stroke-width:3.5;}
+
+  /* ===== flags ===== */
+  .flag{display:inline-block;font-family:-apple-system,"PingFang SC",sans-serif;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;cursor:help;border:1px solid;}
+  .flag.conflict{background:var(--red-soft);color:var(--red);border-color:var(--red);}
+  .flag.verify{background:var(--gold-soft);color:var(--gold);border-color:var(--gold);}
+  .flag.ok{background:var(--green-soft);color:var(--green);border-color:var(--green);}
+  .flag-pop{position:fixed;max-width:320px;background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:80;font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink-2);line-height:1.7;display:none;}
+  .flag-pop h5{font-size:13px;margin-bottom:6px;} .flag-pop .fp-state{font-size:11px;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:6px;}
+  .flag-board{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;}
+  .flag-card{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;}
+  .flag-card.conflict{border-left-color:var(--red);} .flag-card.verify{border-left-color:var(--gold);} .flag-card.ok{border-left-color:var(--green);}
+  .flag-card h5{font-size:14px;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+  .flag-card p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--ink-2);line-height:1.75;}
+  .flag-card .fc-act{font-size:12px;color:var(--ink-3);margin-top:7px;}
+  .flag-filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
+  .flag-filters .chip{padding:5px 12px;border-radius:18px;border:1px solid var(--line);font-size:12.5px;cursor:pointer;background:var(--paper-2);color:var(--ink-2);font-family:-apple-system,"PingFang SC",sans-serif;}
+  .flag-filters .chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+  /* ===== countdown ===== */
+  .cd-list{margin:18px 0;} .cd-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--paper-2);font-family:-apple-system,"PingFang SC",sans-serif;}
+  .cd-item .cd-when{font-size:12px;color:var(--ink-3);min-width:74px;}
+  .cd-item .cd-label{flex:1;font-size:14px;}
+  .cd-item .cd-count{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;padding:3px 9px;border-radius:6px;background:var(--line-2);color:var(--ink-2);white-space:nowrap;}
+  .cd-item.critical{border-color:var(--red);} .cd-item.critical .cd-count{background:var(--red);color:#fff;}
+  .cd-item.soon .cd-count{background:var(--gold-soft);color:var(--gold);} .cd-item.past{opacity:.55;}
+  .cd-item.done{border-color:var(--green);} .cd-item.done .cd-count{background:var(--green-soft);color:var(--green);}
+
+  /* ===== weather ===== */
+  .weather{margin:22px 0;}
+  .weather-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .weather-head h3{font-size:18px;font-weight:600;} .weather-src{font-size:11.5px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;}
+  .weather-refresh{border:1px solid var(--line);background:var(--paper-2);border-radius:18px;padding:5px 13px;font-size:12px;cursor:pointer;color:var(--ink-2);font-family:-apple-system,"PingFang SC",sans-serif;margin-left:auto;}
+  .weather-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .wcard{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:14px 12px;}
+  .wcard.rain{border-color:var(--red);border-left:4px solid var(--red);}
+  .wcard .wd{font-size:12px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;}
+  .wcard .wico{font-size:30px;text-align:center;margin:6px 0;}
+  .wcard .wt{text-align:center;font-size:13px;font-family:-apple-system,"PingFang SC",sans-serif;color:var(--ink-2);}
+  .wcard .wtemp{text-align:center;font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;margin:4px 0;}
+  .wcard .wtemp small{font-size:13px;color:var(--slate);font-weight:400;}
+  .wcard .wrow{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;padding:2px 0;border-top:1px solid var(--line-2);margin-top:6px;}
+  .cloth{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
+  .cloth .chip{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;background:var(--slate-soft);color:var(--slate);border-radius:16px;padding:5px 12px;}
+  .wtip{background:var(--red-soft);border-left:4px solid var(--red);border-radius:6px;padding:12px 16px;margin:12px 0;font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:#8a2b26;line-height:1.8;}
+
+  /* ===== food filter ===== */
+  .food-filter{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;}
+  .food-filter .chip{padding:5px 13px;border-radius:18px;border:1px solid var(--line);font-size:12.5px;cursor:pointer;background:var(--paper-2);color:var(--ink-2);font-family:-apple-system,"PingFang SC",sans-serif;}
+  .food-filter .chip.active{background:var(--gold);color:#fff;border-color:var(--gold);}
+  .food-filter .sep{width:1px;background:var(--line);margin:0 2px;}
+
+  /* ===== phones ===== */
+  a.phone{color:var(--red);text-decoration:none;border-bottom:1px dashed var(--red);cursor:pointer;font-variant-numeric:tabular-nums;}
+  a.phone:hover{background:var(--red-soft);}
+
+  /* ===== day aside (wide) ===== */
+  .day-aside{display:none;}
+  @media (min-width:1280px){
+    .views{max-width:1180px;}
+    .days-layout{display:grid;grid-template-columns:1fr 260px;gap:28px;align-items:start;}
+    .day-aside{display:block;position:sticky;top:80px;align-self:start;}
+    .day-aside .da-box{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px;}
+    .day-aside h4{font-size:14px;margin-bottom:10px;color:var(--ink-2);}
+    .day-aside .da-item{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;color:var(--ink-2);padding:5px 0;border-bottom:1px solid var(--line-2);line-height:1.6;}
+    .day-aside .da-item:last-child{border-bottom:none;}
+  }
+
+  /* ===== responsive ===== */
+  @media (max-width:1023px){
+    .sidebar{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .25s;box-shadow:6px 0 30px rgba(0,0,0,.25);}
+    .sidebar.open{transform:translateX(0);}
+    .topbar{display:flex;}
+    .views{padding:24px 18px 70px;}
+    footer{padding:22px 18px 36px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .weather-cards{grid-template-columns:repeat(2,1fr);}
+    .two{grid-template-columns:1fr;}
+    .flag-board{grid-template-columns:1fr;}
+    .item{flex-direction:column;gap:4px;} .time{width:auto;}
+    .sec-note{display:none;}
+  }
+  @media (max-width:560px){
+    .cards{grid-template-columns:1fr 1fr;}
+    .weather-cards{grid-template-columns:1fr 1fr;}
+    .views{padding:18px 14px 60px;}
+    footer{padding:18px 14px 32px;}
+    h2{font-size:21px;}
+  }
+  @media print{
+    .sidebar,.topbar,.scrim{display:none!important;}
+    .app{display:block;} .views{max-width:none;padding:0 12px;}
+    .view{display:block!important;margin-bottom:30px;page-break-inside:avoid;}
+    .day{page-break-inside:avoid;} .fold-body{display:block!important;}
+    .flag{display:none;}
+  }
+  body.print-all .view{display:block!important;margin-bottom:30px;}
+  body.print-all .fold-body{display:block!important;}
+  body.print-all .sidebar{display:none!important;}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主内容</a>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">大同四日 · 古建慢游<small>2026.9.8 – 9.11 · 2人</small></div>
+  <div class="progress-mini" id="progressMini"></div>
+  <nav class="nav" id="nav">
+    <a data-view="overview">概览</a>
+    <a data-view="prep">行前准备</a>
+    <a data-view="days">每日行程</a>
+    <div class="sub" id="days-sub">
+      <a data-view="days" data-anchor="day1">D1 · 9/8 周二</a>
+      <a data-view="days" data-anchor="day2">D2 · 9/9 周三</a>
+      <a data-view="days" data-anchor="day3">D3 · 9/10 周四</a>
+      <a data-view="days" data-anchor="day4">D4 · 9/11 周五</a>
+    </div>
+    <a data-view="transport">交通</a>
+    <a data-view="stay">食宿</a>
+    <a data-view="budget">预算</a>
+    <a data-view="refs">速查表</a>
+  </nav>
+  <div class="side-foot">
+    <button data-theme-btn>◐ 暗色</button>
+    <button id="printAllBtn">打印全部</button>
+  </div>
+</aside><div class="scrim" id="scrim"></div><main class="main" id="main">
+<header class="topbar">
+  <button class="hamburger" id="menuBtn">☰</button>
+  <div class="crumb" id="crumb">概览</div>
+  <div class="topbar-actions">
+    <button class="cd-pill" id="cdPill">⏰</button>
+    <button id="printCurBtn">打印本章</button>
+    <button data-theme-btn>◐</button>
+  </div>
+</header>
+<div class="views">
+<section class="view is-active" id="view-overview">
+  <div class="cards">
+    <div class="card">
+      <div class="lab">出行日期</div>
+      <div class="val">9/8 – 9/11</div>
+      <div class="sub">周二至周五，全程工作日</div>
+    </div>
+    <div class="card">
+      <div class="lab">北京市内</div>
+      <div class="val">全程地铁</div>
+      <div class="sub">平乐园站起讫<br>单程约 60–70 分钟</div>
+    </div>
+    <div class="card">
+      <div class="lab">租车</div>
+      <div class="val">1 天</div>
+      <div class="sub">9/9 20:00 取<br>9/10 20:00 还 · 蜂巢柜</div>
+    </div>
+    <div class="card">
+      <div class="lab">九月天气</div>
+      <div class="val">8 – 21℃</div>
+      <div class="sub">昼夜温差 10–15℃</div>
+    </div>
+    <div class="card">
+      <div class="lab">预算（2人）</div>
+      <div class="val">约 ¥6,200<span data-flag="C09"></span></div>
+      <div class="sub">人均约 ¥3,090</div>
+    </div>
+  </div>
+
+  <figure class="figure" style="margin-top:30px;">
+    <svg viewBox="0 0 680 396" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>四日行程总览与 24 小时租车时间窗</title>
+      <desc>四天行程：第一天大同市博物馆下午场、九龙壁、古城墙日落；第二天云冈石窟整天并在晚八点蜂巢柜取车；第三天自驾串联浑源悬空寺永安禅寺圆觉寺与应县净土寺应县木塔，晚八点还车；第四天上午华严寺、善化寺、下午儿童公园与老体育馆后返京。租车窗口为 9 月 9 日 20 点取车至 9 月 10 日 20 点还车，正好 24 小时按一天计费。</desc>
+
+      <rect class="svg-hit" data-goto="day1" x="40" y="40" width="138" height="170" rx="12" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-line)" stroke-width="0.5"/>
+      <text x="54" y="62" font-size="14" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">D1 · 9/8 周二</text>
+      <line x1="54" y1="78" x2="164" y2="78" stroke="var(--svg-gold-line)" stroke-width="0.5" opacity="0.35"/>
+      <text x="54" y="98" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">市博物馆 · 下午</text>
+      <text x="54" y="114" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">免费 · 先读北魏</text>
+      <text x="54" y="140" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">九龙壁</text>
+      <text x="54" y="156" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">已恢复收费 ¥10</text>
+      <text x="54" y="182" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">古城墙</text>
+      <text x="54" y="198" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">日落 18:37</text>
+
+      <rect class="svg-hit" data-goto="day2" x="194" y="40" width="138" height="170" rx="12" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-line)" stroke-width="0.5"/>
+      <text x="208" y="62" font-size="14" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">D2 · 9/9 周三</text>
+      <line x1="208" y1="78" x2="318" y2="78" stroke="var(--svg-gold-line)" stroke-width="0.5" opacity="0.35"/>
+      <text x="208" y="98" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">云冈石窟 · 整天</text>
+      <text x="208" y="114" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">8 点第一波入园</text>
+      <text x="208" y="140" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">官方金牌讲解</text>
+      <text x="208" y="156" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">380 元 · 90 分钟</text>
+      <text x="208" y="182" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">20:00 取车</text>
+      <text x="208" y="198" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">蜂巢柜自助</text>
+
+      <rect class="svg-hit" data-goto="day3" x="348" y="40" width="138" height="170" rx="12" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-line)" stroke-width="0.5"/>
+      <text x="362" y="62" font-size="14" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">D3 · 9/10 周四</text>
+      <line x1="362" y1="78" x2="472" y2="78" stroke="var(--svg-gold-line)" stroke-width="0.5" opacity="0.35"/>
+      <text x="362" y="98" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">浑源 · 上午</text>
+      <text x="362" y="114" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">悬空寺 永安寺 圆觉寺</text>
+      <text x="362" y="140" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">应县 · 下午</text>
+      <text x="362" y="156" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">净土寺 应县木塔</text>
+      <text x="362" y="182" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">20:00 还车</text>
+      <text x="362" y="198" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">卡准 24 小时</text>
+
+      <rect class="svg-hit" data-goto="day4" x="502" y="40" width="138" height="170" rx="12" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-line)" stroke-width="0.5"/>
+      <text x="516" y="62" font-size="14" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">D4 · 9/11 周五</text>
+      <line x1="516" y1="78" x2="626" y2="78" stroke="var(--svg-gold-line)" stroke-width="0.5" opacity="0.35"/>
+      <text x="516" y="98" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">华严寺 · 上午</text>
+      <text x="516" y="114" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">坐西朝东 · 顺光</text>
+      <text x="516" y="140" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">善化寺</text>
+      <text x="516" y="156" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">辽金木构 · 人少</text>
+      <text x="516" y="182" font-size="13" font-weight="500" fill="var(--svg-gold-text)" dominant-baseline="central">儿童公园</text>
+      <text x="516" y="198" font-size="12" fill="var(--svg-gold-line)" dominant-baseline="central">免费 · 老体育馆</text>
+
+      <text x="40" y="232" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">一嗨租车 · 9/9 20:00 取 → 9/10 20:00 还 · 正好 24 小时，按 1 天计费</text>
+
+      <rect class="svg-hit" data-goto="view-transport" x="60" y="250" width="560" height="36" rx="8" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-line)" stroke-width="0.5"/>
+      <text x="340" y="268" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="middle" dominant-baseline="central">D3 全天自驾 · 浑源 + 应县 · 约 200 公里</text>
+      <circle cx="60" cy="268" r="5" fill="var(--svg-red-line)"/>
+      <circle cx="620" cy="268" r="5" fill="var(--svg-red-line)"/>
+
+      <text x="60" y="300" font-size="12" fill="var(--color-text-secondary)" text-anchor="start" dominant-baseline="central">9/9 20:00 蜂巢柜取车</text>
+      <text x="620" y="300" font-size="12" fill="var(--color-text-secondary)" text-anchor="end" dominant-baseline="central">9/10 20:00 蜂巢柜还车</text>
+
+      <rect class="svg-hit" data-goto="view-prep" x="40" y="322" width="600" height="54" rx="8" fill="var(--svg-red-bg)" stroke="var(--svg-red-line)" stroke-width="0.5"/>
+      <text x="60" y="342" font-size="13" font-weight="500" fill="var(--svg-red-text)" dominant-baseline="central">两个闹钟：9/4 07:20 抢悬空寺登临票</text>
+      <text x="60" y="362" font-size="12" fill="var(--svg-red-line)" dominant-baseline="central">9/2 起约市博物馆（提前 7 日）· 9/1 起约云冈（提前 1–15 天，不接当日）</text>
+    </svg>
+    <figcaption><b>行程总览与租车时间窗。</b>D3 是唯一需要用车的一天，租车窗口正好卡满 24 小时。D1、D2、D4 在市区内活动，全程打车或步行即可。</figcaption>
+  </figure>
+  <div id="weather-host"></div></section><section class="view" id="view-prep">
+  <div class="sec-head">
+    <h2>出发前必办的五件事</h2>
+    <span class="sec-note">按截止日期排序</span>
+  </div>
+
+  <div class="alert">
+    <h3>⚠︎ 这五件事有硬性时间窗口，错过就没了</h3>
+    <ol>
+      <li>
+        <span class="deadline">立即</span><strong>买往返高铁票</strong>。12306 提前 15 天售票，9/8 与 9/11 的车票<strong>已在售</strong>。
+        去程 G2531（北京北 08:20 → 大同南 10:06，1h46，二等座 ¥170）、返程 <strong>G2540</strong>（大同南 18:36 → 清河 20:13，1h37，¥164，全程最快）。
+      </li>
+      <li>
+        <span class="deadline">立即</span><strong>在一嗨 APP 下单，认准带「蜂巢柜」标识的门店</strong>。取车 9/9 20:00、还车 9/10 20:00，租期正好 24 小时、按 1 天计费。<br>
+        <strong>必须用 APP 或支付宝小程序下单</strong>——官网订单不支持蜂巢柜自助取还，也不支持芝麻分免押。下单后系统会自动发送取车码与柜体导航。
+      </li>
+      <li>
+        <span class="deadline">9月4日 07:20</span><strong>抢悬空寺登临票</strong>（最关键的一步）。
+        每日登临票仅 <strong>2,475 张</strong>，通过「<strong>北岳云游</strong>」小程序每日 7:20 开售未来 7 日票，9/10 的票在 <strong>9/4 早上 7:20</strong> 首放。<br>
+        <span style="color:var(--red);">抢不到还有两次机会：</span>① 9/5–9/9 每天早上 7:20 刷回流退票；② <strong>9/9 晚 20:00–23:00</strong> 再放一批次日票。
+        线下票（1,275 张）需开园前半小时现场排队，约 30 分钟售罄，不建议依赖。
+      </li>
+      <li>
+        <span class="deadline">9月1日起</span><strong>预约云冈石窟 9/9 门票</strong>。提前 1–15 天线上实名预约，<strong>不接受当日预约</strong>。
+        「云冈研究院」小程序或携程/美团，9 月属旺季，全价 ¥120。<br>
+        <span style="color:var(--ink-3);">同时段可预约<strong>大同市博物馆</strong>：提前 7 日（含当日），9/8 的预约 9/2 起开放，每单最多 2 人（正好你俩一单）。</span>
+      </li>
+      <li>
+        <span class="deadline green">出发前 3 天</span><strong>打三个电话确认小众国保开放状态</strong>。
+        其中<strong>净土寺当季几点关门<span data-flag="C02"></span>，直接决定 D3 的成败</strong>——它是五点串联里唯一有"关门早"风险的环节点。电话清单见文末速查表。
+      </li>
+    </ol>
+  </div>
+
+  <div class="ok-note">
+    <h4>✓ 租车方案已确认可行：24 小时自助取还</h4>
+    <p>一嗨官网大同门店页明确标注，<strong>大同火车站店与大同高铁南站店均带「可订全天用车 + 蜂巢柜」标识</strong>。机制如下：</p>
+    <ol>
+      <li><b>取车</b>：APP/小程序下单 → 系统自动发送取车码与柜体位置导航 → 在蜂巢柜屏幕输入取车码或扫码 → 储物格弹开，取出车钥匙与使用须知。<b>全程最快 30 秒，约 3 分钟完成，不受门店 8:00–20:00 营业时间限制。</b></li>
+      <li><b>还车</b>：把钥匙放进指定回收格 → 扫码确认 → 系统自动完成车辆状态核验并即时生成还车凭证。<b>无需人工验车，放下钥匙即可离开。</b></li>
+    </ol>
+    <p style="margin-top:10px;"><b>推荐门店：一嗨大同火车站店</b>（魏都大道与西环路交汇处新世纪宾馆旁，0352-2533892）——距古城约 3–4 公里，取还两头都在古城附近，比南站店（7 公里）更顺。</p>
+  </div>
+
+  <div class="note">
+    <h4>⚑ 一个需要盯紧的变量：云冈洞窟开放清单</h4>
+    <p>
+      2026 年暑期公告，<strong>第 5 窟、第 16 窟、第 18 窟及第 33–45 窟<span data-flag="C03"></span>因保护性修缮暂不开放</strong>，云冈石窟博物馆、美术馆、宿白纪念馆同期闭馆。
+      第 5 窟的 17 米主佛是云冈第二大人像，若持续关闭会是明显损失。<br>
+      <strong>9 月是否延续未公布</strong>——请在 9 月初通过「云冈石窟」官方微信公众号确认当期开放洞窟清单，再决定讲解路线重点。咨询电话：0352-7992683。
+    </p>
+  </div>
+
+  <div class="note">
+    <h4>⌖ 公园辨识：别走错</h4>
+    <p>
+      我们要去的<strong>大同市儿童公园</strong>在平城区<strong>魏都大道 137 号</strong>（市第三人民医院西北侧、紧邻老体育馆）。<br>
+      <strong>注意别搞混</strong>——「大同公园」在魏都大道西侧偏北（另有游乐园与海洋世界）、「文瀛湖森林公园」在御东靠博物馆，是三个不同地方。
+    </p>
+  </div>
+<div class="sec-head"><h2>倒计时提醒</h2><span class="sec-note">临期自动变红置顶</span></div><div class="sec-sub">红框为 24 小时内关键节点；勾选对应清单后自动置灰。</div><div id="countdown-host"></div>
+  <div class="sec-head">
+    <h2>行前打勾清单</h2>
+  </div>
+  <div class="check">
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-01"><div class="ct"><b>买好去程 G2531（9/8 08:20 北京北）与返程 G2540（9/11 18:36 → 清河）高铁票</b><span>12306，已在售。若想下午逛得更从容，可改 G2550 19:14 → 北京北</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-02"><div class="ct"><b>在一嗨 APP 下单：火车站店，9/9 20:00 取 – 9/10 20:00 还，认准「蜂巢柜」标识</b><span>必须用 APP/支付宝小程序下单，官网订单不支持蜂巢柜与芝麻免押</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-03"><div class="ct"><b>订好麗枫·大同古城墙店 3 晚（9/8–9/11），确认 D2 晚车位</b><span>只停一晚，压力不大；满位备选永泰门广场停车场</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-04"><div class="ct"><b>9/2 起预约大同市博物馆 9/8 场次</b><span>官方公众号提前 7 日（含当日），每单最多 2 人，正好一单</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-05"><div class="ct"><b>9/1 起预约云冈石窟 9/9 门票</b><span>提前 1–15 天，不接受当日预约</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-06"><div class="ct"><b>【设闹钟 9/4 07:20】抢悬空寺 9/10 登临票</b><span>「北岳云游」小程序，每日仅 2,475 张。失败则 9/9 晚 20:00 再刷一次</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-07"><div class="ct"><b>出发前 3 天致电净土寺确认当季关门时间（D3 成败关键）</b><span>同时确认圆觉寺、永安禅寺是否开放</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-08"><div class="ct"><b>查「云冈石窟」官微当期开放洞窟清单</b><span>第 5/16/18 窟暑期在修缮，9 月政策未公布</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-09"><div class="ct"><b>准备小手电、防晒、唇膏、软底鞋、车载支架、身份证</b><span>小手电是看永安禅寺壁画的关键装备</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-10"><div class="ct"><b>提前试走一次：磨房北里 → 14 号线平乐园站（步行 7 分钟）</b><span>确认赶 08:20 高铁时 06:30 出门来得及</span></div></label>
+    <label class="check-row"><input type="checkbox" class="box" data-ck="prep-11"><div class="ct"><b>D2 晚跟麗枫前台预约 D3 的打包早餐</b><span>6:45 出发赶不上开餐时间</span></div></label>
+  </div>
+
+  <div class="sec-head">
+    <h2>打包清单与注意事项</h2>
+  </div>
+  <div class="two">
+    <div class="panel">
+      <h4>🎒 一定要带</h4>
+      <div class="check">
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-01"><div class="ct"><b>小手电或头灯</b><span>永安禅寺殿内光线昏暗，，没有它就只能看个影子。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-02"><div class="ct"><b>洋葱式穿搭</b><span>9 月上旬高温约 21℃、低温约 8℃，。薄 T 恤 + 抓绒/卫衣 + 防风薄外套。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-03"><div class="ct"><b>软底防滑鞋</b><span>石窟和古建户外要走很多路，悬空寺栈道最窄处仅 30 厘米。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-04"><div class="ct"><b>高倍防晒 + 墨镜 + 帽子</b><span>海拔约 1100 米、云量少，。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-05"><div class="ct"><b>保温杯 + 润唇膏 + 保湿霜</b><span>大同，务必多喝水。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-06"><div class="ct"><b>车载手机支架与充电线</b><span>D3 全天导航，耗电量大。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-07"><div class="ct"><b>充电宝、身份证</b><span>（景点与博物馆均实名刷证）。</span></div></label>
+<label class="check-row"><input type="checkbox" class="box" data-ck="pack-08"><div class="ct"><b></b><span>少量现金零钱——路边凉粉摊、村民停车场可能用得上。</span></div></label>
+</div>
+    </div>
+    <div class="panel">
+      <h4>⚠︎ 注意事项</h4>
+      <ul>
+        <li><b>拍照禁令</b>：华严寺薄伽教藏殿殿内<b>严禁拍照</b>；云冈洞窟、永安禅寺壁画、市博物馆<b>严禁闪光</b>；博物馆还禁三脚架与自拍杆等支架；悬空寺禁飞无人机。</li>
+        <li><b>云冈装备限制</b>：自拍杆不得入窟（门口寄存），全园禁烟、禁宠物香烛。</li>
+        <li><b>海拔适应</b>：大同海拔约 1100 米，初到避免剧烈运动。</li>
+        <li><b>驾驶</b>：国道大车多，<b>务必全程高速</b>；还车前加满油，否则收高额加油服务费。</li>
+        <li><b>D3 防疲劳</b>：约 200 公里、12.5 小时。<b>建议两人轮换驾驶</b>，午后易困，备些咖啡。</li>
+        <li><b>古城停车</b>：单行道多易堵，建议停城门外步行进入；永泰门广场停车场全天 10 元封顶（非官方数据）。</li>
+        <li><b>古城限行</b>：2025–2026 年无常态限行，但 <b>2025 年国庆曾临时管制</b>四个城门。出发前查大同交警通告。</li>
+        <li><b>讲解防坑</b>：官方明确警示"野导"存在中途涨价、诱导消费、甩客风险，<b>请认准景区官方讲解服务处</b>。博物馆明确暂不提供团队预约讲解，携程上的 93–211 元讲解均为第三方。</li>
+      </ul>
+    </div>
+  </div>
+<div class="sec-head"><h2>⚑ 信息状态总览</h2><span class="sec-note">20 项 · 三态徽章</span></div><div class="sec-sub">红框 ⚠ 表示信息冲突、⚑ 表示待核实。点击正文中的徽章可看详情。</div><div id="flagboard-host"></div></section><section class="view" id="view-days"><div class="days-layout"><div>
+  <div class="sec-head">
+    <h2>每日行程</h2>
+    <span class="sec-note">D3 是全程最累的一天，其余三天均宽松</span>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day" id="day1">
+    <div class="day-head">
+      <div class="day-badge"><span class="d">D1</span><span class="w">9/8 二</span></div>
+      <div class="day-title">
+        <h3>先读北魏，再看古建</h3>
+        <p>磨房北里 → 北京北 → 大同南 → 大同市博物馆（下午）→ 九龙壁 / 古城墙日落</p>
+      </div>
+      <div class="day-tags">
+        <span class="tag gray">高铁日</span>
+        <span class="tag">市博物馆</span>
+        <span class="tag red">日落</span>
+      </div>
+    </div>
+    <div class="day-weather" id="dw-d1"></div>
+    <div class="tl">
+      <div class="item" id="i01">
+        <div class="time">06:30</div>
+        <div class="body">
+          <h4>出门 · 步行至平乐园站</h4>
+          <p>磨房北里 2 区距 <strong>14 号线平乐园站仅 492 米，步行 7 分钟</strong>——这是最近的地铁站，比劲松站（1177 米）和潘家园站（1252 米）都近得多。</p>
+          <div class="spot">
+            <b>路线：</b>平乐园 → 14 号线（张郭庄方向）7 站 21 分钟 → 北京南站 换 4 号线（安河桥北方向）9 站 20 分钟 → 西直门，步行 5 分钟到北京北站。<b>全程约 60 分钟，票价约 5 元/人。</b>
+          </div>
+          <div class="warn">早高峰打车不划算：约 17–18 公里却要 <b>50–70 分钟、65–80 元</b>。<b>按你的要求全程地铁，时间和钱都更省。</b></div>
+        </div>
+      </div>
+      <div class="item" id="i02">
+        <div class="time">08:20</div>
+        <div class="body">
+          <h4>北京北站发车 · G2531</h4>
+          <p>07:40 左右到站，从容进站。车上解决早餐或备干粮。</p>
+          <div class="meta"><span>⏱ 1h46</span><span>💺 二等座 ¥170/人</span><span>建议坐右侧靠窗</span></div>
+        </div>
+      </div>
+      <div class="item" id="i03">
+        <div class="time">10:30</div>
+        <div class="body">
+          <h4>抵达大同南 · 入住麗枫放行李</h4>
+          <p>打车进城约 7 公里 / 20 分钟 / 20–30 元。<strong>先到酒店放行李</strong>，再轻装去博物馆。</p>
+          <div class="spot">酒店为<b>麗枫·大同古城墙店</b>（红旗街瑞祥商务楼），三晚不换。若改选<b>古城华严寺店</b>，务必订前电话确认车位与新装气味。</div>
+        </div>
+      </div>
+      <div class="item" id="i04">
+        <div class="time">11:15</div>
+        <div class="body">
+          <h4>午餐 · 老柴削面（清远街店）</h4>
+          <p>古城内老字号，人均约 ¥26。也可打车去<strong>任记七中削面</strong>（云中路，人均 ¥18，本地人公认第一梯队，14:00 前营业）。</p>
+        </div>
+      </div>
+      <div class="item" id="i05">
+        <div class="time">12:30</div>
+        <div class="body">
+          <h4>大同市博物馆 · 先建立历史脉络</h4>
+          <p>打车约 8 公里 / 20 分钟。<strong>免费但必须实名预约</strong>（提前 7 日含当日，官方公众号，每单最多 2 人）。开放 9:00–17:00，<strong>16:30 停止入馆</strong>。</p>
+          <div class="ok"><b>把博物馆放在第一天的理由：</b>先看北魏司马金龙墓的石雕与陶俑、辽金造像，建立年代框架，第二天走进云冈和华严寺时眼睛会完全不一样。这个顺序比放在最后收尾更有价值。</div>
+          <div class="spot">
+            <b>动线：</b>1F 略过 → <b>2F《魏都平城》（全馆精华）</b> → 3F《辽金西京》→ 1F 临展。恐龙厅与 B1 可跳。<br>
+            <b>镇馆之宝（司马金龙墓，1965 年石家寨出土）：</b>① <b>石雕棺床</b>倒"山"字形、13 伎乐童子 + 4 胡人力士；② <b>石雕柱础（帐座）</b>蟠龙 + 伎乐童子，共 4 件（晋博与本馆各藏 2 件）；③ <b>漆画屏风</b>首批禁止出境文物（<b>馆内多为复制品，5 块原件在山西博物院</b>）；④ 238 件陶俑阵（含甲骑具装俑）；⑤ "北魏蓝"玻璃器。<br>
+            <b>3F：</b>华严寺薄伽教藏殿<b>辽代琉璃鸱吻</b>（高 2.85 米）——留意它，D4 上午在华严寺会看到实物。
+          </div>
+          <div class="warn"><b>跟上 14:30 那场免费讲解</b>（每日 4 场：9:30 / 10:00 / 14:30 / 15:00，一楼大厅集合、无需预约）。14:30–16:00 听完，再留 30 分钟补看，正好卡在 16:30 停止入馆前。</div>
+          <div class="meta"><span>⏱ 4h</span><span>🎟 免费（需预约）</span><span>🗣 定时讲解免费</span></div>
+        </div>
+      </div>
+      <div class="item" id="i06">
+        <div class="time">16:40</div>
+        <div class="body">
+          <h4>返回古城 · 九龙壁</h4>
+          <p>打车回古城约 20 分钟。九龙壁 8:00–18:30，<strong>门票 ¥10</strong>（2025 年 7 月 15 日起已恢复收费，不再是免费景点）。明初代王府照壁，全国现存最大最古老的琉璃九龙壁，30 分钟足够。</p>
+        </div>
+      </div>
+      <div class="item" id="i07">
+        <div class="time">17:40</div>
+        <div class="body">
+          <h4>登古城墙 · 看日落</h4>
+          <p>9 月上旬日落约 <strong>18:48</strong><span data-flag="C13"></span>，日落前 1 小时上墙光线最好。白天从清远门或武定门进，17:00 后和阳门、永泰门也开放。城上电瓶车 40 元/人，不赶时间可步行一段。</p>
+          <div class="spot">城墙<b>免费</b>，但 2026 年部分渠道提示需通过「大同古城」小程序实名预约——<b>出发前请核实</b>。</div>
+        </div>
+      </div>
+      <div class="item" id="i08">
+        <div class="time">19:00</div>
+        <div class="body">
+          <h4>晚餐 · 大同铜火锅</h4>
+          <p>首推 <strong>凯鸽酒楼</strong>（振兴街店，人均 ¥50–63，本地 18 家连锁，<strong>菜可点半份</strong>，两人最友好）。想吃更地道的可去<strong>老爷庙风味美食府</strong>（人均 ¥65–77）。</p>
+        </div>
+      </div>
+      <div class="item" id="i09">
+        <div class="time">20:30</div>
+        <div class="body">
+          <h4>鼓楼东街夜市 / 东南邑街区</h4>
+          <p>浑源凉粉摊约 ¥3/碗、合笙财沙棘冰面包（¥6–10）、胖来来五香兔头（人均 ¥30）。也可去<strong>东南邑历史文化街区</strong>逛夜景。<strong>明天是云冈整天，今晚早点休息。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day" id="day2">
+    <div class="day-head">
+      <div class="day-badge"><span class="d">D2</span><span class="w">9/9 三</span></div>
+      <div class="day-title">
+        <h3>云冈 · 一整天只做一件事</h3>
+        <p>8:00 开园第一波 + 官方金牌讲解 → 晚间蜂巢柜自助取车</p>
+      </div>
+      <div class="day-tags">
+        <span class="tag red">全程重点</span>
+        <span class="tag">云冈石窟</span>
+        <span class="tag gray">20:00 取车</span>
+      </div>
+    </div>
+    <div class="day-weather" id="dw-d2"></div>
+    <div class="tl">
+      <div class="item" id="i10">
+        <div class="time">07:30</div>
+        <div class="body">
+          <h4>出发前往云冈石窟</h4>
+          <p>打车约 30 分钟。<strong>务必赶 8:00 开园第一波</strong>——人最少、窟内光线最柔、讲解员也最充裕。</p>
+          <div class="warn">景区<b>停车是公认痛点</b>：停车场需绕圈找位，9 号停车场到窟区步行 30 分钟。<b>今天务必打车，不要开车去。</b></div>
+        </div>
+      </div>
+      <div class="item" id="i11">
+        <div class="time">08:15</div>
+        <div class="body">
+          <h4>请官方讲解（仅现场办理）</h4>
+          <p>讲解服务处设在<strong>昙曜广场</strong>（检票口南北两侧），<strong>不接受线上预约</strong>。约 90 分钟。</p>
+          <div class="spot">
+            价目（2026，大同市发改委监制）：<b>金牌 380 / 银牌 300 / 铜牌 240 / 普通 180 元<span data-flag="C12"></span></b>（每名讲解员最多带 10 人），耳麦 5 人以内 10 元。<br>
+            <b>建议：2 人直接上金牌 380。</b>
+          </div>
+          <div class="meta"><span>🎟 旺季 ¥120/人</span><span>🗣 讲解 ¥380</span><span>⏱ 8:00–17:00</span></div>
+        </div>
+      </div>
+      <div class="item" id="i12">
+        <div class="time">09:45</div>
+        <div class="body">
+          <h4>自由回看 + 拍照</h4>
+          <p>有 2.75 小时，非常从容。<strong>轻松慢游的重点就在这里——不赶，坐着看一会儿。</strong></p>
+          <div class="spot">
+            <b>重点窟清单：</b><br>
+            · <b>第 16–20 窟 昙曜五窟</b>——云冈开山之作，第 20 窟 13.7 米露天大佛是标志性形象<br>
+            · <b>第 9–13 窟 五华洞</b>——色彩最绚丽，第 12 窟"音乐窟"刻满伎乐天与乐器<br>
+            · <b>第 6 窟</b>——33 幅佛传故事浮雕，叙事性最强<br>
+            · <b>第 7–8 窟</b>——"云冈六美人"所在<br>
+            · <b>第 3 窟</b>——云冈最大洞窟（未完成），看得出开凿工序
+          </div>
+          <div class="warn">洞窟内<b>禁用闪光灯、激光笔</b>，<b>自拍杆不得入窟</b>（门口寄存），全园禁无人机、禁烟、禁宠物与香烛。<br><b>云冈石窟博物馆、美术馆、宿白纪念馆 2026 年暑期同期闭馆</b>，9 月是否恢复未公布，别为它预留时间。</div>
+        </div>
+      </div>
+      <div class="item" id="i13">
+        <div class="time">12:30</div>
+        <div class="body">
+          <h4>午餐 · 景区食货街</h4>
+          <p>园内解决，省去往返。景区电瓶车单程 10 元 / 往返 15 元（非官方数据，现场核实）。</p>
+        </div>
+      </div>
+      <div class="item" id="i14">
+        <div class="time">13:30</div>
+        <div class="body">
+          <h4>下午补看 · 光线转换</h4>
+          <p>午后阳光偏西，窟内光线减弱，但<strong>窟外立面和第 20 窟露天大佛反而更好拍</strong>。看到 15:30 收尾。</p>
+        </div>
+      </div>
+      <div class="item" id="i15">
+        <div class="time">16:00</div>
+        <div class="body">
+          <h4>返回市区 · 回酒店休整</h4>
+          <p>今天剩下的时间很宽裕，可以好好歇一会儿，为明天养精蓄锐。</p>
+        </div>
+      </div>
+      <div class="item" id="i16">
+        <div class="time">18:00</div>
+        <div class="body">
+          <h4>晚餐 · 龙聚祥烧麦（鼓楼西街）</h4>
+          <p>人均约 ¥60。烧麦性价比明显高于凤临阁——凤临阁人均 ¥85–100 且晚市常发到 200–600 号，它的价值在百花烧麦的非遗工艺和建筑本身，<strong>看建筑 &gt; 吃菜</strong>。</p>
+        </div>
+      </div>
+      <div class="item" id="i17">
+        <div class="time">19:30</div>
+        <div class="body">
+          <h4>蜂巢柜自助取车</h4>
+          <p>打车前往 <strong>一嗨大同火车站店</strong>（魏都大道与西环路交汇处新世纪宾馆旁），距古城约 3–4 公里。输入取车码或扫码开柜取钥匙，约 3 分钟完成，开回麗枫停放。</p>
+          <div class="ok"><b>建议 19:30 到，不要卡 20:00。</b>蜂巢柜虽不受营业时间限制，但首次操作需要熟悉流程，提前半小时更从容。</div>
+          <div class="warn">① <b>必须用 APP/支付宝小程序下单</b>才有取车码；② 取车时<b>拍一圈车身视频</b>留证；③ 车停回麗枫，<b>免费车位先到先得</b>，满位可停永泰门广场停车场（全天 10 元封顶）；④ 芝麻分 650+ 可免押 6000 元。</div>
+        </div>
+      </div>
+      <div class="item" id="i18">
+        <div class="time">20:30</div>
+        <div class="body">
+          <h4>早睡 · 明天是最长的一天</h4>
+          <p>D3 要跑 200 公里、串 5 个点、约 12.5 小时。<strong>今晚务必睡足。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day" id="day3">
+    <div class="day-head">
+      <div class="day-badge"><span class="d">D3</span><span class="w">9/10 四</span></div>
+      <div class="day-title">
+        <h3>五点串联 · 崖壁、壁画与木塔</h3>
+        <p>悬空寺 → 永安禅寺 → 圆觉寺 → 净土寺 → 应县木塔 · 约 200 公里</p>
+      </div>
+      <div class="day-tags">
+        <span class="tag red">全程最累</span>
+        <span class="tag gray">约 12.5 小时</span>
+        <span class="tag">5 个点位</span>
+      </div>
+    </div>
+
+    <div style="padding:22px 26px 0;">
+      <figure class="figure" style="margin:0;">
+        <svg viewBox="0 0 680 442" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>D3 五点串联行程时间轴</title>
+          <desc>9月10日一天串联五个点位：06:45 从大同出发，08:15 到悬空寺登临，10:45 永安禅寺，12:20 圆觉寺，13:55 驱车赴应县，15:10 净土寺，16:15 应县木塔，17:45 返回大同，19:15 抵达。全程约 200 公里、12.5 小时。顺序设计为先浑源后应县，让悬空寺赶上开园第一波、净土寺落在下午黄金光线。</desc>
+
+          <line x1="120" y1="52" x2="120" y2="348" stroke="var(--svg-gold-line)" stroke-width="0.5" opacity="0.4"/>
+
+          <circle class="svg-node" data-goto="i19" cx="120" cy="60" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="60" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">06:45</text>
+          <text x="140" y="60" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">大同出发</text>
+          <text x="240" y="60" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">驾车 80km · 约 1.5 小时</text>
+
+          <circle class="svg-node" data-goto="i20" cx="120" cy="100" r="5" fill="var(--svg-red-line)"/>
+          <text x="104" y="100" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">08:15</text>
+          <text x="140" y="100" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">悬空寺 · 登临</text>
+          <text x="240" y="100" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">8:00 开园第一波，全天排队最短</text>
+
+          <circle class="svg-node" data-goto="i22" cx="120" cy="140" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="140" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">10:45</text>
+          <text x="140" y="140" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">永安禅寺</text>
+          <text x="240" y="140" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">元代水陆画 895 尊 · 必带小手电</text>
+
+          <circle class="svg-node" data-goto="i23" cx="120" cy="180" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="180" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">12:20</text>
+          <text x="140" y="180" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">圆觉寺</text>
+          <text x="240" y="180" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">金代密檐砖塔 · 塔顶铁翔凤候风仪</text>
+
+          <circle class="svg-node" data-goto="i25" cx="120" cy="220" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="220" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">13:55</text>
+          <text x="140" y="220" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">驱车赴应县</text>
+          <text x="240" y="220" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">浑源 → 应县 50km · 约 1 小时</text>
+
+          <circle class="svg-node" data-goto="i26" cx="120" cy="260" r="5" fill="var(--svg-red-line)"/>
+          <text x="104" y="260" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">15:10</text>
+          <text x="140" y="260" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">净土寺</text>
+          <text x="240" y="260" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">天宫楼阁藻井 · 正落在 15–17 点黄金光线</text>
+
+          <circle class="svg-node" data-goto="i27" cx="120" cy="300" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="300" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">16:15</text>
+          <text x="140" y="300" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">应县木塔</text>
+          <text x="240" y="300" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">1056 年辽构 · 17:30 停止售票</text>
+
+          <circle class="svg-node" data-goto="i28" cx="120" cy="340" r="5" fill="var(--svg-gold-line)"/>
+          <text x="104" y="340" font-size="13" font-weight="500" fill="var(--svg-gold-text)" text-anchor="end" dominant-baseline="central">17:45</text>
+          <text x="140" y="340" font-size="13" font-weight="500" fill="var(--color-text-primary)" dominant-baseline="central">返回大同</text>
+          <text x="240" y="340" font-size="12" fill="var(--color-text-secondary)" dominant-baseline="central">70km · 约 1 小时，19:15 抵达</text>
+
+          <rect x="40" y="368" width="600" height="54" rx="8" fill="var(--svg-red-bg)" stroke="var(--svg-red-line)" stroke-width="0.5"/>
+          <text x="60" y="388" font-size="13" font-weight="500" fill="var(--svg-red-text)" dominant-baseline="central">顺序的关键：先浑源、后应县</text>
+          <text x="60" y="408" font-size="12" fill="var(--svg-red-line)" dominant-baseline="central">悬空寺赶开园第一波最省排队，净土寺正好落在黄金光线；反过来排则两头都亏</text>
+        </svg>
+        <figcaption><b>D3 五点串联时间轴。</b>红点是两个靠时间吃饭的环节：悬空寺要赶早、净土寺要赶光线。绿色说明条解释了为什么顺序不能反过来。</figcaption>
+      </figure>
+    </div>
+    <div class="day-weather" id="dw-d3"></div>
+    <div class="tl">
+      <div class="item" id="i19">
+        <div class="time">06:45</div>
+        <div class="body">
+          <h4>出发 · 大同 → 浑源</h4>
+          <p>走高速，约 80 公里 / 1.5 小时。<strong>国道大车多，务必走高速。</strong>早餐提前一天跟酒店前台预约打包。</p>
+          <div class="warn">今天的时间表是紧凑的，<b>每个节点尽量不要拖</b>。若某处超时，优先牺牲圆觉寺（见本节末尾弹性方案）。</div>
+        </div>
+      </div>
+      <div class="item" id="i20">
+        <div class="time">08:15</div>
+        <div class="body">
+          <h4>悬空寺游客中心</h4>
+          <p><strong>私家车禁入，必须停恒山游客中心</strong>（10–20 元/天），换乘摆渡车。</p>
+          <div class="warn"><b>导航会坑你</b>：搜"悬空寺"常被导到恒山游客中心，距景区还有 5 公里；恒山南路路侧有保安拦车。在游客中心坐景交车（<b>20 元/人，必买</b>）进内部停车场，摆渡车 6:30 首发。</div>
+          <div class="ok"><b>选在这个时间点的理由：</b>8:00 开园、8:15 入园是<b>全天排队最短的时段</b>。这是把五个点并成一天的最大收益。</div>
+        </div>
+      </div>
+      <div class="item" id="i21">
+        <div class="time">08:45</div>
+        <div class="body">
+          <h4>悬空寺登临</h4>
+          <p>3–10 月 8:00–18:00（17:30 停止检票）。<strong>门票是两码事：入园票 ¥15（只能远观）+ 登临票 ¥100 + 摆渡车 ¥20<span data-flag="C11"></span></strong>，两票齐全才能上栈道。</p>
+          <div class="spot">
+            建在金龙峡西侧翠屏峰的崖壁凹处，<strong>距今约 1500 年</strong>，靠横插入岩的木梁承重，距地约 50 米。李白题"壮观"二字，徐霞客称其"天下巨观"。<b>栈道单行、最窄处仅约 30 厘米</b>，全程约 1.5 小时。
+          </div>
+          <div class="warn"><b>限制人群：</b>70 岁以上、体重 100kg 以上、心脑血管疾病及中重度呼吸系统疾病者不建议登临。<b>全景区禁飞无人机。</b></div>
+          <div class="meta"><span>⏱ 1.5h</span><span>🎟 ¥135/人（含登临+摆渡）</span></div>
+        </div>
+      </div>
+      <div class="item" id="i22">
+        <div class="time">10:45</div>
+        <div class="body">
+          <h4>永安禅寺 · 元代水陆画</h4>
+          <p>回县城。门票 ¥20，与圆觉寺<strong>联票 ¥30（两日有效）</strong>，5–9 月 8:00–18:00（17:30 停止入内）。<strong>强烈建议请讲解</strong>。</p>
+          <div class="spot">
+            <b>此行最震撼的一处。</b>传法正宗殿为<strong>元代原构</strong>（1315 年），采用减柱造。殿内保存<strong>元代水陆画 186.9 平方米、共 895 尊</strong>——国内现存规模最大、最完整的元代水陆壁画之一。<br>
+            <b>必看：</b>北壁<b>十大明王</b>中的<b>"撕脸明王"</b>（大威德不动尊明王）——以手撕开狰狞面皮，露出内里慈悲本相，是这个题材里最著名的一幅；殿顶<b>天宫楼阁藻井</b>；殿外砖雕"庄严"二字，殿北"虎啸龙吟"。
+          </div>
+          <div class="warn">
+            <b>关键提醒：</b>① 殿内<b>光线昏暗、门窗有遮光网</b>，<b>务必带一支小手电</b>；② <b>严禁闪光、严禁触摸</b>；③ 东西配殿有高清复制品，可先看复制品再进正殿；
+            ④ 讲解报价 80 元/场 ~ 200 元/组（1–10 人，40 分钟），壁画内容极复杂，<b>不听讲解基本看不懂</b>。
+          </div>
+          <div class="meta"><span>⏱ 1.5h</span><span>🎟 ¥20/人（联票¥30）</span><span>🗣 讲解 ¥80–200</span></div>
+        </div>
+      </div>
+      <div class="item" id="i23">
+        <div class="time">12:20</div>
+        <div class="body">
+          <h4>圆觉寺 · 金代密檐塔</h4>
+          <p>从永安禅寺步行约 10 分钟。金正隆三年（1158 年）八角九级密檐砖塔。</p>
+          <div class="spot">塔顶立一只<b>铁制翔凤</b>——<strong>国内罕见的候风仪（风向标）实物</strong>，可随风转动。塔身砖雕乐伎、妇人半掩门极为生动。</div>
+          <div class="warn">票价口径混乱（免费 / 20 元 / 联票 30 元），且 OTA 曾显示"今日已休园"。<b>行前电联确认</b>：仝云岗 18636227970 / 0352-8475435。</div>
+        </div>
+      </div>
+      <div class="item" id="i24">
+        <div class="time">13:00</div>
+        <div class="body">
+          <h4>午餐 · 浑源凉粉</h4>
+          <p>必去 <strong>小媳妇凉粉</strong>（1983 年老店）。另有大喜凉粉、顺意凉粉（古城有分店，约 ¥10）。可点一份黄芪炖鸡类药膳——<strong>浑源是"正北芪"原产地</strong>，国家地理标志产品。</p>
+        </div>
+      </div>
+      <div class="item" id="i25">
+        <div class="time">13:55</div>
+        <div class="body">
+          <h4>浑源 → 应县</h4>
+          <p>约 50 公里。走 G336/S303 约 1 小时 15 分，走荣乌高速转天黎高速浑源西下约 50 分钟。<strong>建议走高速。</strong></p>
+        </div>
+      </div>
+      <div class="item" id="i26">
+        <div class="time">15:10</div>
+        <div class="body">
+          <h4>净土寺 · 天宫楼阁藻井</h4>
+          <p>门票 ¥15。位于应县城内，距木塔步行 5–10 分钟。</p>
+          <div class="spot">
+            <b>此行第二重要的一处。</b>大雄宝殿建于金大定二十四年（1184），殿内<strong>一殿九藻井</strong>，正中的<b>"八门九星天宫楼阁"藻井</b>由<strong>上万件木构件榫卯拼成</strong>，被认为是中国古建小木作的巅峰，与应县木塔并称应县双璧。殿前一对<strong>辽代披发石狮</strong>也别错过。
+          </div>
+          <div class="ok"><b>为什么排在木塔之前：</b>藻井的黄金光线是 <b>15:00–17:00 斜光</b>，现在正好落在它身上；同时净土寺关门早（可能 17:00）、木塔关门晚（夏令 18:00、17:30 停售），先去净土寺最稳。</div>
+          <div class="warn"><b>本日唯一真正的风险点。</b>有信息显示 9 月可能执行<b>冬令时 8:00–17:00（16:45 停止入内）</b>，若属实则 15:10–16:00 参观仍安全，但<b>绝不能再往后拖</b>。<b>出发前务必电话确认</b>（净土寺文保所 李德春 18634960005 / 0349-5088889）。殿内<b>禁闪光</b>。</div>
+          <div class="meta"><span>⏱ 50min</span><span>🎟 ¥15/人</span></div>
+        </div>
+      </div>
+      <div class="item" id="i27">
+        <div class="time">16:15</div>
+        <div class="body">
+          <h4>应县木塔（佛宫寺释迦塔）</h4>
+          <p>门票 ¥50，夏令 8:00–18:00（<strong>17:30 停售</strong>）。16:15 进园，时间充裕。</p>
+          <div class="spot">
+            现存<strong>最高最古的木结构佛塔</strong>（辽清宁二年，1056 年），全塔<strong>没用一颗钉子</strong>。绕塔细看<strong>54 种斗拱</strong>（"斗拱博物馆"）与<strong>52 块匾额</strong>（"峻极神工"为明成祖题、"天下奇观"为明武宗题）。一层可入（11 米释迦像、藻井、六幅如来壁画）；<strong>塔身东北倾斜约 67 厘米，持续监测中，登塔已禁十余年</strong>。
+          </div>
+          <div class="meta"><span>⏱ 1h20</span><span>🎟 ¥50/人</span></div>
+        </div>
+      </div>
+      <div class="item" id="i28">
+        <div class="time">17:45</div>
+        <div class="body">
+          <h4>应县 → 大同 · 还车</h4>
+          <p>走 G55 二广高速，约 70 公里 / 1 小时。<strong>直接开到一嗨大同火车站店，蜂巢柜自助还车</strong>——钥匙放进回收格、扫码确认，系统自动核验并生成还车凭证，约 3 分钟。之后打车回酒店。</p>
+          <div class="warn"><b>务必在 20:00 前完成还车</b>，超出租期 24 小时会按小时加收（每增 0.5 小时视为 1 小时）。还车前在附近加满油，否则收高额加油服务费。</div>
+        </div>
+      </div>
+      <div class="item" id="i29">
+        <div class="time">19:40</div>
+        <div class="body">
+          <h4>回到酒店 · 晚餐收工</h4>
+          <p>打车回麗枫放行李，晚餐就近解决（任记七中削面营业至 21:00，或凯鸽酒楼）。<strong>今天到此为止。</strong></p>
+        </div>
+      </div>
+      <div class="item" id="i30">
+        <div class="time">弹性</div>
+        <div class="body">
+          <h4>如果时间不够，按这个顺序砍</h4>
+          <p>
+            <strong>第一顺位牺牲：圆觉寺</strong>（40 分钟）——五处里分量最轻，且票价与开放状态都不稳定。<br>
+            <strong>第二顺位：应县木塔压缩到 1 小时</strong>，跳过数字沉浸空间。<br>
+            <strong>第三顺位：悬空寺改为远观不登临</strong>，可省约 1 小时。恒山水库对岸观景台的机位其实比身临更能体会整体气势。<br>
+            <span style="color:var(--red);"><strong>不建议砍的：永安禅寺和净土寺</strong></span>——这两处是全程含金量最高的两个点，净土寺一旦错过光线时段就白来了。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day" id="day4">
+    <div class="day-head">
+      <div class="day-badge"><span class="d">D4</span><span class="w">9/11 五</span></div>
+      <div class="day-title">
+        <h3>辽金收尾 · 八十年代的下午</h3>
+        <p>华严寺（上午顺光）→ 善化寺 → 儿童公园 / 老体育馆 → 还无车、全程打车返程</p>
+      </div>
+      <div class="day-tags">
+        <span class="tag red">上午·华严寺</span>
+        <span class="tag">善化寺</span>
+        <span class="tag">儿童公园</span>
+        <span class="tag gray">返程日</span>
+      </div>
+    </div>
+    <div class="day-weather" id="dw-d4"></div>
+    <div class="tl">
+      <div class="item" id="i31">
+        <div class="time">08:00</div>
+        <div class="body">
+          <h4>退房 · 行李寄存前台</h4>
+          <p>今天已无车（昨晚还了），下午回酒店取行李后打车去南站。</p>
+        </div>
+      </div>
+      <div class="item" id="i32">
+        <div class="time">08:30</div>
+        <div class="body">
+          <h4>华严寺开门即入 · 八大辽构之一</h4>
+          <p>旺季 8:30–17:30，门票 ¥50。<strong>寺院坐西朝东，上午顺光最好——这是排在上午的全部理由。</strong><strong>现场请讲解</strong>（普通 150 元/批、金牌 300 元/批，约 45 分钟），建议金牌。</p>
+          <div class="spot">
+            <b>三个必看：</b>① <b>薄伽教藏殿</b>（辽代原构，29 尊辽塑，合掌露齿菩萨"东方维纳斯"，38 间壁藏 + 天宫楼阁为"海内孤品"）；② <b>大雄宝殿</b>（辽基、金建、明塑、清壁画四朝合璧，<b>4.5 米鸱吻全国最大</b>——就是 D1 在博物馆三楼看到的那种）；③ <b>华严宝塔</b>（43.5 米纯木榫卯 + 铜地宫）。
+          </div>
+          <div class="warn">殿内<b>严禁拍照</b>。</div>
+          <div class="meta"><span>⏱ 2–2.5h</span><span>🎟 ¥50/人</span><span>🗣 讲解 ¥150–300</span></div>
+        </div>
+      </div>
+      <div class="item" id="i33">
+        <div class="time">11:00</div>
+        <div class="body">
+          <h4>步行至善化寺 · 辽金建筑的巅峰</h4>
+          <p>约 1.5 公里，步行 20 分钟，穿过古城顺便看街景（也可打车 5 分钟）。门票 ¥40，旺季 8:00–17:30。</p>
+          <div class="spot">
+            <b>按此顺序看：</b>① <b>天王殿</b>——现存金代最大山门；② <b>三圣殿</b>——四根金柱"减柱法"，金代华严三圣塑像，金大定十六年朱弁碑；③ <b>大雄宝殿</b>——辽建金修，殿内 33 尊金代彩塑（含二十四诸天），清康熙年间壁画；④ 寺门前<b>五龙壁</b>（明万历）。
+          </div>
+          <div class="meta"><span>⏱ 1.5h</span><span>🎟 ¥40/人</span><span>🗣 语音导览 ¥20/人</span></div>
+        </div>
+      </div>
+      <div class="item" id="i34">
+        <div class="time">12:30</div>
+        <div class="body">
+          <h4>午餐 · 古城内</h4>
+          <p>老柴削面（清远街店）或就近解决。</p>
+        </div>
+      </div>
+      <div class="item" id="i35">
+        <div class="time">13:40</div>
+        <div class="body">
+          <h4>打车至大同市儿童公园</h4>
+          <p>善化寺出发约 1.8 公里 / 8 分钟。<strong>平城区魏都大道 137 号</strong>（市第三人民医院西北侧、紧邻老体育馆）。</p>
+          <div class="warn"><b>别走错：</b>「大同公园」在魏都大道西侧偏北（另有游乐园与海洋世界）、「文瀛湖森林公园」在御东靠博物馆，<b>是三个不同的地方</b>。</div>
+        </div>
+      </div>
+      <div class="item" id="i36">
+        <div class="time">13:50</div>
+        <div class="body">
+          <h4>大同市儿童公园 · 八十年代怀旧</h4>
+          <p><strong>免费</strong>，开放时间说法不一<span data-flag="C08"></span>（携程与腾讯地图标"全天开放"，另有资料称 6:00–21:00），白天去即可。</p>
+          <div class="spot">
+            <b>值得看的三样：</b>① <b>"小飞童"宇航员雕塑</b>（1986）——贾樟柯《风流一代》取景地，已成大同的"立体 logo"；② <b>米格-15（歼-5）"少年雄鹰"战斗机</b>——1986 年驻同部队捐赠；③ 中心人工湖（约 1.6 万㎡）环湖栈道、汉白玉拱桥、五线谱彩色风雨长廊。另有锈迹斑斑的摩天轮、旋转木马、海盗船（多已停运）与彩色铁艺十二生肖。
+          </div>
+          <div class="warn"><b>直率提醒：</b>这就是一个设施略显老化的市民公园，<b>不是历史园林，也没有古建筑和动物园</b>。它的价值在于"中式梦核 / 工业怀旧"的拍照感——<b>30–45 分钟足够</b>，不必抱太高期待。如果你们对 80 年代国营厂矿美学无感，可能会觉得"就是个公园"。</div>
+        </div>
+      </div>
+      <div class="item" id="i37">
+        <div class="time">14:45</div>
+        <div class="body">
+          <h4>步行至大同老体育馆</h4>
+          <p>步行 3–5 分钟。1986 年建筑，<strong>外立面苏式马赛克镶嵌壁画</strong>是年轻人打卡点。<strong>说实话这里比公园本身更出片。</strong></p>
+        </div>
+      </div>
+      <div class="item" id="i38">
+        <div class="time">15:20</div>
+        <div class="body">
+          <h4>迎宾街小吃 · 垫垫肚子</h4>
+          <p>公园周边本地小吃密集：<strong>贺老人羊杂、田记小南街削面、姚老太烧饼、楚家驴肉火烧</strong>，人均 10–30 元。吃完再回酒店取行李，比在南站干等舒服。</p>
+        </div>
+      </div>
+      <div class="item" id="i39">
+        <div class="time">16:00</div>
+        <div class="body">
+          <h4>回酒店取行李 → 打车至大同南站</h4>
+          <p>儿童公园一带回麗枫约 2–3 公里，再从古城打车去南站约 7 公里 / 20 分钟。</p>
+          <div class="spot">南站可买：<b>大同黄花</b>（地理标志，干品 ¥50–80/斤）、<b>广灵五香豆腐干</b>、<b>阳高杏脯</b>（¥25–35/斤）、<b>浑源凉粉真空装</b>（约 ¥35/3 碗）、沙棘汁。</div>
+        </div>
+      </div>
+      <div class="item" id="i40">
+        <div class="time">17:00</div>
+        <div class="body">
+          <h4>抵达大同南站</h4>
+          <p>距发车还有 1.6 小时，从容。</p>
+        </div>
+      </div>
+      <div class="item" id="i41">
+        <div class="time">18:36</div>
+        <div class="body">
+          <h4>返程 · G2540 大同南 → 清河</h4>
+          <p>20:13 抵达清河站。<strong>这是全程最快的一班（1h37）。</strong></p>
+          <div class="meta"><span>⏱ 1h37</span><span>💺 二等座 ¥164/人</span></div>
+          <div class="spot"><b>备选：G2550 19:14 → 北京北 20:59。</b>晚到 46 分钟，但终点是北京北站，回磨房北里比清河少约 10 分钟。若 D4 下午逛得意犹未尽，可以改这班。</div>
+        </div>
+      </div>
+      <div class="item" id="i42">
+        <div class="time">20:25</div>
+        <div class="body">
+          <h4>清河站 → 磨房北里</h4>
+          <p>13 号线（西直门方向）→ 西直门换 4 号线（天宫院方向）→ 北京南站换 14 号线（善各庄方向）→ 平乐园站，步行 7 分钟到家。<strong>约 70 分钟，约 ¥6/人。</strong></p>
+          <div class="ok"><b>末班车来得及</b>：13 号线往西直门末班 23:29，4 号线往天宫院末班 22:59，14 号线经停平乐园末班约 23:32。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><aside class="day-aside" id="dayAside"></aside></div></section><section class="view" id="view-transport">
+  <div class="sec-head">
+    <h2>交通</h2>
+    <span class="sec-note">北京市内全程地铁</span>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:12px;letter-spacing:.04em;">北京端：磨房北里 ↔ 火车站（全程地铁）</h3>
+  <table style="margin-bottom:26px;">
+    <thead>
+      <tr><th style="width:170px;">路段</th><th>地铁方案</th><th style="width:110px;">耗时 / 费用</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>去程</b><br>磨房北里 → 北京北站</td>
+        <td>步行 7 分钟至<b>14 号线平乐园站</b> → 14 号线（张郭庄方向）7 站 21 分钟 → 北京南站 换 4 号线（安河桥北方向）9 站 20 分钟 → 西直门，步行 5 分钟到北京北站</td>
+        <td class="num"><b>约 60 分钟</b><br>约 ¥5/人</td>
+      </tr>
+      <tr>
+        <td><b>返程</b><br>清河站 → 磨房北里</td>
+        <td>13 号线（西直门方向）→ 西直门换 4 号线（天宫院方向）→ 北京南站换 14 号线（善各庄方向）→ 平乐园站，步行 7 分钟</td>
+        <td class="num"><b>约 70 分钟</b><br>约 ¥6/人</td>
+      </tr>
+      <tr>
+        <td>若改乘 G2550<br>北京北站 → 磨房北里</td>
+        <td>西直门 4 号线（天宫院方向）→ 北京南站换 14 号线（善各庄方向）→ 平乐园站</td>
+        <td class="num">约 60 分钟<br>约 ¥5/人</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <h4>末班车都没问题</h4>
+    <p>
+      20:13 抵清河：13 号线往西直门末班 23:29、4 号线往天宫院末班 22:59、14 号线经停平乐园约 23:32，<strong>余量充足</strong>。<br>
+      若改乘 G2550（20:59 抵北京北站）：4 号线末班 22:59，同样来得及。<br>
+      <strong>赶 08:20 的 G2531，请 06:30 出门</strong>（地铁 60 分钟 + 到站缓冲 30 分钟 + 冗余 15 分钟）。
+    </p>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:12px;letter-spacing:.04em;">高铁车次（2026-08 时刻表，票价浮动制，以 12306 为准）</h3>
+  <table style="margin-bottom:26px;">
+    <thead>
+      <tr><th style="width:70px;">方向</th><th style="width:80px;">车次</th><th>时刻</th><th style="width:70px;">耗时</th><th style="width:130px;">二等座</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>去程</b></td><td class="mono"><b>G2531</b></td><td>北京北 08:20 → 大同南 10:06</td><td class="mono">1h46</td><td class="mono">¥170</td></tr>
+      <tr><td>去程备选</td><td class="mono">G2515</td><td>北京北 07:09 → 大同南 09:11</td><td class="mono">2h02</td><td class="mono">¥164</td></tr>
+      <tr><td><b>返程</b></td><td class="mono"><b>G2540</b></td><td>大同南 18:36 → 清河 20:13</td><td class="mono">1h37</td><td class="mono">¥164（最快）</td></tr>
+      <tr><td>返程备选</td><td class="mono">G2550</td><td>大同南 19:14 → 北京北 20:59</td><td class="mono">1h45</td><td class="mono">¥170</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two">
+    <div class="panel">
+      <h4>🚗 一嗨租车 · 24 小时蜂巢柜（1 天）</h4>
+      <ul>
+        <li><b>取车 9/9 20:00、还车 9/10 20:00，租期正好 24 小时，按 1 天计费。</b></li>
+        <li><b>推荐门店：大同火车站店</b>（平城区魏都大道与西环路交汇处新世纪宾馆旁，0352-2533892）。距古城约 3–4 公里，取还两头都在古城附近。</li>
+        <li><b>备选：大同高铁南站店</b>（大同南站北广场东侧停车场，13008047967），站内取还但距古城 7 公里。<b>两家均带"蜂巢柜"标识。</b></li>
+        <li><b>云冈机场店无蜂巢柜</b>，且远离市区，不推荐。</li>
+        <li><b>必须用 APP 或支付宝小程序下单</b>——官网订单不支持蜂巢柜，也不支持芝麻分免押。下单后自动收到取车码与柜体导航。</li>
+        <li><b>取车</b>：蜂巢柜输码或扫码 → 储物格弹开取钥匙，约 3 分钟，<b>不受 8:00–20:00 营业时间限制</b>。<b>建议 19:30 到，别卡 20:00。</b></li>
+        <li><b>还车</b>：钥匙放进回收格 → 扫码确认 → 系统自动核验生成凭证，无需人工验车。<b>务必 20:00 前完成</b>，超时按小时加收。</li>
+        <li><b>计费</b>：租期 ≤24 小时按 1 天；超出的非整日按小时，每增 0.5 小时视为 1 小时。</li>
+        <li><b>价格</b>：三厢自动 ¥83 起/日（门店起价，9 月实时价以 APP 为准）。<b>基础保障含 1500 元绝对免赔额，建议另购补充保障（约 ¥50/天）。</b></li>
+        <li><b>免押</b>：芝麻分 650+ 可免 6000 元（仅 APP/支付宝小程序订单）。</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>🛣 自驾与打车</h4>
+      <ul>
+        <li><b>D3 大环线（约 200 公里）</b>：大同 → 浑源 80 公里 / 1.5 小时 → 应县 50 公里 / 50 分钟–1h15 → 大同 70 公里 / 1 小时。</li>
+        <li><b>油费 + 高速</b>：油费约 ¥100 + 高速费约 ¥70（山西 7 座以下四车道 0.45 元/公里推算，<b>需现场核实</b>）。</li>
+        <li><b>国道大车多，务必全程高速。</b></li>
+        <li><b>其余三天全程打车</b>：D1 南站进城 + 古城往返博物馆；D2 云冈往返 + 去取车点；D4 华严寺 → 儿童公园 → 酒店 → 南站。市区内单程多在 10–30 元之间。</li>
+        <li><b>停车</b>：麗枫免费车位有限、先到先得，满位可停永泰门广场停车场（全天 10 元封顶）；悬空寺只能停恒山游客中心（10–20 元/天）；博物馆停车多来源称<b>免费</b>。</li>
+        <li><b>加油</b>：D3 还车前在火车站店附近加满，否则收高额加油服务费。</li>
+      </ul>
+    </div>
+  </div>
+</section><section class="view" id="view-stay">
+  <div class="sec-head">
+    <h2>住宿</h2>
+    <span class="sec-note">三晚不换酒店</span>
+  </div>
+  <div class="panel">
+    <h4>🏨 麗枫酒店 · 大同古城墙店（3 晚，9/8–9/11）</h4>
+    <ul>
+      <li><b>地址</b>：红旗街瑞祥商务楼 1 楼 1 号。2024 年开业，携程 4.7 分 / 2268 条评价，起价约 ¥299，9 月平日预估 <b>¥350–450/晚</b>。</li>
+      <li><b>为什么是这家</b>：点评量充足、已过装修期，比 2026 新开的华严寺店（仅 44 条评价、有新装气味与车位紧张反馈）<b>稳妥得多</b>。</li>
+      <li><b>备选</b>：麗枫·大同古城华严寺店（离华严寺仅 1.1 公里，起价 ¥347）。<b>订前务必电话确认</b>车位与新装气味。</li>
+      <li><b>停车</b>：D2 晚取车后只停一晚（D3 早 6:45 开走、当晚 19:40 前已还车），压力比前几版小很多。车位先到先得，满位备选永泰门广场停车场。</li>
+      <li><b>早餐</b>：自助 48 元/人，点评称"能吃到本地刀削面"。<b>D3 早 6:45 出发赶不上开餐，需提前一天跟前台预约打包。</b></li>
+      <li>隔音未见系统差评，走廊尽头房间较安静。</li>
+    </ul>
+  </div>
+
+<div class="food-filter" id="food-filter">
+  <span class="chip" data-f="all">全部</span>
+  <span class="chip" data-cat="noodle">刀削面</span>
+  <span class="chip" data-cat="hotpot">铜火锅</span>
+  <span class="chip" data-cat="shaomai">烧麦</span>
+  <span class="chip" data-cat="mutton">羊杂</span>
+  <span class="chip" data-cat="liangfen">浑源凉粉</span>
+  <span class="chip" data-cat="snack">D4 小吃</span>
+  <span class="chip" data-cat="night">夜宵</span>
+  <span class="sep"></span>
+  <span class="chip" data-band="low">¥20 内</span>
+  <span class="chip" data-band="mid">¥21–60</span>
+  <span class="chip" data-band="high">¥60+</span>
+</div>
+  <div class="sec-head">
+    <h2>吃什么</h2>
+    <span class="sec-note">本地口碑优先于网红</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th style="width:150px;">类别</th><th style="width:190px;">推荐</th><th>说明</th><th style="width:90px;">人均</th></tr>
+    </thead>
+    <tbody><tr data-cat="noodle" data-band="low" data-plan="D3">
+        <td><b>刀削面</b></td>
+        <td><b>任记七中削面</b><br><span style="font-size:12px;color:var(--ink-3);">云中路宋庄北路</span></td>
+        <td>老大同"小时候的味道"，<b>本地人公认第一梯队</b>。营业 6:30–14:00 / 17:30–21:00。</td>
+        <td class="num">¥18</td>
+      </tr>
+<tr data-cat="noodle" data-band="mid" data-plan="D1">
+        <td>刀削面</td>
+        <td><b>老柴削面</b><br><span style="font-size:12px;color:var(--ink-3);">清远街店（古城内）</span></td>
+        <td>老字号，<b>D1、D4 午餐最方便的选择</b>——就在古城里。</td>
+        <td class="num">¥26</td>
+      </tr>
+<tr data-cat="noodle" data-band="low" data-plan="通用">
+        <td>刀削面</td>
+        <td>东方削面<span style="font-size:12px;color:var(--ink-3);">（迎泽街店）</span></td>
+        <td>连锁入门款，7:00–22:00 营业时间长，赶时间时的保底选择。</td>
+        <td class="num">¥19</td>
+      </tr>
+<tr data-cat="hotpot" data-band="mid" data-plan="D1">
+        <td><b>铜火锅</b></td>
+        <td><b>凯鸽酒楼</b><br><span style="font-size:12px;color:var(--ink-3);">振兴街店</span></td>
+        <td>本地 18 家连锁，<b>菜可点半份</b>——两人出行这一点极其友好。</td>
+        <td class="num">¥50–63</td>
+      </tr>
+<tr data-cat="hotpot" data-band="high" data-plan="D1">
+        <td>铜火锅</td>
+        <td>老爷庙风味美食府</td>
+        <td><b>本地人真正吃铜火锅的地方</b>，口味比游客店重。</td>
+        <td class="num">¥65–77</td>
+      </tr>
+<tr data-cat="shaomai" data-band="mid" data-plan="D2">
+        <td>烧麦</td>
+        <td><b>龙聚祥</b><br><span style="font-size:12px;color:var(--ink-3);">鼓楼西街</span></td>
+        <td>性价比明显优于凤临阁。<b>想体验百花烧麦来这儿就够。</b></td>
+        <td class="num">¥60</td>
+      </tr>
+<tr data-cat="shaomai" data-band="high" data-plan="D2">
+        <td>烧麦</td>
+        <td>凤临阁<span style="font-size:12px;color:var(--ink-3);">（鼓楼西街）</span></td>
+        <td>人均 ¥85–100，<b>排队极凶</b>（晚市常发到 200–600 号）。<b>看建筑 &gt; 吃菜</b>，不值得为吃排两小时。</td>
+        <td class="num">¥85–100</td>
+      </tr>
+<tr data-cat="mutton" data-band="low" data-plan="早餐">
+        <td><b>早餐 · 羊杂</b></td>
+        <td><b>伟伟羊杂馆</b><br><span style="font-size:12px;color:var(--ink-3);">迎新街，6:00–09:30</span></td>
+        <td>排队名店，粉羊杂配油饼是本地人的早晨。<b>只做早市，要赶早。</b></td>
+        <td class="num">¥20</td>
+      </tr>
+<tr data-cat="mutton" data-band="low" data-plan="早餐">
+        <td>早餐 · 羊杂</td>
+        <td>胖女羊杂 / 天源斋 / 义利骨头馆</td>
+        <td>胖女羊杂（同泉西路，40 年老店，¥11）、天源斋（魏都新城，¥9）、义利骨头馆（新华街早市口，30 年老店）。<b>均在古城外居民区。</b></td>
+        <td class="num">¥9–20</td>
+      </tr>
+<tr data-cat="liangfen" data-band="low" data-plan="D3">
+        <td><b>浑源凉粉</b></td>
+        <td><b>小媳妇凉粉</b></td>
+        <td>1983 年老店，浑源凉粉的代表。<b>D3 午餐就在这里。</b></td>
+        <td class="num">¥10</td>
+      </tr>
+<tr data-cat="snack" data-band="low" data-plan="D4">
+        <td><b>D4 下午小吃</b></td>
+        <td><b>迎宾街 / 云中路一带</b></td>
+        <td>紧邻儿童公园：<b>贺老人羊杂、田记小南街削面、姚老太烧饼、楚家驴肉火烧</b>。逛完公园垫垫肚子，比在南站干等舒服。</td>
+        <td class="num">¥10–30</td>
+      </tr>
+<tr data-cat="night" data-band="low" data-plan="夜宵">
+        <td>夜宵小吃</td>
+        <td>鼓楼东街夜市</td>
+        <td>浑源凉粉摊约 ¥3/碗、合笙财沙棘冰面包（¥6–10）、胖来来五香兔头（人均 ¥30）。</td>
+        <td class="num">¥10–30</td>
+      </tr></tbody>
+  </table>
+</section><section class="view" id="view-budget">
+  <div class="sec-head">
+    <h2>预算明细</h2>
+    <span class="sec-note">2 人合计</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th style="width:110px;">项目</th><th>明细</th><th style="width:110px;">金额</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>高铁</b></td><td>去程 G2531 ¥170×2 + 返程 G2540 ¥164×2</td><td class="num">¥668</td></tr>
+      <tr><td><b>北京地铁</b></td><td>去程约 ¥5×2 + 返程约 ¥6×2（全程地铁，不打车）</td><td class="num">¥22</td></tr>
+      <tr><td><b>一嗨租车</b></td><td><b>1 天</b>（9/9 20:00 取 – 9/10 20:00 还，正好 24 小时）+ 补充保障约 ¥50</td><td class="num">¥250</td></tr>
+      <tr><td><b>油费 + 高速</b></td><td>D3 约 200 公里，油费约 ¥100 + 高速费约 ¥70</td><td class="num">¥170</td></tr>
+      <tr><td><b>大同市内打车</b></td><td>D1 南站进城 + 古城往返博物馆；D2 云冈往返 + 取车点；D3 还车后回酒店；D4 华严寺 → 儿童公园 → 酒店 → 南站</td><td class="num">¥215</td></tr>
+      <tr><td><b>住宿</b></td><td>麗枫大同古城墙店 <b>3 晚</b> × 约 ¥400（不换酒店）</td><td class="num">¥1,200</td></tr>
+      <tr><td><b>门票</b></td><td>云冈 120 + 华严寺 50 + 善化寺 40 + 九龙壁 10 + 木塔 50 + 净土寺 15 + 永安联票 30 + 悬空寺 135<br><span style="font-size:12px;color:var(--ink-3);">（每人 ¥450 × 2；古城墙、市博物馆、儿童公园免费）</span></td><td class="num">¥900</td></tr>
+      <tr><td><b>讲解</b></td><td>云冈金牌 380 + 华严寺金牌 300 + 善化寺语音 20×2 + 永安禅寺 150<br><span style="font-size:12px;color:var(--ink-3);">（市博物馆定时讲解免费）</span></td><td class="num">¥870</td></tr>
+      <tr><td><b>餐饮</b></td><td>4 天 × 2 人：早餐约 ¥200 + 正餐约 ¥980 + 小吃夜宵约 ¥200</td><td class="num">¥1,380</td></tr>
+      <tr><td><b>特产 / 机动</b></td><td>黄芪、黄花、凉粉等 + 应急预留</td><td class="num">¥500</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2"><b>合计（2 人）</b></td><td class="num"><b>约 ¥6,175<span data-flag="C09"></span></b></td></tr>
+      <tr><td colspan="2" style="font-weight:400;color:var(--ink-3);">人均</td><td class="num" style="font-weight:400;color:var(--ink-3);">约 ¥3,090</td></tr>
+    </tfoot>
+  </table>
+  <p style="font-family:-apple-system,'PingFang SC',sans-serif;font-size:13px;color:var(--ink-3);margin-top:14px;line-height:1.9;">
+    <b>弹性区间约 ¥5,700 – 6,900。</b>相比上一版省了约 ¥400，主要来自租车从 45 小时压缩到正好 24 小时（少约 1 天租金）。<br>
+    可压缩项：讲解降档（云冈改银牌省 80、华严寺改普通省 150）、租车不加补充保障、餐饮多选本地小店。
+    悬空寺登临票若未抢到可省 ¥200，但会同时失去核心体验，<b>不建议主动放弃</b>。
+  </p>
+</section><section class="view" id="view-refs">
+  <div class="sec-head">
+    <h2>电话与预约速查表</h2>
+  </div>
+  <table>
+    <thead>
+      <tr><th style="width:130px;">对象</th><th style="width:150px;">电话 / 渠道</th><th>用途</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>净土寺</b></td><td class="mono">18634960005<br>0349-5088889</td><td>李德春（文保所）。<b>确认当季几点关门——直接决定 D3 成败</b></td></tr>
+      <tr><td><b>一嗨客服</b></td><td class="mono">400-888-6608</td><td>确认蜂巢柜取还车流程、计费档位</td></tr>
+      <tr><td><b>一嗨大同火车站店</b></td><td class="mono">0352-2533892</td><td><b>推荐门店</b>，带蜂巢柜，距古城 3–4 公里</td></tr>
+      <tr><td><b>一嗨大同南站店</b></td><td class="mono">13008047967</td><td>备选，带蜂巢柜，站内取还</td></tr>
+      <tr><td><b>云冈石窟</b></td><td class="mono">0352-7992683</td><td>确认当期开放洞窟清单（第 5/16/18 窟是否在修）、讲解咨询</td></tr>
+      <tr><td><b>大同市博物馆</b></td><td class="mono">0352-2303518</td><td>预约咨询、确认定时讲解场次。<b>官方公众号提前 7 日预约</b></td></tr>
+      <tr><td><b>永安禅寺</b></td><td class="mono">18735209199<br>0352-8322142</td><td>张建德（管理所）。确认开放、询问讲解</td></tr>
+      <tr><td><b>圆觉寺</b></td><td class="mono">18636227970<br>0352-8475435</td><td>仝云岗。<b>确认是否开放、票价</b></td></tr>
+      <tr><td><b>应县木塔</b></td><td class="mono">0349-5088889</td><td>景区咨询（文保责任人：方国一 13934971548）</td></tr>
+      <tr><td><b>悬空寺登临票</b></td><td class="mono">「北岳云游」小程序</td><td><b>每日 7:20 开售未来 7 日票；前一日 20:00–23:00 再放一批</b></td></tr>
+      <tr><td><b>云冈门票</b></td><td class="mono">「云冈研究院」小程序<br>/ 携程 / 美团</td><td>提前 1–15 天实名预约，<b>不接受当日预约</b></td></tr>
+      <tr><td><b>高铁票</b></td><td class="mono">12306</td><td>提前 15 天售票</td></tr>
+    </tbody>
+  </table>
+</section>
+</div>
+<footer>
+  <b>关于信息时效：</b>本手册的票价、时刻、开放时间基于 2026 年 8 月底的公开信息整理。标注「需核实」的项目（一嗨 9 月实时报价、古城墙是否需预约、圆觉寺票价、<b>净土寺当季关门时间</b>、云冈当期开放洞窟、博物馆与麗枫停车是否免费、高速费）请在出发前再次确认。红框 ⚠ 标记表示信息冲突、⚑ 表示待核实，详见「行前准备 → 信息状态总览」。<br>
+  <b>核心建议只有两句：</b>① 9 月 4 日早上 7 点 20 分，打开「北岳云游」抢悬空寺登临票——这一件事决定了 D3 的体验上限；② 9/9 晚务必在 20:00 前完成蜂巢柜取车、9/10 晚 20:00 前完成还车，卡住这 24 小时才能按 1 天计费。
+</footer></main>
+</div>
+<script>
+const KEY='datong2026.v1';
+const Store={data:{theme:'light',checks:{},view:'overview'},
+ load(){try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);if(o&&o.v===1)this.data=Object.assign(this.data,o);}}catch(e){}return this.data;},
+ save(){try{this.data.v=1;localStorage.setItem(KEY,JSON.stringify(this.data));}catch(e){}},
+ get(p){return this.data[p];},set(p,v){this.data[p]=v;this.save();}};
+Store.load();
+if(Store.data.theme==='dark')document.documentElement.dataset.theme='dark';
+const BASE=new Date('2026-09-08T00:00:00');
+
+const DEADLINES=[
+ {at:'2026-09-04T07:20',label:'抢悬空寺 9/10 登临票',level:'critical',view:'prep',note:'「北岳云游」每日仅 2475 张'},
+ {at:'2026-09-01T00:00',label:'起约云冈石窟 9/9 门票',level:'hard',view:'days'},
+ {at:'2026-09-02T00:00',label:'起约大同市博物馆 9/8',level:'hard',view:'overview'},
+ {at:'2026-09-05T00:00',label:'打三电话确认国保开放',level:'soon',view:'refs',note:'净土寺关门时间决定 D3'},
+ {at:'2026-09-07T00:00',label:'最终行前确认 + 打包',level:'soon',view:'prep'},
+ {at:'2026-09-09T19:30',label:'一嗨取车（建议 19:30 到）',level:'hard',view:'transport'},
+ {at:'2026-09-10T20:00',label:'一嗨还车（20:00 前）',level:'hard',view:'transport'},
+ {at:'2026-09-09T20:00',label:'悬空寺回流票再刷一次',level:'soft',view:'prep'},
+ {at:'2026-09-08T06:30',label:'出发 · 步行至平乐园站',level:'go',view:'days'},
+ {at:'2026-09-08T08:20',label:'G2531 北京北发车',level:'go',view:'days'},
+ {at:'2026-09-11T18:36',label:'返程 G2540 发车',level:'go',view:'days'}];
+
+const FLAGS=[
+ {id:'C01',state:'conflict',topic:'圆觉寺票价与开放',detail:'免费 / ¥20 / 联票¥30 三口径不一；OTA 曾显示"今日已休园"。',act:'出发前电联 18636227970 / 0352-8475435'},
+ {id:'C02',state:'conflict',topic:'净土寺当季关门时间',detail:'可能执行冬令 8:00–17:00（16:45 停止入内），若属实则 D3 风险最大。',act:'出发前 3 天电联 18634960005 确认'},
+ {id:'C03',state:'conflict',topic:'云冈开放洞窟',detail:'第 5/16/18 窟及第 33–45 窟暑期修缮，9 月政策未公布。',act:'查「云冈石窟」官微当期清单'},
+ {id:'C04',state:'conflict',topic:'云冈三馆闭馆',detail:'石窟博物馆 / 美术馆 / 宿白纪念馆 2026 年暑期同期闭馆。',act:'别为它们预留时间'},
+ {id:'C05',state:'conflict',topic:'古城墙是否需预约',detail:'部分渠道提示需「大同古城」小程序实名预约。',act:'出发前核实'},
+ {id:'C06',state:'conflict',topic:'麗枫停车是否免费',detail:'免费车位先到先得，满位备选永泰门广场停车场。',act:'订房时确认连续两晚车位'},
+ {id:'C07',state:'conflict',topic:'博物馆停车是否免费',detail:'多来源称免费，但非官方确认。',act:'现场确认'},
+ {id:'C08',state:'conflict',topic:'儿童公园开放时间',detail:'说法不一（携程"全天" / 另有 6:00–21:00）。',act:'白天去即可，无需纠结'},
+ {id:'C09',state:'conflict',topic:'预算总额取整',detail:'概览卡 ¥6,200 与预算表 ¥6,175 取整不同；以预算表 ¥6,175 为准。',act:'以预算明细表为准'},
+ {id:'C10',state:'conflict',topic:'一嗨起价',detail:'门店起价 ¥83/日起，9 月实时价以 APP 为准。',act:'下单时看 APP 实时报价'},
+ {id:'C11',state:'conflict',topic:'悬空寺门票构成',detail:'入园¥15 + 登临¥100 + 摆渡¥20，两票齐全才能上栈道。',act:'看清票种再买'},
+ {id:'C12',state:'conflict',topic:'讲解费档位',detail:'金牌380 / 银牌300 / 铜牌240 / 普通180（2026 监制价）。',act:'以现场价目为准'},
+ {id:'C13',state:'conflict',topic:'日落时间原文错误',detail:'手册原文写 18:37，实测 9/8 日落 18:48（逐日提前至 18:43）。',act:'已订正，以实测为准'},
+ {id:'V01',state:'verify',topic:'一嗨 9 月实时报价',detail:'门店起价 vs 实时浮动价。',act:'APP 实时核实'},
+ {id:'V02',state:'verify',topic:'古城墙预约',detail:'是否需小程序实名预约。',act:'出发前核实'},
+ {id:'V03',state:'verify',topic:'圆觉寺票价',detail:'免费 / ¥20 / 联票¥30 待确认。',act:'电联确认'},
+ {id:'V04',state:'verify',topic:'净土寺关门时间',detail:'冬令 / 夏令时待确认。',act:'电联确认'},
+ {id:'V05',state:'verify',topic:'云冈当期开放洞窟',detail:'第 5/16/18 窟是否延续关闭。',act:'官微核实'},
+ {id:'V06',state:'verify',topic:'两处停车',detail:'麗枫与博物馆停车是否免费。',act:'现场确认'},
+ {id:'V07',state:'verify',topic:'高速费',detail:'山西四车道 0.45 元/公里推算，需现场核实。',act:'以实际收费为准'}];
+
+const WMO={0:['晴','☀️'],1:['大部晴朗','🌤️'],2:['局部多云','⛅'],3:['阴','☁️'],45:['雾','🌫️'],48:['雾凇','🌫️'],
+ 51:['小毛雨','🌦️'],53:['毛雨','🌦️'],55:['大毛雨','🌦️'],56:['冻毛雨','🌧️'],57:['冻毛雨','🌧️'],
+ 61:['小雨','🌧️'],63:['中雨','🌧️'],65:['大雨','🌧️'],66:['冻雨','🌧️'],67:['冻雨','🌧️'],
+ 80:['阵雨','🌦️'],81:['中阵雨','🌧️'],82:['强阵雨','⛈️'],95:['雷雨','⛈️'],96:['雷暴冰雹','⛈️'],99:['雷暴冰雹','⛈️']};
+
+const WEATHER_SNAPSHOT={fetchedAt:'2026-09-04T17:10',source:'Open-Meteo',
+ days:[
+  {date:'2026-09-08',code:61,tMax:13.4,tMin:10.8,pop:98,prcp:16.9,wind:13.0,uv:4.25,sunrise:'06:00',sunset:'18:48'},
+  {date:'2026-09-09',code:3,tMax:15.5,tMin:9.8,pop:47,prcp:0,wind:8.9,uv:5.60,sunrise:'06:01',sunset:'18:46'},
+  {date:'2026-09-10',code:3,tMax:19.2,tMin:6.7,pop:8,prcp:0,wind:8.4,uv:5.50,sunrise:'06:02',sunset:'18:44'},
+  {date:'2026-09-11',code:1,tMax:21.5,tMin:9.4,pop:18,prcp:0,wind:9.8,uv:5.40,sunrise:'06:03',sunset:'18:43'}]};
+
+const WK=['周日','周一','周二','周三','周四','周五','周六'];
+function fmtDate(d){const t=new Date(d+'T00:00:00');return (t.getMonth()+1)+'/'+t.getDate()+' '+WK[t.getDay()];}
+function fmtTs(s){const t=new Date(s);return (t.getMonth()+1)+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');}
+function codeInfo(c){return WMO[c]||['—','☁️'];}
+
+/* ---- routing ---- */
+function showView(v){document.querySelectorAll('.view').forEach(s=>s.classList.toggle('is-active',s.id==='view-'+v));}
+function syncNav(v){
+  document.querySelectorAll('#nav>a').forEach(a=>a.classList.toggle('active',a.dataset.view===v&&!a.dataset.anchor));
+  document.querySelectorAll('#days-sub>a').forEach(a=>a.classList.toggle('active',a.dataset.view===v));
+  document.getElementById('days-sub').classList.toggle('show',v==='days');
+}
+function onRoute(){
+  const h=location.hash.replace(/^#\//,'');const parts=h.split('/');
+  const view=parts[0]||'overview';const anchor=parts[1]||'';
+  showView(view);syncNav(view);
+  if(anchor){const el=document.getElementById(anchor);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);}
+  else{document.querySelector('.main').scrollTop=0;window.scrollTo(0,0);}
+  Store.set('view',view);closeDrawer();
+}
+function go(v,a){location.hash='#/'+v+(a?'/'+a:'');}
+window.addEventListener('hashchange',onRoute);
+
+/* ---- checks ---- */
+function checkedCount(prefix){let n=0;document.querySelectorAll('input.box[data-ck^="'+prefix+'"]').forEach(c=>{if(c.checked)n++;});return n;}
+function applyChecks(){
+  document.querySelectorAll('input.box[data-ck]').forEach(cb=>{
+    cb.checked=!!Store.data.checks[cb.dataset.ck];
+    cb.addEventListener('change',()=>{Store.data.checks[cb.dataset.ck]=cb.checked;Store.save();updateProgress();});
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const pt=document.querySelectorAll('input.box[data-ck^="prep"]').length;
+  const kt=document.querySelectorAll('input.box[data-ck^="pack"]').length;
+  const mini=document.getElementById('progressMini');
+  if(mini)mini.innerHTML='行前 <b>'+checkedCount('prep')+'/'+pt+'</b> · 打包 <b>'+checkedCount('pack')+'/'+kt+'</b>';
+  const cd=document.getElementById('ckPill');if(cd)cd.textContent='✓ '+checkedCount('prep')+'/'+pt;
+}
+
+/* ---- countdown ---- */
+function levelOf(ms){if(ms<0)return'past';if(ms<=24*36e5)return'critical';if(ms<=72*36e5)return'soon';if(ms<=7*864e5)return'week';return'normal';}
+function renderCountdown(){
+  const host=document.getElementById('countdown-host');if(!host)return;
+  const now=new Date();
+  if(now>new Date('2026-09-12T00:00:00')){host.innerHTML='<div class="cd-item past"><div class="cd-label">行程已结束，祝旅途愉快 🎉</div></div>';return;}
+  const items=DEADLINES.map(d=>{const t=new Date(d.at);const ms=t-now;const lv=levelOf(ms);
+    let txt;if(ms<0)txt='已过期';else{const dd=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5),mm=Math.floor(ms%36e5/6e4);txt=dd>0?dd+'天'+hh+'时':(hh>0?hh+'时'+mm+'分':mm+'分');}
+    const done=Store.data.checks[d.linkcheck];
+    return {d,ms,lv,txt,done};});
+  items.sort((a,b)=>(a.ms<0?1:0)-(b.ms<0?1:0)||a.ms-b.ms);
+  host.innerHTML=items.map(it=>{
+    const d=it.d;const cls=it.ms<0?'past':(it.done?'done':it.lv);
+    const dl=document.getElementById('cdPill');
+    return '<div class="cd-item '+(cls==='critical'?'critical ':'')+cls+'"><div class="cd-when">'+d.at.slice(5,16).replace('T',' ')+'</div><div class="cd-label">'+d.label+(d.note?' <span style="color:var(--ink-3);font-size:12px;">· '+d.note+'</span>':'')+'</div><div class="cd-count">'+it.txt+'</div></div>';
+  }).join('');
+}
+let _cdSig='';
+function tickCountdown(){const host=document.getElementById('countdown-host');if(!host)return;const now=new Date();
+  const sig=DEADLINES.map(d=>(new Date(d.at)-now>0?'1':'0')).join('')+checkedCount('prep');
+  if(sig!==_cdSig){_cdSig=sig;renderCountdown();}
+  const dl=document.getElementById('cdPill');if(dl){const crit=DEADLINES.some(d=>(new Date(d.at)-now)>0&&(new Date(d.at)-now)<=24*36e5&&d.level==='critical');dl.style.background=crit?'var(--red)':'var(--red-soft)';dl.style.color=crit?'#fff':'var(--red)';dl.textContent=crit?'⏰ 抢票临近':'⏰ '+DEADLINES.filter(d=>(new Date(d.at)-now)>0).length+' 项';}
+}
+
+/* ---- foldables ---- */
+function hydrateFoldables(){
+  document.querySelectorAll('.spot,.warn,.ok').forEach(el=>{
+    const cls=el.className;const html=el.innerHTML;
+    let head=html.split(/<br>/)[0].replace(/<[^>]+>/g,'');
+    if(head.length>34)head=head.slice(0,34)+'…';
+    const det=document.createElement('details');det.className='fold '+cls;det.open=true;
+    det.innerHTML='<summary>'+(cls.indexOf('warn')>=0?'⚠ ':'')+head+'</summary><div class="fold-body">'+html+'</div>';
+    el.replaceWith(det);
+  });
+}
+
+/* ---- flags ---- */
+function hydrateFlags(){
+  document.querySelectorAll('[data-flag]').forEach(s=>{
+    const f=FLAGS.find(x=>x.id===s.dataset.flag);if(!f)return;
+    const b=document.createElement('span');b.className='flag '+f.state;
+    b.textContent=f.state==='conflict'?'⚠ 冲突':f.state==='verify'?'⚑ 待核':'✓ 已确认';
+    b.addEventListener('click',e=>{e.stopPropagation();showFlagPop(f,e);});s.replaceWith(b);
+  });
+}
+let popEl=null;
+function showFlagPop(f,e){
+  if(!popEl){popEl=document.createElement('div');popEl.className='flag-pop';document.body.appendChild(popEl);}
+  const st=f.state==='conflict'?'⚠ 冲突':f.state==='verify'?'⚑ 待核实':'✓ 已确认';
+  popEl.innerHTML='<h5>'+f.topic+'<span class="fp-state flag '+f.state+'">'+st+'</span></h5><p>'+f.detail+'</p><div class="fc-act">行动：'+f.act+'</div>';
+  popEl.style.display='block';
+  const x=Math.min(e.clientX+8,window.innerWidth-340),y=Math.min(e.clientY+8,window.innerHeight-160);
+  popEl.style.left=x+'px';popEl.style.top=y+'px';
+  setTimeout(()=>document.addEventListener('click',hidePopOnce),10);
+}
+function hidePopOnce(){if(popEl)popEl.style.display='none';document.removeEventListener('click',hidePopOnce);}
+function renderFlagBoard(){
+  const host=document.getElementById('flagboard-host');if(!host)return;
+  const states=[['conflict','冲突'],['verify','待核实'],['ok','已确认']];
+  let f='<div class="flag-filters">';
+  f+='<span class="chip active" data-fs="all">全部</span>';
+  states.forEach(s=>f+='<span class="chip" data-fs="'+s[0]+'">'+s[1]+' '+FLAGS.filter(x=>x.state===s[0]).length+'</span>');
+  f+='</div><div class="flag-board" id="flagGrid">';
+  FLAGS.forEach(x=>{const st=x.state==='conflict'?'⚠ 冲突':x.state==='verify'?'⚑ 待核实':'✓ 已确认';
+    f+='<div class="flag-card '+x.state+'" data-state="'+x.state+'"><h5>'+x.topic+'<span class="flag '+x.state+'">'+st+'</span></h5><p>'+x.detail+'</p><div class="fc-act">行动：'+x.act+'</div></div>';});
+  f+='</div>';
+  host.innerHTML=f;
+  host.querySelectorAll('.flag-filters .chip').forEach(c=>c.addEventListener('click',()=>{
+    host.querySelectorAll('.flag-filters .chip').forEach(z=>z.classList.remove('active'));c.classList.add('active');
+    const fs=c.dataset.fs;host.querySelectorAll('#flagGrid .flag-card').forEach(card=>card.style.display=(fs==='all'||card.dataset.state===fs)?'':'none');
+  }));
+}
+
+/* ---- phones ---- */
+function hydratePhones(){
+  document.querySelectorAll('#view-refs td.mono').forEach(td=>{
+    td.innerHTML=td.innerHTML.replace(/(\d[\d\-]{4,})/g,'<a class="phone" data-num="$1">$1</a>');
+  });
+  document.querySelectorAll('#view-refs a.phone').forEach(a=>{
+    a.href='tel:'+a.dataset.num.replace(/[^0-9]/g,'');
+    a.addEventListener('click',e=>{e.preventDefault();copyText(a.dataset.num);toast('已复制 '+a.dataset.num);setTimeout(()=>{location.href=a.href;},50);});
+  });
+}
+function copyText(s){try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s);return;}var t=document.createElement('textarea');t.value=s;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}catch(e){}}
+
+/* ---- food filter ---- */
+function initFoodFilter(){
+  const wrap=document.getElementById('food-filter');if(!wrap)return;
+  let cat='all',band='all';
+  function apply(){document.querySelectorAll('#view-stay table tbody tr').forEach(tr=>{const c=tr.dataset.cat,b=tr.dataset.band;tr.style.display=((cat==='all'||c===cat)&&(band==='all'||b===band))?'':'none';});
+    wrap.querySelectorAll('.chip').forEach(ch=>{const on=ch.dataset.f==='all'?(cat==='all'&&band==='all'):ch.dataset.cat?cat===ch.dataset.cat:band===ch.dataset.band;ch.classList.toggle('active',on);});}
+  wrap.addEventListener('click',e=>{const ch=e.target.closest('.chip');if(!ch)return;
+    if(ch.dataset.f==='all'){cat='all';band='all';}else if(ch.dataset.cat){cat=ch.dataset.cat;band='all';}else if(ch.dataset.band){band=ch.dataset.band;cat='all';}apply();});
+}
+
+/* ---- svg links ---- */
+function bindSvgLinks(){
+  document.querySelectorAll('.svg-hit,.svg-node').forEach(el=>{
+    el.addEventListener('click',()=>{const g=el.dataset.goto;if(g.indexOf('view-')===0)go(g.slice(5));else go('days',g);});
+  });
+  const nodeMap={};document.querySelectorAll('.svg-node').forEach(n=>nodeMap[n.dataset.goto]=n);
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{const n=nodeMap[e.target.id];if(n)n.classList.toggle('on',e.isIntersecting);});});
+    Object.keys(nodeMap).forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+  }
+}
+
+/* ---- weather ---- */
+function clothChips(data){
+  const tMin=Math.min(...data.days.map(d=>d.tMin));const spread=Math.max(...data.days.map(d=>d.tMax-d.tMin));
+  const maxPop=Math.max(...data.days.map(d=>d.pop));const maxUv=Math.max(...data.days.map(d=>d.uv));
+  let c=[];
+  if(tMin<=8)c.push('抓绒/薄羽绒（最低 '+tMin+'°）');
+  if(spread>=10)c.push('洋葱式叠穿（日较差 '+spread.toFixed(0)+'°）');
+  if(maxPop>=60)c.push('雨具 + 防滑鞋');
+  if(maxUv>=5)c.push('防晒 + 墨镜 + 帽');
+  c.push('小手电（永安禅寺殿内昏暗）');
+  return '<div class="cloth">'+c.map(x=>'<span class="chip">'+x+'</span>').join('')+'</div>';
+}
+function crossTips(data){
+  let t='';
+  const d1=data.days[0];if(d1.pop>=60)t+='<div class="wtip">⚠ <b>D1（'+fmtDate(d1.date)+'）全天有雨 '+d1.pop+'%、'+d1.prcp+'mm</b>——傍晚登古城墙看日落大概率取消，建议改室内（东南邑街区 / 提前晚餐）。</div>';
+  const d3=data.days[2];if(d3.code===3)t+='<div class="wtip">⚠ <b>D3（'+fmtDate(d3.date)+'）阴天</b>——净土寺藻井的 15–17 点黄金斜光依赖阳光，阴天效果会打折，建议把净土寺排在光线最好的时段。</div>';
+  return t;
+}
+function renderWeather(){
+  const data=(Store.data.weather&&Store.data.weather.days)?Store.data.weather:WEATHER_SNAPSHOT;
+  const src=(Store.data.weather&&Store.data.weather.fetchedAt)?('更新于 '+fmtTs(Store.data.weather.fetchedAt)):('更新于 '+fmtTs(WEATHER_SNAPSHOT.fetchedAt)+'（内置快照）');
+  let cards='';
+  data.days.forEach(d=>{const w=codeInfo(d.code);const rain=d.pop>=60;
+    cards+='<div class="wcard'+(rain?' rain':'')+'"><div class="wd">'+fmtDate(d.date)+'</div><div class="wico">'+w[1]+'</div><div class="wt">'+w[0]+' '+d.pop+'%</div><div class="wtemp">'+d.tMax+'°<small>/'+d.tMin+'°</small></div>'
+      +'<div class="wrow"><span>风</span><span>'+d.wind+'km/h</span></div><div class="wrow"><span>UV</span><span>'+d.uv+'</span></div><div class="wrow"><span>日落</span><span>'+d.sunset+'</span></div></div>';});
+  const host=document.getElementById('weather-host');
+  if(host)host.innerHTML='<div class="weather"><div class="weather-head"><h3>🌤 行程天气</h3><span class="weather-src">来源 Open-Meteo · '+src+'</span><button class="weather-refresh" id="wxRefresh">刷新</button></div><div class="weather-cards">'+cards+'</div>'+clothChips(data)+crossTips(data)+'</div>';
+  data.days.forEach((d,i)=>{const el=document.getElementById('dw-d'+(i+1));if(!el)return;const w=codeInfo(d.code);const rain=d.pop>=60;
+    el.className='day-weather'+(rain?' rain':'');
+    el.innerHTML='<span class="wico">'+w[1]+'</span><b>'+w[0]+'</b> '+d.tMax+'° / '+d.tMin+'°　降水 '+d.pop+'%　风 '+d.wind+'km/h　日落 '+d.sunset+(rain?'　🌧 傍晚户外活动易受影响':'');});
+  const rf=document.getElementById('wxRefresh');if(rf)rf.onclick=refreshWeather;
+}
+function normalize(j){const d=j.daily;return d.time.map((t,i)=>({date:t,code:d.weather_code[i],tMax:d.temperature_2m_max[i],tMin:d.temperature_2m_min[i],pop:d.precipitation_probability_max[i],prcp:d.precipitation_sum[i],wind:d.wind_speed_10m_max[i],uv:d.uv_index_max[i],sunrise:d.sunrise[i],sunset:d.sunset[i]}));}
+function refreshWeather(){
+  const url='https://api.open-meteo.com/v1/forecast?latitude=40.105&longitude=113.319&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,uv_index_max,sunrise,sunset&timezone=Asia/Shanghai&start_date=2026-09-08&end_date=2026-09-11';
+  const ctl=new AbortController();setTimeout(()=>ctl.abort(),6000);
+  fetch(url,{signal:ctl.signal}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>{
+    Store.data.weather={fetchedAt:new Date().toISOString(),days:normalize(j)};Store.save();renderWeather();toast('天气已更新');
+  }).catch(e=>{toast('刷新失败，显示内置快照（约 9/4 数据）');});
+}
+
+/* ---- misc ---- */
+function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:20px;font-size:13px;font-family:-apple-system,"PingFang SC",sans-serif;z-index:90;opacity:0;transition:opacity .2s;';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',1800);}
+function setTheme(){const d=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=d;Store.set('theme',d);document.querySelectorAll('[data-theme-btn]').forEach(b=>b.textContent=d==='dark'?'◐ 浅色':'◐ 暗色');}
+function openDrawer(){document.getElementById('sidebar').classList.add('open');document.getElementById('scrim').style.display='block';}
+function closeDrawer(){document.getElementById('sidebar').classList.remove('open');document.getElementById('scrim').style.display='none';}
+function printAll(){document.body.classList.add('print-all');setTimeout(()=>{window.print();document.body.classList.remove('print-all');},120);}
+
+/* ---- day aside (wide) ---- */
+function renderDayAside(){
+  const aside=document.getElementById('dayAside');if(!aside)return;
+  const quick=[['day1','D1 博物馆·城墙'],['day2','D2 云冈整天'],['day3','D3 五点串联'],['day4','D4 华严·返程']];
+  let html='<div class="da-box"><h4>⏱ 四日速览</h4>';
+  quick.forEach(q=>html+='<div class="da-item"><a style="color:var(--red);cursor:pointer;" onclick="go(\'days\',\''+q[0]+'\');return false;">'+q[1]+'</a></div>');
+  html+='</div>';
+  document.querySelectorAll('#view-days .day').forEach(d=>{
+    const id=d.id;const title=d.querySelector('.day-title h3').textContent;
+    const warns=[].slice.call(d.querySelectorAll('.warn')).map(w=>w.textContent.replace(/\s+/g,'').slice(0,20));
+    const spots=[].slice.call(d.querySelectorAll('.spot')).map(s=>s.textContent.replace(/\s+/g,'').slice(0,20));
+    html+='<div class="da-box"><h4><a style="color:var(--ink);text-decoration:none;cursor:pointer;" onclick="go(\'days\',\''+id+'\');return false;">'+title+'</a></h4>';
+    if(warns.length)html+='<div class="da-item" style="color:var(--red);">⚠ '+warns.length+' 处提醒</div>'+warns.map(w=>'<div class="da-item">· '+w+'</div>').join('');
+    if(spots.length)html+='<div class="da-item" style="color:var(--gold);">★ '+spots.length+' 处看点</div>';
+    html+='</div>';
+  });
+  aside.innerHTML=html;
+}
+
+/* ---- init ---- */
+function init(){
+  document.querySelectorAll('[data-theme-btn]').forEach(b=>b.addEventListener('click',setTheme));
+  document.querySelectorAll('#nav>a').forEach(a=>a.addEventListener('click',()=>go(a.dataset.view,a.dataset.anchor||'')));
+  document.getElementById('menuBtn').addEventListener('click',openDrawer);
+  document.getElementById('scrim').addEventListener('click',closeDrawer);
+  document.getElementById('printAllBtn').addEventListener('click',printAll);
+  const pc=document.getElementById('printCurBtn');if(pc)pc.addEventListener('click',()=>window.print());
+  applyChecks();renderCountdown();tickCountdown();setInterval(tickCountdown,30000);
+  hydrateFoldables();hydrateFlags();renderFlagBoard();hydratePhones();initFoodFilter();  bindSvgLinks();renderWeather();renderDayAside();
+  onRoute();
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
