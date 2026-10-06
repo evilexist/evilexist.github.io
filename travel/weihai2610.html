@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>北京 → 威海 · 旅行工作台 | 2026.10.13 - 10.15</title>
+<script>try{var _t=localStorage.getItem("weihai2610.v2");if(_t){var _o=JSON.parse(_t);if(_o&&_o.v===2&&_o.theme==="dark")document.documentElement.dataset.theme="dark";}}catch(e){}</script>
+<style>
+  :root{
+    --paper:#f5f6f7; --paper-2:#ffffff; --ink:#1f2529; --ink-2:#4f585f; --ink-3:#848d94;
+    --line:#e2e5e7; --line-2:#eef0f1;
+    --sea:#1c6a88; --sea-soft:#e7f0f4; --sea-deep:#0f4257;
+    --rust:#a55a2b; --rust-soft:#f9ede3; --gold:#ab832a; --gold-soft:#f9f1dd;
+    --green:#48794f; --green-soft:#e9f2ea; --red:#a5322c; --red-soft:#f9eae8;
+    --slate:#586a6f; --slate-soft:#eaf0f1;
+    --color-text-primary:#1f2529; --color-text-secondary:#4f585f; --color-background-primary:#ffffff;
+    --side-bg:#1a2226; --side-ink:#e6ebee; --side-ink-2:#98a3aa; --side-line:#323c42;
+    --accent:#1c6a88;
+    --ok:#48794f; --warn:#ab832a; --bad:#a5322c;
+  }
+  :root[data-theme="dark"]{
+    --paper:#15191c; --paper-2:#1d2226; --ink:#e8edf0; --ink-2:#b2bbc1; --ink-3:#7d878e;
+    --line:#323a40; --line-2:#262d32;
+    --sea:#5ca8c6; --sea-soft:#192c35; --sea-deep:#82c6de;
+    --rust:#d4884f; --rust-soft:#31251b; --gold:#cfa04c; --gold-soft:#2e2919;
+    --green:#7dab87; --green-soft:#1e2d22; --red:#c65a51; --red-soft:#33211f;
+    --slate:#89a5aa; --slate-soft:#1f282c;
+    --color-text-primary:#e8edf0; --color-text-secondary:#b2bbc1; --color-background-primary:#1d2226;
+    --side-bg:#101518; --side-ink:#e8edf0; --side-ink-2:#89939a; --side-line:#283137;
+    --ok:#7dab87; --warn:#cfa04c; --bad:#c65a51;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{font-family:"Songti SC","STSong","Source Han Serif SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased;}
+
+  .app{display:flex;min-height:100vh;}
+
+  /* ===== sidebar ===== */
+  .sidebar{width:248px;flex-shrink:0;background:var(--side-bg);color:var(--side-ink);position:sticky;top:0;height:100vh;
+    display:flex;flex-direction:column;overflow-y:auto;}
+  .brand{padding:20px 18px 16px;font-family:-apple-system,"PingFang SC",sans-serif;font-weight:700;font-size:16.5px;letter-spacing:.04em;}
+  .brand small{display:block;font-weight:400;font-size:13.5px;color:var(--side-ink-2);margin-top:5px;letter-spacing:.05em;}
+  .cd-big{margin:0 14px 14px;padding:14px 14px;background:rgba(255,255,255,.055);border-radius:9px;text-align:center;}
+  .cd-big .lb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;letter-spacing:.14em;color:var(--side-ink-2);}
+  .cd-big .vl{font-family:-apple-system,"PingFang SC",sans-serif;font-size:30px;font-weight:700;line-height:1.15;margin-top:4px;color:#5ca8c6;
+    font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  .cd-big .sb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--side-ink-2);margin-top:3px;font-variant-numeric:tabular-nums;}
+  .ring-wrap{margin-top:10px;height:4px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;}
+  .ring{height:100%;background:#5ca8c6;width:0%;transition:width .3s;}
+  .ring-lb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;color:var(--side-ink-2);margin-top:5px;}
+
+  .nav{flex:1;padding:0 10px;font-family:-apple-system,"PingFang SC",sans-serif;}
+  .nav>.grp{font-size:12.5px;letter-spacing:.16em;color:var(--side-ink-2);padding:15px 8px 7px;}
+  .nav a{display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:7px;color:var(--side-ink-2);
+    text-decoration:none;font-size:14px;cursor:pointer;margin-bottom:2px;transition:background .15s;}
+  .nav a:hover{background:rgba(255,255,255,.06);color:var(--side-ink);}
+  .nav a.active{background:var(--sea);color:#fff;font-weight:600;}
+  .nav a .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0;}
+  .nav a .cnt{margin-left:auto;font-size:13.5px;background:rgba(255,255,255,.12);padding:1px 6px;border-radius:9px;font-variant-numeric:tabular-nums;}
+  .nav a.active .cnt{background:rgba(255,255,255,.22);}
+  .nav a .cnt.done{background:var(--green);color:#fff;}
+
+  .side-foot{padding:12px 14px 16px;display:flex;flex-direction:column;gap:7px;}
+  .side-foot button{background:rgba(255,255,255,.06);border:1px solid var(--side-line);color:var(--side-ink-2);
+    border-radius:7px;padding:8px;font-size:14px;cursor:pointer;font-family:-apple-system,"PingFang SC",sans-serif;}
+  .side-foot button:hover{background:rgba(255,255,255,.12);color:var(--side-ink);}
+  .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;}
+
+  /* ===== main ===== */
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .topbar{display:none;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line);
+    background:var(--paper);position:sticky;top:0;z-index:30;}
+  .topbar .hamburger{font-size:20px;border:none;background:none;cursor:pointer;color:var(--ink);padding:0;}
+  .crumb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--ink-2);flex:1;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .topbar-actions{display:flex;gap:7px;}
+  .topbar-actions button{border:1px solid var(--line);background:var(--paper-2);border-radius:18px;padding:6px 11px;
+    font-size:13.5px;cursor:pointer;font-family:-apple-system,"PingFang SC",sans-serif;color:var(--ink-2);white-space:nowrap;}
+
+  .views{max-width:1100px;width:100%;margin:0 auto;padding:34px 28px 90px;flex:1;}
+  .view{display:none;}
+  .view.is-active{display:block;animation:fade .22s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+
+  /* ===== atoms ===== */
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:34px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .sec-head:first-child{margin-top:0;}
+  h2{font-size:22px;letter-spacing:.04em;font-weight:600;}
+  .sec-note{font-size:14px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;margin-left:auto;}
+  .sec-sub{font-size:13.5px;color:var(--ink-3);font-family:-apple-system,"PingFang SC",sans-serif;margin:-10px 0 20px;line-height:1.8;}
+
+  .head{background:var(--sea-soft);border:1px solid #cddfe6;border-radius:12px;padding:26px 28px;}
+  :root[data-theme="dark"] .head{border-color:#2a4049;}
+  .head .kicker{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;letter-spacing:.18em;color:var(--sea);margin-bottom:10px;}
+  .head h1{font-size:26px;letter-spacing:.04em;font-weight:600;line-height:1.4;margin-bottom:10px;}
+  .head p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-2);line-height:1.9;}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:16px 0 0;}
+  .kpi{background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:14px 15px;}
+  .kpi .lb{font-family:-apple-system,"PingFang SC",sans-serif;font-size:12.5px;letter-spacing:.12em;color:var(--ink-3);margin-bottom:6px;}
+  .kpi .vl{font-size:20px;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;line-height:1.3;}
+  .kpi .sb{font-size:13.5px;color:var(--ink-3);margin-top:5px;font-family:-apple-system,"PingFang SC",sans-serif;line-height:1.6;}
+  .kpi.accent{border-left:3px solid var(--sea);} .kpi.accent .vl{color:var(--sea);}
+  .kpi.ok{border-left:3px solid var(--green);} .kpi.ok .vl{color:var(--green);}
+  .kpi.warn{border-left:3px solid var(--gold);} .kpi.warn .vl{color:var(--gold);}
+  .kpi.bad{border-left:3px solid var(--red);} .kpi.bad .vl{color:var(--red);}
+
+  .note{background:var(--gold-soft);border:1px solid #ecdcb4;border-left:4px solid var(--gold);border-radius:6px;padding:16px 20px;margin:16px 0;}
+  .note h4{font-size:14.5px;color:var(--gold);margin-bottom:8px;letter-spacing:.03em;}
+  .note p,.note li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#6b4d18;line-height:1.85;}
+  .note ol,.note ul{margin:7px 0 0 18px;}
+  :root[data-theme="dark"] .note p,:root[data-theme="dark"] .note li{color:#dcbb7c;}
+  .ok-note{background:var(--green-soft);border:1px solid #cce2d0;border-left:4px solid var(--green);border-radius:6px;padding:16px 20px;margin:16px 0;}
+  .ok-note h4{font-size:14.5px;color:var(--green);margin-bottom:8px;letter-spacing:.03em;}
+  .ok-note p,.ok-note li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#2e5c37;line-height:1.85;}
+  :root[data-theme="dark"] .ok-note p,:root[data-theme="dark"] .ok-note li{color:#a4c8ad;}
+  .sea-note{background:var(--sea-soft);border:1px solid #cddfe6;border-left:4px solid var(--sea);border-radius:6px;padding:16px 20px;margin:16px 0;}
+  .sea-note h4{font-size:14.5px;color:var(--sea);margin-bottom:8px;letter-spacing:.03em;}
+  .sea-note p,.sea-note li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#285467;line-height:1.85;}
+  :root[data-theme="dark"] .sea-note p,:root[data-theme="dark"] .sea-note li{color:#9dc8da;}
+  .bad-note{background:var(--red-soft);border:1px solid #eccfcb;border-left:4px solid var(--red);border-radius:6px;padding:16px 20px;margin:16px 0;}
+  .bad-note h4{font-size:14.5px;color:var(--red);margin-bottom:8px;letter-spacing:.03em;}
+  .bad-note p,.bad-note li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:#7c2a25;line-height:1.85;}
+  :root[data-theme="dark"] .bad-note p,:root[data-theme="dark"] .bad-note li{color:#e0a49e;}
+
+  /* ===== checklist ===== */
+  .grp-title{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;letter-spacing:.12em;color:var(--ink-3);margin:26px 0 10px;}
+  .chk-list{list-style:none;}
+  .chk{display:flex;align-items:flex-start;gap:11px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+    background:var(--paper-2);margin-bottom:7px;cursor:pointer;transition:background .15s,border-color .15s;}
+  .chk:hover{background:var(--sea-soft);border-color:#cddfe6;}
+  .chk input{margin-top:3px;width:16px;height:16px;accent-color:var(--sea);cursor:pointer;flex-shrink:0;}
+  .chk .tx{flex:1;font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;line-height:1.8;min-width:0;}
+  .chk .tx small{display:block;color:var(--ink-3);font-size:13.5px;margin-top:3px;line-height:1.75;}
+  .chk .tag{flex-shrink:0;font-size:12.5px;padding:2px 7px;border-radius:4px;background:var(--rust-soft);color:var(--rust);
+    font-family:-apple-system,"PingFang SC",sans-serif;white-space:nowrap;align-self:flex-start;margin-top:2px;}
+  :root[data-theme="dark"] .chk .tag{background:#31251b;}
+  .chk.done{background:var(--green-soft);border-color:#cce2d0;}
+  .chk.done .tx{color:var(--ink-3);}
+  .chk.done .tx b{text-decoration:line-through;font-weight:600;}
+  .chk.done .tag{background:var(--green);color:#fff;}
+
+  /* ===== board (booking kanban) ===== */
+  .board{display:grid;gap:10px;}
+  .bcol{background:var(--paper-2);border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+  .bcol-h{padding:11px 15px;background:var(--slate-soft);border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:9px;}
+  .bcol-h .st{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;font-weight:600;}
+  .bcol-h .amt{margin-left:auto;font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+  .brow{padding:13px 15px;border-bottom:1px solid var(--line-2);}
+  .brow:last-child{border-bottom:none;}
+  .brow .r1{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;}
+  .brow .r1 .nm{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14.5px;font-weight:600;}
+  .brow .r1 .pr{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--sea);font-variant-numeric:tabular-nums;}
+  .brow .r2{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--ink-2);line-height:1.75;}
+  .brow .r2 b{color:var(--ink);}
+  .brow .r3{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap;align-items:center;}
+  .pill{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;padding:4px 10px;border-radius:20px;border:1px solid var(--line);
+    color:var(--ink-3);cursor:pointer;background:var(--paper);user-select:none;}
+  .pill:hover{border-color:var(--sea);color:var(--sea);}
+  .pill.on{background:var(--green);border-color:var(--green);color:#fff;}
+  .pill.on.bad{background:var(--red);border-color:var(--red);}
+  .pill.on.warn{background:var(--gold);border-color:var(--gold);}
+  .dot-p{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;}
+
+  /* ===== day strip ===== */
+  .daybar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+  .daytab{flex:1;min-width:150px;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:12px 14px;cursor:pointer;
+    font-family:-apple-system,"PingFang SC",sans-serif;transition:border-color .15s,background .15s;text-align:left;}
+  .daytab:hover{border-color:var(--sea);}
+  .daytab.on{border-color:var(--sea);background:var(--sea-soft);}
+  .daytab .d{font-size:16px;font-weight:700;letter-spacing:.02em;}
+  .daytab.on .d{color:var(--sea);}
+  .daytab .w{font-size:13.5px;color:var(--ink-3);margin-top:2px;}
+  .daytab .pg{font-size:13.5px;color:var(--ink-3);margin-top:6px;}
+  .daytab .pg b{color:var(--sea);font-variant-numeric:tabular-nums;}
+
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+  .card-h{padding:14px 20px;background:linear-gradient(180deg,#fbfcfd,#f5f7f8);border-bottom:1px solid var(--line-2);
+    display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
+  :root[data-theme="dark"] .card-h{background:linear-gradient(180deg,#22282d,#1e2429);}
+  .card-h h3{font-size:16.5px;font-weight:600;letter-spacing:.03em;}
+  .card-h .tm{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-3);margin-left:auto;
+    font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .card-b{padding:6px 20px 16px;}
+  .row{display:flex;align-items:flex-start;gap:13px;padding:12px 0;border-bottom:1px dashed var(--line-2);}
+  .row:last-child{border-bottom:none;}
+  .row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--sea);cursor:pointer;flex-shrink:0;}
+  .row .t{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--sea);min-width:52px;padding-top:1px;
+    font-weight:600;font-variant-numeric:tabular-nums;}
+  .row .c{flex:1;min-width:0;font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;line-height:1.75;}
+  .row .c small{display:block;color:var(--ink-3);font-size:13.5px;margin-top:3px;line-height:1.75;}
+  .row.done .c{color:var(--ink-3);}
+  .row.done .c b{text-decoration:line-through;}
+  .row .cst{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px;
+    font-variant-numeric:tabular-nums;}
+
+  /* ===== budget ===== */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;border:1px solid var(--line);margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;min-width:520px;}
+  th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;line-height:1.75;}
+  th{background:var(--sea-soft);color:var(--sea);font-weight:600;font-size:14px;letter-spacing:.03em;}
+  :root[data-theme="dark"] th{color:#82c6de;}
+  th:first-child{border-radius:0;}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  tfoot td{background:var(--slate-soft);font-weight:600;border-top:2px solid var(--line);}
+  .cat-pill{font-size:13.5px;padding:2px 7px;border-radius:4px;background:var(--slate-soft);color:var(--slate);
+    font-family:-apple-system,"PingFang SC",sans-serif;white-space:nowrap;}
+
+  /* ===== info cards ===== */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:17px 19px;}
+  .panel h3{font-size:15.5px;font-weight:600;letter-spacing:.02em;margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--line-2);}
+  .panel ul{margin:0 0 0 17px;} .panel li{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-2);line-height:1.8;margin-bottom:6px;}
+  .panel ul:last-child{margin-bottom:0;}
+  .panel li b{color:var(--ink);}
+
+  .kv{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;}
+  .kv div{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line-2);}
+  .kv div:last-child{border-bottom:none;}
+  .kv .k{color:var(--ink-3);min-width:92px;flex-shrink:0;}
+  .kv .v{color:var(--ink);font-weight:500;line-height:1.8;}
+
+  .fig{margin:18px 0 6px;padding:18px;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;}
+  .fig svg{display:block;width:100%;height:auto;}
+  .fig figcaption{font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-3);margin-top:12px;line-height:1.8;}
+
+  .footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:-apple-system,"PingFang SC",sans-serif;font-size:13.5px;color:var(--ink-3);line-height:1.85;}
+
+  @media(max-width:1000px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+  }
+  @media(max-width:760px){
+    .sidebar{position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .24s;z-index:50;}
+    .sidebar.open{transform:none;}
+    .scrim.on{display:block;}
+    .topbar{display:flex;}
+    .views{padding:20px 14px 60px;}
+    .kpis{grid-template-columns:1fr 1fr;}
+    .daybar{flex-direction:column;}
+    .head{padding:20px;} .head h1{font-size:21px;}
+    h2{font-size:19px;}
+    .card-b{padding:4px 15px 14px;}
+    .card-h{padding:12px 15px;}
+    .row{flex-wrap:wrap;gap:7px;}
+    .row .t{min-width:auto;}
+    .row .cst{width:100%;padding-left:0;}
+    .row.done .c b{text-decoration:line-through;}
+  }
+  @media print{
+    .sidebar,.topbar,.scrim,.side-foot{display:none!important;}
+    .view{display:block!important;}
+    .kpi,.card,.panel,.chk,.bcol{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">威海 · 旅行工作台<small>2026.10.13 (二) - 10.15 (四) · 3天2晚 · 2人</small></div>
+    <div class="cd-big">
+      <div class="lb">距出发</div>
+      <div class="vl" id="cdDays">--</div>
+      <div class="sb" id="cdSub">--</div>
+      <div class="ring-wrap"><div class="ring" id="ring"></div></div>
+      <div class="ring-lb" id="ringLb">准备度 --</div>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="grp">准备</div>
+      <a data-view="dash" class="active"><span class="dot"></span>总览台</a>
+      <a data-view="booking"><span class="dot"></span>预订看板<span class="cnt" id="cBooking">0/6</span></a>
+      <a data-view="prep"><span class="dot"></span>行前待办<span class="cnt" id="cPrep">0/0</span></a>
+      <a data-view="pack"><span class="dot"></span>打包清单<span class="cnt" id="cPack">0/0</span></a>
+      <div class="grp">现场</div>
+      <a data-view="day1"><span class="dot"></span>Day 1 抵达环海路</a>
+      <a data-view="day2"><span class="dot"></span>Day 2 荣成东线</a>
+      <a data-view="day3"><span class="dot"></span>Day 3 慢逛返京</a>
+      <a data-view="food"><span class="dot"></span>吃 · 排兵布阵</a>
+      <div class="grp">参考</div>
+      <a data-view="car"><span class="dot"></span>租车与交通</a>
+      <a data-view="fig"><span class="dot"></span>无花果专题</a>
+      <a data-view="tips"><span class="dot"></span>避坑与安全</a>
+    </nav>
+    <div class="side-foot">
+      <button id="themeBtn">切换深色</button>
+      <button id="printBtn">打印 / 导出 PDF</button>
+      <button id="resetBtn">清空所有勾选</button>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" aria-label="菜单">☰</button>
+      <div class="crumb" id="crumb">总览台</div>
+      <div class="topbar-actions">
+        <button id="themeBtnM">主题</button>
+        <button id="printBtnM">打印</button>
+      </div>
+    </header>
+
+    <div class="views">
+
+      <!-- ===== DASH ===== -->
+      <section class="view is-active" id="v-dash">
+        <div class="head">
+          <div class="kicker">BEIJING → WEIHAI</div>
+          <h1>威海 3 天 2 晚 · 工作台</h1>
+          <p>预订看板、行前待办、现场打卡、预算账本 —— 全部进度存在这台设备的浏览器里，关掉再打开不会丢。</p>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi accent"><div class="lb">距出发</div><div class="vl" id="kDays">--</div><div class="sb" id="kSub">--</div></div>
+          <div class="kpi ok"><div class="lb">准备度</div><div class="vl" id="kPrep">--</div><div class="sb" id="kPrepSub">行前事项完成情况</div></div>
+          <div class="kpi warn"><div class="lb">预算上限</div><div class="vl">¥4200</div><div class="sb">2 人合计（不含购物）</div></div>
+          <div class="kpi bad"><div class="lb">订票窗口</div><div class="vl" id="kTicket">--</div><div class="sb">12306 提前 10 天放票</div></div>
+        </div>
+
+        <div class="sec-head"><h2>三件现在就得动手的事</h2><span class="sec-note">按紧迫度排序</span></div>
+        <div class="board">
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">1 · 抢 10/13 去程高铁票（最紧急）</span><span class="amt">¥960 / 2人</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">G1085　北京南 → 威海</span><span class="pr">08:42 - 13:41 · 二等座 480/人</span></div>
+              <div class="r2">北京直达威海<b>只有 3 趟</b>，这趟最早。备选 <b>G893</b>（12:26 发车，16:55 到），但那天首日就废了。约 10 月 3 日放票。</div>
+              <div class="r3">
+                <span class="pill" data-toggle="t_go">已抢到</span>
+                <span class="pill" data-toggle="t_go_seat">已选座</span>
+                <span class="pill warn" data-toggle="t_go_remind">设了提醒</span>
+              </div>
+            </div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">2 · 抢 10/15 返程高铁票</span><span class="amt">¥978 / 2人</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">G1092　威海 → 北京南</span><span class="pr">13:59 - 19:14 · 二等座 489/人</span></div>
+              <div class="r2">备选 <b>G1090</b>（13:02 发车，19:10 到），更早发车但第三天基本只剩赶海。<b>返程票同样要抢。</b></div>
+              <div class="r3">
+                <span class="pill" data-toggle="t_back">已抢到</span>
+                <span class="pill" data-toggle="t_back_seat">已选座</span>
+                <span class="pill warn" data-toggle="t_back_remind">设了提醒</span>
+              </div>
+            </div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">3 · 订酒店（韩乐坊 / 威高广场一带）</span><span class="amt">¥400-600 / 2晚</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">桔子韩乐坊 · 全季威海站 · 亚朵</span><span class="pr">200-300 / 晚</span></div>
+              <div class="r2">选这一带是因为：<b>离火车站 10 分钟</b>、<b>火炬八街走路就到</b>、晚上吃饭方便、Day 1 和 Day 3 打车都好叫。<b>订可免费取消的。</b></div>
+              <div class="r3">
+                <span class="pill" data-toggle="t_hotel">已订</span>
+                <span class="pill" data-toggle="t_hotel_free">选了免费取消</span>
+                <span class="pill" data-toggle="t_hotel_park">确认了停车位</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-head"><h2>三天速览</h2><span class="sec-note">点击卡片进入当日视图</span></div>
+        <div class="daybar">
+          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 周二 · 抵达</div><div class="pg"><b id="p1">0</b> / <span id="p1t">0</span> 项完成</div></button>
+          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 周三 · 荣成</div><div class="pg"><b id="p2">0</b> / <span id="p2t">0</span> 项完成</div></button>
+          <button class="daytab" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 周四 · 慢逛</div><div class="pg"><b id="p3">0</b> / <span id="p3t">0</span> 项完成</div></button>
+        </div>
+
+        <div class="ok-note">
+          <h4>为什么这么排：一条时间硬约束</h4>
+          <p>去程最早 08:42 发车、<strong>13:41 到</strong>；返程最晚 14:00 前发车、<strong>19:14 到</strong>。所以：</p>
+          <ul style="margin:7px 0 0 18px;font-family:-apple-system,'PingFang SC',sans-serif;font-size:13.5px;line-height:1.85;">
+            <li><strong>Day 1 只有半天</strong>：13:41 落地，行李放下 14:40，真正能玩到 17:10 日落。→ 排环海路西线，打车 15-25 元一站。</li>
+            <li><strong>Day 3 只有上午</strong>：11:30 得出发去车站。→ 早市 + 市区慢逛，全靠步行和短途打车。</li>
+            <li><strong>Day 2 是唯一完整全天，也是唯一需要车的一天</strong>：沉船、那香海都在荣成，距市区 50-60 公里。→ <strong>租车就只租这天。</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== BOOKING ===== -->
+      <section class="view" id="v-booking">
+        <div class="sec-head"><h2>预订看板</h2><span class="sec-note" id="bookingCount">0 / 6 完成</span></div>
+        <p class="sec-sub">六项必须提前搞定的事。点右侧标签标记完成状态——<strong>先抢票，再订房，最后租车</strong>，因为票抢不到其他都白搭。</p>
+
+        <div class="board" id="bookingBoard">
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">① 去程高铁 · G1085</span><span class="amt">¥960 / 2人</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">北京南 08:42 → 威海 13:41</span><span class="pr">4h59m · 二等座 480/人</span></div>
+              <div class="r2">全程北京直达威海仅 3 趟，这是最早的一班。<b>07:50 前到北京南</b>，安检+找车厢至少 40 分钟。</div>
+              <div class="r3">
+                <span class="pill" data-toggle="b1">票已到手</span>
+                <span class="pill" data-toggle="b1b">已选座</span>
+                <span class="pill warn" data-toggle="b1c">放进日历</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">② 返程高铁 · G1092</span><span class="amt">¥978 / 2人</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">威海 13:59 → 北京南 19:14</span><span class="pr">5h15m · 二等座 489/人</span></div>
+              <div class="r2">备选 <b>G1090</b>（威海 13:02 发车）。<b>返程票和去程一样要提前抢</b>，热门日期下午发车的车次更容易紧张。</div>
+              <div class="r3">
+                <span class="pill" data-toggle="b2">票已到手</span>
+                <span class="pill" data-toggle="b2b">已选座</span>
+                <span class="pill warn" data-toggle="b2c">放进日历</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bcol">
+            <div class="bcol-h"><span class="dot-p"></span><span class="st">③ 酒店 · 2 晚</span><span class="amt">¥400-600</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">桔子韩乐坊 / 全季威海站 / 亚朵</span><span class="pr">200-300 / 晚</span></div>
+              <div class="r2">10/13-10/15 是<b>周二到周四</b>，非周末房价比周末低。<b>订可免费取消的</b>，万一票没抢到还能退。</div>
+              <div class="r3">
+                <span class="pill" data-toggle="b3">已订</span>
+                <span class="pill" data-toggle="b3b">可免费取消</span>
+                <span class="pill" data-toggle="b3c">确认了含早</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bcol">
+            <div class="bcol-h"><span class="st">④ 租车 · 10/14 单日</span><span class="amt">¥220-300</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">威海站取 → 威海站还</span><span class="pr">经济型轿车 / 小型 SUV</span></div>
+              <div class="r2">
+                <b>取还都在威海站，不是在郊外的威海北站。</b>一嗨在客运楼一层（08:00-23:00，15263135626），神舟在站南区地下停车场 E 区。<br>
+                <b style="color:var(--red)">下单前必须确认每天里程上限</b>——经济型通常限 200 公里，沉船往返已占 160 公里。
+              </div>
+              <div class="r3">
+                <span class="pill" data-toggle="b4">已订</span>
+                <span class="pill" data-toggle="b4b">确认不限里程</span>
+                <span class="pill warn" data-toggle="b4c">买了全险</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bcol">
+            <div class="bcol-h"><span class="st">⑤ 保险与备选方案</span><span class="amt">¥50-80</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">租车全险 + 信用卡额度</span><span class="pr">多花 50 元买全险</span></div>
+              <div class="r2">基础险通常<b>机械故障需自费维修</b>。押金通常冻结 <b>3000 元</b>预授权，<b>确认信用卡额度留得够</b>。还车时间上限也要问清（超时费 20-50 元/小时）。</div>
+              <div class="r3">
+                <span class="pill" data-toggle="b5">已买全险</span>
+                <span class="pill" data-toggle="b5b">额度已确认</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bcol">
+            <div class="bcol-h"><span class="st">⑥ 出发前信息确认</span><span class="amt">免费</span></div>
+            <div class="brow">
+              <div class="r1"><span class="nm">潮汐表 + 天气 + 果园</span><span class="pr">10 月初 / 出发前 3 天</span></div>
+              <div class="r2">
+                · <b>10 月初</b>：查 10/14 威海潮汐表（沉船要退潮才好看）<br>
+                · <b>出发前 3 天</b>：再查一次天气，留意冷空气<br>
+                · <b>可选</b>：问荣成俚岛镇/埠柳镇果园是否还接待采摘（10 月中旬是临界点，每年不同）
+              </div>
+              <div class="r3">
+                <span class="pill" data-toggle="b6">潮汐已查</span>
+                <span class="pill" data-toggle="b6b">天气已查</span>
+                <span class="pill" data-toggle="b6c">打过果园电话</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PREP ===== -->
+      <section class="view" id="v-prep">
+        <div class="sec-head"><h2>行前待办</h2><span class="sec-note" id="prepCount">0 / 0</span></div>
+        <p class="sec-sub">按时间顺序。带"急"标记的别拖。</p>
+
+        <div class="grp-title">现在就做 · 10 月上旬</div>
+        <ul class="chk-list" data-group="prep">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>抢 10/13 去程 G1085 票</b><small>北京南 08:42 → 威海 13:41 · 约 10 月 3 日放票 · 设个闹钟</small></div><span class="tag">急</span></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>抢 10/15 返程 G1092 票</b><small>威海 13:59 → 北京南 19:14 · 放票时间同上，别只盯着去程</small></div><span class="tag">急</span></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>订酒店（2 晚）</b><small>韩乐坊 / 威高广场一带 · 周二到周四房价低 · 订可免费取消的</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>订 10/14 单日租车</b><small>威海站取还 · 下单时确认每天里程上限是否含 200 公里</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>查 10/14 威海潮汐表</b><small>沉船和赶海都靠潮汐 · 记下低潮时段 · 查"威海海洋预报"或潮汐 App</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>确认信用卡额度</b><small>租车押金通常冻结 3000 元预授权，确认额度留得够</small></div></li>
+        </ul>
+
+        <div class="grp-title">出发前 3 天 · 10/10 前后</div>
+        <ul class="chk-list" data-group="prep">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>再查一次天气</b><small>10 月威海晴天率全年最高（67%），但要留意冷空气</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>查 K8 路半月湾支线班次（备查）</b><small>威海站发车 8:25 / 10:15 / 11:15 / 12:45 / 14:15 / <b>15:25 末班</b> — 赶不上 17:10 日落，Day 1 计划按打车算</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>下载离线地图</b><small>沉船附近信号一般，环海路部分路段无信号</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>（可选）问果园是否还接待采摘</b><small>10 月中旬是临界点，每年不同 · 但你说了不吃采摘，列成可选项</small></div></li>
+        </ul>
+
+        <div class="grp-title">出发前一晚 · 10/12</div>
+        <ul class="chk-list" data-group="prep">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>收拾行李（对照打包清单）</b><small>重点：防风外套 + 防滑鞋 + 充电宝 + 身份证</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>把车次信息存到手机</b><small>G1085 / G1092 的车次、时间、座位号，存截图或备忘录</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>订好Day 2 早餐打包</b><small>Day 2 要 07:50 出发去威海站取车，前一晚把早上的东西准备好</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>确认证件有效期</b><small>身份证 + 驾驶证（租车要用）· 都需超过租期</small></div></li>
+        </ul>
+
+        <div class="grp-title">Day 2 早上 · 出发当天</div>
+        <ul class="chk-list" data-group="prep">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>查当天潮汐与海况</b><small>沉船能不能走近礁石，取决于当天潮位</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>下载威海公交 App / 备好支付宝乘车码</b><small>市区公交 1-2 元，支持扫码但不一定收现金</small></div></li>
+        </ul>
+      </section>
+
+      <!-- ===== PACK ===== -->
+      <section class="view" id="v-pack">
+        <div class="sec-head"><h2>打包清单</h2><span class="sec-note" id="packCount">0 / 0</span></div>
+        <p class="sec-sub">10 月威海 13-19℃、风速约 23 km/h、海水 17℃ 不能下水。核心是"防风 + 能走礁石的鞋"。</p>
+
+        <div class="grp-title">衣物（重点：防风）</div>
+        <ul class="chk-list" data-group="pack">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>防风外套</b><small>最关键的一件。海边风速 20-25 km/h，傍晚体感 13-16℃，没这件会很难受</small></div><span class="tag">关键</span></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>薄毛衣 / 卫衣</b><small>室内和早晚加一层</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>长裤 ×2</b><small>海边风大，短裤会冷</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>防滑运动鞋 / 徒步鞋</b><small>沉船礁石区湿滑，务必不要穿平底帆布鞋或拖鞋。安全项</small></div><span class="tag">关键</span></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>拖鞋 / 沙滩鞋</b><small>住宿和浴场用</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>冲锋帽 / 渔夫帽</b><small>海边风大，帽子会被吹跑</small></div></li>
+        </ul>
+
+        <div class="grp-title">拍照与电子</div>
+        <ul class="chk-list" data-group="pack">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>手机 + 充电宝</b><small>沉船和礁石区耗电快</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>长焦镜头（如有）</b><small>沉船的堤坝长焦位需要长焦压缩，没有的话拍不出"孤独巨轮"的观感</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>相机擦镜布</b><small>海风大、盐雾，镜头容易蒙雾</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>三脚架（可选）</b><small>蓝调时刻拍日落</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>身份证（+ 驾驶证）</b><small>高铁、住宿、租车都要用</small></div><span class="tag">关键</span></li>
+        </ul>
+
+        <div class="grp-title">Day 2 用车日随身</div>
+        <ul class="chk-list" data-group="pack">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>矿泉水 + 干粮</b><small>荣成东线（沉船到那香海）路上便利店很少，出发前在市区买好</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>晕车药 / 薄荷口香糖</b><small>环海路弯道多，Day 2 往返约 180 公里</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>垃圾袋</b><small>海边没有垃圾桶</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>防晒霜 / 唇膏</b><small>10 月紫外线仍不弱，海风加剧干燥</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>充电宝 + 车充</b><small>取车要验车录像、导航都要电</small></div></li>
+        </ul>
+
+        <div class="grp-title">买回来（提醒自己别忘了）</div>
+        <ul class="chk-list" data-group="pack">
+          <li class="chk"><input type="checkbox"><div class="tx"><b>无花果冻干 / 果干 / 果酱</b><small>威海是全国无花果种植和产量双第一，加工品不受季节限制，甜度高好带</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>文登花饽饽（可选）</b><small>省级非遗，果蔬汁染色的面塑，可当伴手礼</small></div></li>
+        </ul>
+      </section>
+
+      <!-- ===== DAY 1 ===== -->
+      <section class="view" id="v-day1">
+        <div class="sec-head"><h2>Day 1 · 10/13 周二</h2><span class="sec-note">抵达日 · 半天轻量 · 全程打车</span></div>
+        <div class="daybar">
+          <button class="daytab on" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="q1">0</b> / <span id="q1t">0</span></div></button>
+          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="q2">0</b> / <span id="q2t">0</span></div></button>
+          <button class="daytab" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="q3">0</b> / <span id="q3t">0</span></div></button>
+        </div>
+
+        <div class="sea-note" style="margin-top:0;">
+          <h4>今天不租车</h4>
+          <p><strong>13:41 落地 → 14:40 出门 → 17:10 日落</strong>，全程打车约 ¥50-70。火炬八街距韩乐坊只有 1 公里，走路就到。国际海水浴场和火炬八街停车位本来就紧张，不开车反而省心。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>下午 · 环海路西线</h3><span class="tm">13:41 - 17:10 · 日落 17:10</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d1_a"><div class="t">08:42</div><div class="c"><b>北京南 → 威海 G1085</b><small>07:50 前到站，安检 + 找车厢至少 40 分钟。车上补觉，4h59m 抵达</small></div><div class="cst">¥480×2</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_b"><div class="t">13:41</div><div class="c"><b>出站 → 打车去酒店</b><small>威海站到韩乐坊一带 15-20 元、10 分钟。拖行李不值得坐公交</small></div><div class="cst">¥15-20</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_c"><div class="t">14:20</div><div class="c"><b>酒店入住 · 放行李</b><small>选韩乐坊 / 威高广场一带：离火车站 10 分钟、火炬八街走路就到、晚上吃饭方便</small></div><div class="cst">¥200-300</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_d"><div class="t">14:40</div><div class="c"><b>火炬八街</b><small>一条下坡路直通大海，路的尽头就是海。下午光线斜射，海水偏蓝。<b>从韩乐坊走过去约 1 公里</b></small></div><div class="cst">步行</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_e"><div class="t">15:20</div><div class="c"><b>半月湾 / 海源公园</b><small>海岸线弯成月牙，有礁石和步道，适合慢慢走。停车位比火炬八街多</small></div><div class="cst">¥15</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_f"><div class="t">16:10</div><div class="c"><b>国际海水浴场</b><small>3 公里细白沙，秋天人少。<b>海水表温 17℃，不能下水</b>，踩踩沙子看看海没问题</small></div><div class="cst">¥15</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_g"><div class="t">17:10</div><div class="c"><b>看日落</b><small>好机位：半月湾观景台（能拍日落入海 + 海岸线延伸感）、国际海水浴场西侧堤坝。<b>日落后 20 分钟的"蓝调时刻"最出片</b></small></div><div class="cst">¥20 打车回</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>晚餐 · 第一顿海鲜</h3><span class="tm">18:30 · 步行 5-10 分钟</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d1_h"><div class="t">18:30</div><div class="c"><b>聚朋大鲅鱼饺子饭店</b><small>华夏路金海湾花园 21-5（韩国美食街）。招牌<b>鲅鱼虾仁大饺子</b>手掌大、皮薄爆汁+<b>海肠捞饭</b>。避开 18:00-19:30 高峰</small></div><div class="cst">¥110-130/人</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DAY 2 ===== -->
+      <section class="view" id="v-day2">
+        <div class="sec-head"><h2>Day 2 · 10/14 周三</h2><span class="sec-note">唯一完整全天 · 唯一用车日</span></div>
+        <div class="daybar">
+          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="w1">0</b> / <span id="w1t">0</span></div></button>
+          <button class="daytab on" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="w2">0</b> / <span id="w2t">0</span></div></button>
+          <button class="daytab" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="w3">0</b> / <span id="w3t">0</span></div></button>
+        </div>
+
+        <div class="bad-note" style="margin-top:0;">
+          <h4>出发前必看：里程上限和超时费</h4>
+          <p>经济型轿车通常<b>限 200 公里/天</b>，超 1 公里加收 0.8-1.5 元。今天威海站→沉船往返已占<b>约 160 公里</b>，加那香海和市区来回基本贴着上限——<b>临时想去猫头山（多 20 公里）一定要先确认</b>。</p>
+          <p style="margin-top:8px;">另外超时费 20-50 元/小时，<b>超 4 小时按半天算、超 8 小时按全天</b>。还车时间上限务必问清。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>取车 · 出发</h3><span class="tm">07:50 - 09:00</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_a"><div class="t">07:50</div><div class="c"><b>打车去威海站取车</b><small>一嗨在客运楼一层（08:00-23:00，15263135626）或神舟在站南区地下停车场 E 区。<b>两处都支持站内取还</b></small></div><div class="cst">¥15-20</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_b"><div class="t">08:00</div><div class="c"><b>取车 · 验车</b><small><b>360° 录像存证</b>、核对油表刻度、查证件有效期。<b>铭牌和油表一定要拍</b>，这是还车时唯一的凭证</small></div><div class="cst">¥220-300</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_c"><div class="t">08:30</div><div class="c"><b>沿环海路 G228 东行</b><small>全程沿海岸线，风景本身就是目的地。约 1 小时到成山镇。可在<b>烟墩角</b>停一下（公交 4 号线也经过这带）</small></div><div class="cst">约 60 km</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>上午 · 布鲁威斯号沉船 ★ 本日重点</h3><span class="tm">09:00 - 10:30 · 免费 · 24h 开放</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_d"><div class="t">09:00</div><div class="c"><b>抵达沉船点</b><small>2022 年因台风搁浅的巴拿马籍散货轮，190 米长，45 度倾斜。<b>导航搜"布鲁威斯海滩地上停车场"</b>，别只搜"沉船"，会导到烂路多走 20 分钟</small></div><div class="cst">免费</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_e"><div class="t">09:10</div><div class="c"><b>拍照 · 三个机位</b><small>① 木栈道全景位（最稳，新手不废片）② 右侧礁石区（退潮时可走近拍锈蚀细节 + 人物）③ 堤坝长焦位（压缩画面，孤寂感最强，需长焦镜头）</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_f"><div class="t">10:00</div><div class="c"><b>安全检查</b><small><b>禁止攀爬船体</b>（围栏已拦、结构不稳）· 礁石湿滑穿防滑鞋 · <b>涨潮别靠近浪边</b> · 周边无遮阳，注意补水</small></div><div class="cst">—</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>中午 · 那香海 + 午餐</h3><span class="tm">10:30 - 13:30</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_g"><div class="t">10:30</div><div class="c"><b>那香海 · 钻石沙滩</b><small>离沉船十几分钟车程。沙滩沙色偏白、海水清，秋天人不多。周边有房车营地和沙雕艺术乐园</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_h"><div class="t">12:00</div><div class="c"><b>午餐 · 渔家海鲜</b><small>那香海附近海鲜大排档。海肠捞饭 + 炒花蛤 + 鲅鱼水饺。<b>点单前先问清单价</b>，海鲜按斤算容易超预算。<b>周边便利店很少</b>，提前买水</small></div><div class="cst">¥80-120/人</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>下午 · 买无花果 + 还车</h3><span class="tm">13:30 - 16:00</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_i"><div class="t">13:30</div><div class="c"><b>回市区路上买无花果</b><small>沿途埠柳镇、俚岛镇有果园和果干店。<b>重点买冻干 / 果干 / 果酱</b> —— 加工品不受季节限制，甜度高好带。鲜果皮薄易碰伤，高铁 5 小时损耗大</small></div><div class="cst">¥30-60</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_j"><div class="t">15:30</div><div class="c"><b>顺路去威海站还车</b><small>先买果再还车，一趟办完。<b>油量补到刻度线</b>，绕车拍照留证，务必最后拍一张车况照和油表照。还完打车回酒店</small></div><div class="cst">¥15-20 打车</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>晚餐 · 海鲜大餐</h3><span class="tm">18:00 · 今日主打</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_k"><div class="t">18:00</div><div class="c"><b>巧克力渔家 · 蒸汽海鲜锅</b><small>清水直接上锅蒸，不靠酱料，所有海鲜的原生清甜都释放出来，店员会帮忙剥壳。配<b>海胆水饺</b>和<b>海鲜疙瘩汤</b>收尾。不想开车的话韩乐坊也有海鲜档</small></div><div class="cst">¥130-200/人</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_l"><div class="t">20:00</div><div class="c"><b>收拾行李（为明天做准备）</b><small>明早 11:30 就要出发去车站，今晚把箱子收好，早上直接拎走</small></div><div class="cst">—</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DAY 3 ===== -->
+      <section class="view" id="v-day3">
+        <div class="sec-head"><h2>Day 3 · 10/15 周四</h2><span class="sec-note">慢逛收尾 · 车已还 · 全程步行+打车</span></div>
+        <div class="daybar">
+          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="e1">0</b> / <span id="e1t">0</span></div></button>
+          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="e2">0</b> / <span id="e2t">0</span></div></button>
+          <button class="daytab on" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="e3">0</b> / <span id="e3t">0</span></div></button>
+        </div>
+
+        <div class="sea-note" style="margin-top:0;">
+          <h4>今天的时间红线：11:30 必须出发去车站</h4>
+          <p>G1092 是 13:59 发车，<strong>没有更晚的直达车</strong>。打车从市区到威海站 15-20 元、10 分钟，到站后还要留 20 分钟安检。行程按这个倒推排。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>上午 · 市区慢逛</h3><span class="tm">07:30 - 11:30</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d3_a"><div class="t">07:30</div><div class="c"><b>威海甜沫 或 早市</b><small>甜沫是玉米面熬的糊糊配油条，胶东早点的灵魂，本地人也当早饭吃。想看本地生活就去环翠区早市。<b>从韩乐坊走过去不远</b></small></div><div class="cst">¥20-40</div></div>
+            <div class="row"><input type="checkbox" data-k="d3_b"><div class="t">09:00</div><div class="c"><b>小石岛赶海（查潮汐）</b><small>退潮前后 2 小时才有料可抓。小石岛赶海公园单独收费，能进礁石区抓螃蟹小螺。<b>10 月水温 17℃，捞上来的别下河</b></small></div><div class="cst">¥30</div></div>
+            <div class="row"><input type="checkbox" data-k="d3_c"><div class="t">09:00</div><div class="c"><b>悦海公园 / 威海公园大相框</b><small>悦海公园免费，栈道 + 灯塔 + 视野开阔；大相框是城市地标。<b>这几个点可以打车串起来</b>（单程 15-25 元），或坐 K1 路到小石岛南、观海澜湾一线</small></div><div class="cst">¥40-60 打车</div></div>
+            <div class="row"><input type="checkbox" data-k="d3_d"><div class="t">10:45</div><div class="c"><b>早午餐 · 最后一顿胶东风</b><small><b>角瓜蛤包子</b>（西葫芦配花蛤馅，鲜甜多汁）或<b>海鲜焖子</b>（滑嫩清爽，吃重口海鲜后收尾）。回酒店取行李走路 5-10 分钟</small></div><div class="cst">¥40-60/人</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>返程</h3><span class="tm">11:30 - 19:14</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d3_e"><div class="t">11:30</div><div class="c"><b>退房 · 打车去威海站</b><small><strong>时间红线。</strong>威海站 15-20 元、10 分钟。到站后留 20 分钟安检进站</small></div><div class="cst">¥15-20</div></div>
+            <div class="row"><input type="checkbox" data-k="d3_f"><div class="t">13:59</div><div class="c"><b>G1092 威海 → 北京南</b><small>19:14 抵达，晚上到家正好。车上可以把无花果冻干分装一下，<b>高铁不查行李</b></small></div><div class="cst">¥489×2</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FOOD ===== -->
+      <section class="view" id="v-food">
+        <div class="sec-head"><h2>吃 · 排兵布阵</h2><span class="sec-note">4 顿正餐 + 3 顿早餐</span></div>
+        <p class="sec-sub">你选了"吃海鲜大餐为主"，所以这顿是重点。9 月开海到 11 月是黄海海鲜最肥的时段，10 月中旬在中间。</p>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>时间</th><th>吃什么</th><th>去哪儿</th><th>必点</th><th class="num">人均</th></tr></thead>
+            <tbody>
+              <tr><td>D1 早餐</td><td>甜沫 + 油条</td><td>酒店或早市</td><td>胶东早点灵魂</td><td class="num">¥10-20</td></tr>
+              <tr><td>D1 午餐</td><td>高铁上解决</td><td>—</td><td>省时间</td><td class="num">¥30</td></tr>
+              <tr><td><b>D1 晚餐</b></td><td><b>聚朋大鲅鱼饺子</b><br>华夏路金海湾花园 21-5</td><td>近韩乐坊<br>步行 5-10 分钟</td><td><b>鲅鱼虾仁大饺子</b>（手掌大、爆汁）<br><b>海肠捞饭</b>（威海头牌）<br>蒸海鲜锅</td><td class="num">¥110-130</td></tr>
+              <tr><td>D2 早餐</td><td>酒店早餐</td><td>—</td><td>储备体力，早起要开车</td><td class="num">¥15-25</td></tr>
+              <tr><td><b>D2 午餐</b></td><td><b>那香海渔家海鲜</b></td><td>沉船附近</td><td>海肠捞饭、炒花蛤、鲅鱼水饺<br><span style="color:var(--red)">点单先问价</span></td><td class="num">¥80-120</td></tr>
+              <tr><td><b>D2 晚餐</b></td><td><b>巧克力渔家 · 蒸汽海鲜锅</b><br>或韩乐坊海鲜档</td><td>市区</td><td><b>蒸汽海鲜锅</b>（清水蒸，原生鲜甜）<br>海胆水饺、海鲜疙瘩汤</td><td class="num">¥130-200</td></tr>
+              <tr><td>D3 早餐</td><td>甜沫 / 早市</td><td>环翠区早市</td><td>看当天的海鲜货</td><td class="num">¥20-40</td></tr>
+              <tr><td>D3 午餐</td><td>角瓜蛤包子 / 海鲜焖子</td><td>市区</td><td>本地家常味，清淡收尾</td><td class="num">¥40-60</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ok-note">
+          <h4>10 月能吃到什么鲜货</h4>
+          <p>胶东口味偏咸鲜，烹调重"原味"，清蒸和海肠捞饭最能体现。</p>
+          <ul style="margin:7px 0 0 18px;font-family:-apple-system,'PingFang SC',sans-serif;font-size:13.5px;line-height:1.85;">
+            <li><b>鲅鱼 / 鲅鱼饺子</b>：10 月正当季。选"豆腐一样软嫩、鱼鲜味重、韭菜加得少"的那种。饺子手掌大，两人别多点</li>
+            <li><b>海肠</b>：威海头牌，脆糯弹牙。汆烫剪段后浇酱汁拌米饭。<b>认准店</b> —— 有测评点名某连锁店（天润大厦店）偏咸太稀</li>
+            <li><b>虾爬子（皮皮虾）</b>：清蒸或椒盐，肉紧弹，仍在季</li>
+            <li><b>海胆</b>：<b>唯一的季节遗憾</b> —— 5-6 月最饱满，10 月个头和膏体不如巅峰期。点海胆水饺性价比更高，别专门为它排店</li>
+            <li><b>乳山生蚝 / 扇贝 / 蛤蜊 / 虾</b>：全在季，蒜蓉烤或清蒸。秋天生蚝不如春天肥</li>
+            <li><b>文登花饽饽</b>：省级非遗，果蔬汁染色的面塑，可当伴手礼</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <h4>避坑：本地人实测的三个雷</h4>
+          <ol>
+            <li><b>韩乐坊夜市的鲅鱼饺子不如聚朋</b> —— 有实测说"与聚朋有壁"。想吃好的去专店，夜市留给逛</li>
+            <li><b>海鲜按斤算容易超预算</b> —— 下单前问清"这一斤多少钱、是什么品种"，尤其不认识的海货</li>
+            <li><b>88 元锅物要避开</b> —— 有测评点名韩香福烤肉庄园的 88 元锅物难吃（他家脊骨汤锅和脆皮五花肉还行）</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== CAR ===== -->
+      <section class="view" id="v-car">
+        <div class="sec-head"><h2>租车与交通</h2><span class="sec-note">只租 10/14 一天</span></div>
+
+        <div class="ok-note" style="margin-top:0;">
+          <h4>结论：Day 1 和 Day 3 不用租车</h4>
+          <p><strong>只有 Day 2 真正需要车</strong>——沉船和那香海在荣成成山镇，距市区 50-60 公里。Day 1 火炬八街距韩乐坊只有 1 公里（走路就到），Day 3 全在市区且早上要赶车。</p>
+          <p><strong>净省 700-900 元。</strong>而且有个隐性优势：Day 2 傍晚回程顺路先买无花果、再去威海站还车，一趟办完；三天全租还得专门为还车再跑一趟市区。</p>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>方案</th><th class="num">租车</th><th class="num">打车</th><th class="num">合计</th><th>优缺点</th></tr></thead>
+            <tbody>
+              <tr><td><b>A · 三天全租</b></td><td class="num">¥1100-1300</td><td class="num">¥0</td><td class="num"><b>¥1100-1300</b></td><td>最省心，随时挪不用等车。但<b>Day 1、Day 3 纯在市区开车</b>，停车位反而是负担</td></tr>
+              <tr style="background:var(--green-soft);"><td><b>B · 只租 Day 2</b><br>← 推荐</td><td class="num">¥430-500<br><span style="font-size:13.5px;color:var(--ink-3)">含基础险+油费</span></td><td class="num">¥110-170</td><td class="num"><b>¥550-670</b></td><td><b>净省 ¥700-900。</b>代价是 Day 1 日落和 Day 3 上午要打车（约 6 段）</td></tr>
+              <tr><td>C · 租两天</td><td class="num">¥700-850</td><td class="num">¥60-90</td><td class="num"><b>¥760-940</b></td><td>取车不用赶早、Day 3 从容一点。中间方案</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bad-note">
+          <h4>选方案 B 必须注意的三件事</h4>
+          <ol>
+            <li><b>单日租的里程上限（最关键）</b>。经济型通常限 <b>200 公里/天</b>，超 1 公里加收 0.8-1.5 元。Day 2 威海站→沉船往返已占<b>约 160 公里</b>，加那香海和市区来回基本贴着上限。<br>→ <b>下单时选不限里程车型，或直接确认每天含多少公里。</b>临时想去猫头山（多 20 公里）一定要先确认</li>
+            <li><b>单日租的第二个坑：超时费</b>。经济型 20-50 元/小时，<b>超 4 小时按半天、超 8 小时按全天</b>。如果 18:00 后才还车可能被算全天，比单日价还贵。<b>还车时间上限要问清</b></li>
+            <li><b>Day 1 日落只能打车</b>。K8 路半月湾支线威海站发车 8:25 / 10:15 / 11:15 / 12:45 / 14:15 / <b>15:25（末班）</b>，而日落在 17:10。其他大站快线末班多为 19:00</li>
+          </ol>
+        </div>
+
+        <div class="sea-note">
+          <h4>威海公共交通的实际水平（备选）</h4>
+          <ul style="margin:7px 0 0 18px;font-family:-apple-system,'PingFang SC',sans-serif;font-size:13.5px;line-height:1.85;">
+            <li><b>市区公交 1-2 元</b>，支持支付宝 / 微信 / 威海公交 App / 爱山东鲁通码，<b>不用带现金</b>。查"威海公交"官方 App 或微信"威海交通"公众号</li>
+            <li><b>出租车白天起步价 8 元（2-3 公里）</b>，之后 1.8-2 元/公里，<b>夜间 22:00-5:00 起步价 10.4 元</b>，每车每乘次加 1 元燃油费。景点间 15-25 元</li>
+            <li><b>官方建议市区出行首选打车</b> —— 公交高峰易堵，浪费时间</li>
+            <li><b>K1 路</b>能到火炬八街、小石岛南、观海澜湾一线，是 Day 3 赶海的公交选项</li>
+            <li><b>威海站有到威海北站的城际公交 4 号线</b>，途经烟墩角、布鲁威斯号、那香海 —— <b>Day 2 的备选方案</b>，但班次很稀耗时不推荐</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <h4>避坑：租车平台的雷</h4>
+          <ol>
+            <li><b>推荐</b>：神州 / 一嗨（价格透明、支持威海站步行取车）、熊猫租车（电车性价比高，续航达标率 92%）、暴风租车（威海站 24 小时，凌晨取车不加价）</li>
+            <li><b>避开</b>：北极星租车（强制购险、虚构违章扣款）、某风租车（节假日涨价绑保险）、利明租车（车况差、维修预付私人费用）</li>
+            <li><b>验车四步</b>：360° 录像 · 检测电池 SOH &gt; 90% · 核对证件有效期 · 记录油表刻度</li>
+            <li><b>保险</b>：多花 50 元买全险。基础险通常<b>机械故障需自费维修</b></li>
+            <li><b>押金</b>：通常冻结 3000 元预授权，还车后无违章才解冻，<b>信用卡额度要留够</b></li>
+          </ol>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>Day 1 打车明细</h3>
+            <div class="kv">
+              <div><span class="k">威海站→酒店</span><span class="v">¥15-20 · 10 分钟</span></div>
+              <div><span class="k">酒店→火炬八街</span><span class="v">约 1 公里，走过去</span></div>
+              <div><span class="k">火炬八街→半月湾</span><span class="v">¥15</span></div>
+              <div><span class="k">半月湾→海水浴场</span><span class="v">¥15</span></div>
+              <div><span class="k">看日落后→酒店</span><span class="v">¥20</span></div>
+              <div><span class="k">酒店→晚餐</span><span class="v">步行 5-10 分钟</span></div>
+              <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px;"><span class="k">合计</span><span class="v" style="color:var(--sea);">约 ¥50-70</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Day 3 打车明细</h3>
+            <div class="kv">
+              <div><span class="k">酒店→早市</span><span class="v">走路可达</span></div>
+              <div><span class="k">酒店→小石岛/悦海</span><span class="v">¥15-25</span></div>
+              <div><span class="k">几个点之间</span><span class="v">单程 ¥15-20</span></div>
+              <div><span class="k">回酒店取行李</span><span class="v">步行 5-10 分钟</span></div>
+              <div><span class="k">酒店→威海站</span><span class="v">¥15-20 · 10 分钟</span></div>
+              <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px;"><span class="k">合计</span><span class="v" style="color:var(--sea);">约 ¥40-60</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FIG ===== -->
+      <section class="view" id="v-fig">
+        <div class="sec-head"><h2>无花果专题</h2><span class="sec-note">先说不满意的部分</span></div>
+
+        <div class="bad-note" style="margin-top:0;">
+          <h4>直说：10 月 13-15 日不是无花果的好时候</h4>
+          <ol>
+            <li><b>采摘销售期是 6 月底到 11 月初</b>，10 月中旬还在季，市面上买得到鲜果</li>
+            <li><b>但最佳风味期是 8 月下旬到 9 月中下旬。</b>10 月中旬的果子甜度还在（鲜果含糖量仍有 15%-20%），<b>但果肉偏硬、香气弱一档</b></li>
+            <li><b>秋果集中成熟期是 8 月中旬末到 10 月中旬</b>，部分年份延迟到 11 月上旬 —— 10/13-15 正好卡在临界点，<b>每年不一样</b></li>
+            <li><b>鲜果运输是真问题</b>：果皮薄如纸易碰伤，采摘后保鲜期只有 2-3 天。坐 5 小时高铁带回北京损耗会很可观</li>
+            <li><b>所以你选的"只买不吃采摘"是对的判断</b>，方案如下</li>
+          </ol>
+        </div>
+
+        <div class="ok-note">
+          <h4>方案：不追采摘，买果干 + 冻干</h4>
+          <p>冻干和果干是<b>无花果最值得买的形态</b>——甜度高、保留香气、耐放、好带，10 月买和 9 月买差别不大。</p>
+          <ul style="margin:7px 0 0 18px;font-family:-apple-system,'PingFang SC',sans-serif;font-size:13.5px;line-height:1.85;">
+            <li><b>去哪儿买</b>：市区超市和水果店（不是果园）。威海是<b>全国无花果种植面积和产量双第一</b>（4.09 万亩、6.16 万吨），加工产业链成熟</li>
+            <li><b>买什么</b>：冻干无花果、果干 / 果脯、无花果酱、果酒。这几类都是规模化产品，品质稳定</li>
+            <li><b>顺手买几颗鲜果尝味</b>：皮薄到像纸，掰开白瓤，入口绵软。挑<b>表皮有纵向细裂纹、顶部小孔有蜜露</b>的，那是成熟度好的标志</li>
+            <li><b>可选</b>：打荣成俚岛镇、埠柳镇无花果合作社电话问采摘是否还接待。<b>但你说了不吃采摘，别为这个浪费时间</b></li>
+          </ul>
+        </div>
+
+        <div class="fig">
+          <svg viewBox="0 0 680 250" role="img" aria-label="无花果时间轴：春果6月下旬到7月中下旬，秋果集中成熟期8月中旬到10月中旬，采摘销售期延续到11月初。10月13到15日位于秋果尾段。">
+            <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+            <text x="40" y="30" font-family="system-ui,sans-serif" font-size="14.5" font-weight="500" fill="#26215C">无花果全年时间轴</text>
+            <rect x="40" y="50" width="600" height="42" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+            <text x="56" y="65" font-family="system-ui,sans-serif" font-size="13.5" font-weight="500" fill="#173404" dominant-baseline="central">春果</text>
+            <text x="56" y="81" font-family="system-ui,sans-serif" font-size="13.5" fill="#3B6D11" dominant-baseline="central">6 月下旬 - 7 月中下旬 · 产量小，以本地自食为主</text>
+            <rect x="40" y="100" width="430" height="50" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+            <text x="56" y="117" font-family="system-ui,sans-serif" font-size="13.5" font-weight="500" fill="#412402" dominant-baseline="central">秋果 · 集中成熟期</text>
+            <text x="56" y="135" font-family="system-ui,sans-serif" font-size="13.5" fill="#854F0B" dominant-baseline="central">8 月中旬 - 10 月中旬（部分年份延至 11 月初）</text>
+            <path d="M180 156 L180 166" fill="none" stroke="#854F0B" stroke-width="1" marker-end="url(#ar)"/>
+            <text x="190" y="166" font-family="system-ui,sans-serif" font-size="13.5" fill="#854F0B" dominant-baseline="central">风味最佳窗口：8 月下旬 - 9 月中下旬（已过去）</text>
+            <rect x="480" y="100" width="160" height="50" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+            <text x="496" y="117" font-family="system-ui,sans-serif" font-size="13.5" font-weight="500" fill="#501313" dominant-baseline="central">你在这里</text>
+            <text x="496" y="135" font-family="system-ui,sans-serif" font-size="13.5" fill="#A32D2D" dominant-baseline="central">10/13 - 10/15</text>
+            <rect x="40" y="186" width="600" height="42" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+            <text x="56" y="203" font-family="system-ui,sans-serif" font-size="13.5" font-weight="500" fill="#04342C" dominant-baseline="central">采摘 + 销售期</text>
+            <text x="200" y="203" font-family="system-ui,sans-serif" font-size="13.5" fill="#0F6E56" dominant-baseline="central">6 月底 - 11 月初</text>
+            <text x="56" y="220" font-family="system-ui,sans-serif" font-size="13.5" fill="#0F6E56" dominant-baseline="central">加工品（冻干 / 果干 / 果酱）全年可购，无季节限制 → 这就是你该买的</text>
+          </svg>
+          <figcaption>采摘销售期覆盖你的行程，但风味最佳窗口已经过去。加工果干不受这个限制，所以"只买不吃采摘"是完全合理的方案。</figcaption>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>本地吃法参考</h3>
+            <ul>
+              <li>央视《味道》栏目专门来拍过，把无花果称作<b>"树上的糖包子"</b>—— 荣成人的秋天案头一定有一袋</li>
+              <li>外皮薄到比纸还薄，剥开是白嫩果肉。<b>也可以不剥皮，清水冲一下直接吃</b>，口感清爽</li>
+              <li>成熟果实口感是"软糯 + 明显颗粒感"，像在嘴里爆开糖浆，甜而不腻</li>
+              <li>威海无花果是<b>全国第一个无花果地理标志证明商标</b>，认准本地牌子</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>如果临时改主意想去采摘</h3>
+            <ul>
+              <li>核心产区：<b>俚岛镇</b>（杏林村、大庄许家村、小耩村）、<b>埠柳镇</b>、成山镇、港西镇</li>
+              <li>品种：<b>青皮</b>（种得最广、皮薄）、<b>布兰瑞克</b>（果大 50-70 克、紫红皮）、<b>玛斯义陶芬</b>（小但更甜）</li>
+              <li><b>10 月中旬是临界点，每年不同</b> —— 出发前务必打电话问，可能白跑</li>
+              <li>采摘园门口一般可停车、免费。但<b>会打乱 Day 2 的沉船行程</b>，需要重排优先级</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TIPS ===== -->
+      <section class="view" id="v-tips">
+        <div class="sec-head"><h2>避坑与安全</h2><span class="sec-note">出发前花 3 分钟看完</span></div>
+
+        <div class="bad-note" style="margin-top:0;">
+          <h4>安全红线（这几条别商量）</h4>
+          <ol>
+            <li><b>沉船禁止攀爬。</b>船体锈蚀严重、结构不稳，海事部门已上船检查并断水断电，围栏已拦。有过"摄影师驱赶游客"的纠纷，成山镇政府已明确<b>海滩免费开放、允许拍照</b>。遇到阻拦可打 <b>12345</b></li>
+            <li><b>礁石涨潮别靠近。</b>沉船和赶海区都要提前看潮汐，退潮才走近，涨潮浪很危险</li>
+            <li><b>礁石穿防滑鞋。</b>湿滑容易崴脚</li>
+            <li><b>威海风大车难开。</b>跨海大桥、环海路侧风明显，新手司机注意方向，隧道口和桥面横风最大</li>
+            <li><b>不要在海边景区流动摊贩买海产干货</b>，价格偏高</li>
+            <li><b>威海坡多弯急</b>，租电动车骑行对新手不安全</li>
+          </ol>
+        </div>
+
+        <div class="sea-note" style="margin-top:0;">
+          <h4>10 月威海的客观事实</h4>
+          <ul style="margin:7px 0 0 18px;font-family:-apple-system,'PingFang SC',sans-serif;font-size:13.5px;line-height:1.85;">
+            <li><b>不能下水</b>：海水表温约 17℃，是全年下降过程中的一档。可以踩沙、看海，游泳不行</li>
+            <li><b>风比你想的大</b>：10 月平均风速约 23 km/h，比 9 月（全年最小，约 20）明显大。全月以<b>北风</b>为主</li>
+            <li><b>日照在缩短</b>：日落约 17:10，出发时日照 11 小时出头，比 9 月已在减</li>
+            <li><b>昼夜温差</b>：白天 19℃、夜里 13℃，加上海风，体感比数字冷</li>
+            <li><b>但晴天率是全年最高</b>：晴天占 67%，降雨概率仅约 12% —— 这是选择 10 月最大的红利</li>
+            <li><b>海水浴场非开放季</b>：救生、淋浴、租伞等项目大多停运，去之前看一下</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <h4>这版行程的四个取舍</h4>
+          <ol>
+            <li><b>只租 Day 2 一天车</b>：Day 1、Day 3 全程打车+步行，省 700-900 元。代价是 Day 1 日落和 Day 3 赶海要打车</li>
+            <li><b>不排刘公岛</b>：它值 122 元（含往返船票）但要占一整天，跟"慢节奏+海鲜+沉船"冲突。3 天 2 晚塞进去会变成打卡不是旅行</li>
+            <li><b>无花果改成买果干</b>：10 月中旬是风味尾季 + 鲜果不耐运输，加工品才是这个季节的正确打开方式</li>
+            <li><b>Day 3 上午排得很松</b>：返程 13:59 发车，硬塞景点会变成赶路。慢一点反而是这趟的基调</li>
+          </ol>
+        </div>
+
+        <div class="panel">
+          <h3>预算账本（2 人 · 修正后）</h3>
+          <div class="kv">
+            <div><span class="k">高铁往返</span><span class="v">¥1,938 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（2 人 × 480+489）</span></span></div>
+            <div><span class="k">住宿 2 晚</span><span class="v">¥400 - 600 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（200-300 / 晚）</span></span></div>
+            <div><span class="k">租车 + 油费</span><span class="v">¥300 - 400 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（单日租 + 180 公里）</span></span></div>
+            <div><span class="k">打车</span><span class="v">¥110 - 170 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（全程约 6 段）</span></span></div>
+            <div><span class="k">餐饮</span><span class="v">¥1,000 - 1,300 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（4 顿正餐 + 早餐）</span></span></div>
+            <div><span class="k">门票</span><span class="v">¥30 <span style="color:var(--ink-3);font-weight:400;font-size:13.5px">（沉船/那香海/悦海公园全免费）</span></span></div>
+            <div style="border-top:2px solid var(--line);margin-top:6px;padding-top:10px;"><span class="k" style="color:var(--ink);font-weight:600;">合计</span><span class="v" style="color:var(--sea);font-size:17px;">¥3,800 - 4,200</span></div>
+            <div><span class="k">人均</span><span class="v">¥1,900 - 2,100</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        行程与价格基于 2026 年 10 月公开信息整理。<strong>车次时刻、租车报价、门票价格、无花果时令均可能变动</strong>，出发前请以 12306、租车平台、景区公众号的实时信息为准。<br>
+        单文件·零依赖 · 所有勾选与状态保存在本机浏览器 localStorage（键名 weihai2610.v2）· 打印可直接导出 PDF
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY="weihai2610.v2";
+  function def(){return {v:2,theme:null,checks:[],toggles:[]};}
+  function load(){try{var o=JSON.parse(localStorage.getItem(KEY));if(o&&o.v===2)return o;}catch(e){}return def();}
+  function save(d){try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+  var st=load();
+
+  /* ---- theme ---- */
+  function applyTheme(t){document.documentElement.dataset.theme=t;}
+  function toggleTheme(){
+    var t=document.documentElement.dataset.theme==="dark"?"light":"dark";
+    applyTheme(t);st.theme=t;save(st);
+    var b=document.getElementById("themeBtn");if(b)b.textContent=t==="dark"?"切换浅色":"切换深色";
+  }
+  applyTheme(st.theme||"light");
+  var tb=document.getElementById("themeBtn");
+  if(tb){tb.textContent=(st.theme==="dark")?"切换浅色":"切换深色";tb.addEventListener("click",toggleTheme);}
+  var tbm=document.getElementById("themeBtnM");if(tbm)tbm.addEventListener("click",toggleTheme);
+  var pb=document.getElementById("printBtn"),pbm=document.getElementById("printBtnM");
+  if(pb)pb.addEventListener("click",function(){window.print();});
+  if(pbm)pbm.addEventListener("click",function(){window.print();});
+
+  /* ---- nav ---- */
+  var nav=document.getElementById("nav");
+  var CRUMB={dash:"总览台",booking:"预订看板",prep:"行前待办",pack:"打包清单",
+    day1:"Day 1 · 抵达环海路",day2:"Day 2 · 荣成东线",day3:"Day 3 · 慢逛返京",
+    food:"吃 · 排兵布阵",car:"租车与交通",fig:"无花果专题",tips:"避坑与安全"};
+  var sb=document.getElementById("sidebar"),sc=document.getElementById("scrim");
+  function close(){sb.classList.remove("open");sc.classList.remove("on");}
+  function show(id){
+    var v=document.querySelectorAll(".view");
+    for(var i=0;i<v.length;i++)v[i].classList.remove("is-active");
+    var t=document.getElementById("v-"+id);
+    if(t)t.classList.add("is-active");
+    var a=nav.querySelectorAll("a");
+    for(var j=0;j<a.length;j++)a[j].classList.remove("active");
+    var act=nav.querySelector('a[data-view="'+id+'"]');
+    if(act)act.classList.add("active");
+    document.getElementById("crumb").textContent=CRUMB[id]||"";
+    window.scrollTo({top:0,behavior:"smooth"});
+    close();
+  }
+  nav.addEventListener("click",function(e){
+    var a=e.target.closest("a[data-view]");if(a){e.preventDefault();show(a.getAttribute("data-view"));}
+  });
+  document.addEventListener("click",function(e){
+    var g=e.target.closest("[data-go]");if(g){show(g.getAttribute("data-go"));}
+  });
+  document.getElementById("hamburger").addEventListener("click",function(){sb.classList.add("open");sc.classList.add("on");});
+  sc.addEventListener("click",close);
+
+  /* ---- countdown ---- */
+  function pad(n){return n<10?"0"+n:""+n;}
+  var target=new Date(2026,9,13,7,0,0);
+  function tick(){
+    var now=new Date(),diff=target-now;
+    var dEl=document.getElementById("cdDays"),sEl=document.getElementById("cdSub");
+    var kD=document.getElementById("kDays"),kS=document.getElementById("kSub"),kT=document.getElementById("kTicket");
+    if(diff<=0){
+      dEl.textContent="已出发";sEl.textContent="旅程进行中或已结束";
+      kD.textContent="已出发";kS.textContent="—";
+      kT.textContent="已过";kT.style.color="var(--ink-3)";
+      return;
+    }
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    dEl.textContent=d+" 天";
+    sEl.textContent=pad(h)+":"+pad(m)+" 后发车（07:00）";
+    kD.textContent=d+" 天";
+    kS.textContent=pad(h)+":"+pad(m)+" 后发车";
+    // ticket window: 10/13 minus now, in days; opens ~10/3
+    var open=new Date(2026,9,3,5,0,0);
+    var od=Math.ceil((open-now)/86400000);
+    if(od>0){kT.textContent=od+" 天后";kT.style.color="var(--red)";}
+    else {kT.textContent="已开抢";kT.style.color="var(--green)";}
+  }
+  tick();setInterval(tick,60000);
+
+  /* ---- checkboxes ---- */
+  var boxes=document.querySelectorAll('input[type="checkbox"][data-k]');
+  var plain=document.querySelectorAll('.chk-list input[type="checkbox"]:not([data-k])');
+  function keyFor(input){
+    if(input.getAttribute("data-k"))return input.getAttribute("data-k");
+    return input.closest(".chk")?input.closest(".chk").textContent.trim().slice(0,44):"";
+  }
+  function mark(input,on){
+    var k=keyFor(input);if(!k)return;
+    var i=st.checks.indexOf(k);
+    if(on&&i===-1)st.checks.push(k);
+    if(!on&&i>-1)st.checks.splice(i,1);
+    save(st);
+    var li=input.closest(".chk"),rw=input.closest(".row");
+    if(li)li.classList.toggle("done",on);
+    if(rw)rw.classList.toggle("done",on);
+    updateAll();
+  }
+  function bind(input){
+    var k=keyFor(input);if(!k)return;
+    if(st.checks.indexOf(k)>-1){input.checked=true;
+      var li=input.closest(".chk"),rw=input.closest(".row");
+      if(li)li.classList.add("done");if(rw)rw.classList.add("done");
+    }
+    input.addEventListener("change",function(){mark(input,input.checked);});
+  }
+  Array.prototype.forEach.call(boxes,bind);
+  Array.prototype.forEach.call(plain,bind);
+
+  /* ---- pill toggles ---- */
+  var pills=document.querySelectorAll(".pill[data-toggle]");
+  Array.prototype.forEach.call(pills,function(p){
+    var k=p.getAttribute("data-toggle");
+    if(st.toggles.indexOf(k)>-1)p.classList.add("on");
+    p.addEventListener("click",function(){
+      p.classList.toggle("on");
+      var i=st.toggles.indexOf(k);
+      if(p.classList.contains("on")){if(i===-1)st.toggles.push(k);}
+      else{if(i>-1)st.toggles.splice(i,1);}
+      save(st);updateBooking();
+    });
+  });
+
+  /* ---- counters ---- */
+  function countGroup(g){
+    var list=document.querySelectorAll('.chk-list[data-group="'+g+'"] input[type="checkbox"]');
+    var d=0;for(var i=0;i<list.length;i++){if(list[i].checked)d++;}
+    return {d:d,t:list.length};
+  }
+  function countDay(prefix){
+    var list=document.querySelectorAll('input[data-k^="'+prefix+'"]');
+    var d=0;for(var i=0;i<list.length;i++){if(list[i].checked)d++;}
+    return {d:d,t:list.length};
+  }
+  function updateBooking(){
+    var pillIds=["b1","b2","b3","b4","b5","b6"];
+    var done=0;
+    for(var i=0;i<pillIds.length;i++){
+      if(st.toggles.indexOf(pillIds[i])>-1)done++;
+    }
+    var el=document.getElementById("bookingCount");
+    if(el)el.textContent=done+" / 6 完成";
+    var c=document.getElementById("cBooking");
+    if(c){c.textContent=done+"/6";c.classList.toggle("done",done>=6);}
+  }
+  function updateAll(){
+    var prep=countGroup("prep"),pack=countGroup("pack");
+    var pe=document.getElementById("prepCount");
+    if(pe)pe.textContent=prep.d+" / "+prep.t;
+    var pc=document.getElementById("cPrep");
+    if(pc){pc.textContent=prep.d+"/"+prep.t;pc.classList.toggle("done",prep.d>0&&prep.d===prep.t);}
+    var ka=document.getElementById("packCount");
+    if(ka)ka.textContent=pack.d+" / "+pack.t;
+    var kc=document.getElementById("cPack");
+    if(kc){kc.textContent=pack.d+"/"+pack.t;kc.classList.toggle("done",pack.d>0&&pack.d===pack.t);}
+
+    // overall readiness = booking 6 + prep + pack
+    var pillIds=["b1","b2","b3","b4","b5","b6"],bdone=0;
+    for(var i=0;i<pillIds.length;i++)if(st.toggles.indexOf(pillIds[i])>-1)bdone++;
+    var total=6+prep.t+pack.t, done=bdone+prep.d+pack.d;
+    var pct=total?Math.round(done/total*100):0;
+    var ring=document.getElementById("ring");
+    if(ring)ring.style.width=pct+"%";
+    var rl=document.getElementById("ringLb");
+    if(rl)rl.textContent="准备度 "+pct+"%";
+    var kp=document.getElementById("kPrep");
+    if(kp)kp.textContent=pct+"%";
+
+    // day progress: 4 id-pairs per day (dash strip + 3 day views)
+    var DAYS=[["p1","q1","w1","e1","d1_"],["p2","q2","w2","e2","d2_"],["p3","q3","w3","e3","d3_"]];
+    for(var m=0;m<DAYS.length;m++){
+      var c=countDay(DAYS[m][4]);
+      for(var q=0;q<4;q++){
+        var num=document.getElementById(DAYS[m][q]);
+        if(num)num.textContent=c.d;
+        var den=document.getElementById(DAYS[m][q]+"t");
+        if(den)den.textContent=c.t;
+      }
+    }
+    updateBooking();
+  }
+  updateAll();
+
+  /* ---- reset ---- */
+  document.getElementById("resetBtn").addEventListener("click",function(){
+    if(!confirm("清空所有勾选和预订标记？此操作不可撤销。"))return;
+    st.checks=[];st.toggles=[];save(st);location.reload();
+  });
+})();
+</script>
+</body>
+</html>
