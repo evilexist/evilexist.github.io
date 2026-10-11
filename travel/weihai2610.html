@@ -184,6 +184,8 @@
     font-variant-numeric:tabular-nums;white-space:nowrap;}
   .card-b{padding:6px 20px 16px;}
   .row{display:flex;align-items:flex-start;gap:13px;padding:12px 0;border-bottom:1px dashed var(--line-2);}
+  .opt{display:inline-block;font-size:12.5px;font-weight:400;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:1px}
   .row:last-child{border-bottom:none;}
   .row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--sea);cursor:pointer;flex-shrink:0;}
   .row .t{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;color:var(--sea);min-width:52px;padding-top:1px;
@@ -352,8 +354,8 @@
       <a data-view="pack"><span class="dot"></span>打包清单<span class="cnt" id="cPack">0/0</span></a>
       <div class="grp">现场</div>
       <a data-view="weather"><span class="dot"></span>天气与潮汐<span class="cnt" id="cWx">·</span></a>
-      <a data-view="day1"><span class="dot"></span>Day 1 抵达环海路</a>
-      <a data-view="day2"><span class="dot"></span>Day 2 荣成东线</a>
+      <a data-view="day1"><span class="dot"></span>Day 1 环海路单向</a>
+      <a data-view="day2"><span class="dot"></span>Day 2 沉船看低潮</a>
       <a data-view="day3"><span class="dot"></span>Day 3 慢逛返京</a>
       <a data-view="food"><span class="dot"></span>吃 · 排兵布阵</a>
       <div class="grp">参考</div>
@@ -549,7 +551,7 @@
               <div class="r1"><span class="nm">威海站取 → 威海站还</span><span class="pr">经济型轿车 / 小型 SUV</span></div>
               <div class="r2">
                 <b>取还都在威海站，不是在郊外的威海北站。</b>一嗨在客运楼一层（08:00-23:00，15263135626），神舟在站南区地下停车场 E 区。<br>
-                <b style="color:var(--red)">下单前必须确认每天里程上限</b>——经济型通常限 200 公里，沉船往返已占 160 公里。
+                <b style="color:var(--green)">一嗨/神州没有里程上限</b>——今天想临时加猫头山、成山头都不用担心超公里。<b>但超时费仍在</b>，18:00 前还车最稳。
               </div>
               <div class="r3">
                 <span class="pill" data-toggle="b4">已订</span>
@@ -600,7 +602,7 @@
           <li class="chk"><input type="checkbox"><div class="tx"><b>抢 10/13 去程 G1085 票</b><small>北京南 08:42 → 威海 13:41 · 约 10 月 3 日放票 · 设个闹钟</small></div><span class="tag">急</span></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>抢 10/15 返程 G1092 票</b><small>威海 13:59 → 北京南 19:14 · 放票时间同上，别只盯着去程</small></div><span class="tag">急</span></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>订酒店（2 晚）</b><small>韩乐坊 / 威高广场一带 · 周二到周四房价低 · 订可免费取消的</small></div></li>
-          <li class="chk"><input type="checkbox"><div class="tx"><b>订 10/14 单日租车</b><small>威海站取还 · 下单时确认每天里程上限是否含 200 公里</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>订 10/14 单日租车</b><small>威海站取还 · 一嗨/神州无里程上限，但仍要问清"超几小时按全天"（当天约 11 小时必然按全天）</small></div></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>查 10/14 威海潮汐表</b><small>沉船和赶海都靠潮汐 · 记下低潮时段 · 查"威海海洋预报"或潮汐 App</small></div></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>确认信用卡额度</b><small>租车押金通常冻结 3000 元预授权，确认额度留得够</small></div></li>
         </ul>
@@ -654,7 +656,7 @@
 
         <div class="grp-title">Day 2 用车日随身</div>
         <ul class="chk-list" data-group="pack">
-          <li class="chk"><input type="checkbox"><div class="tx"><b>矿泉水 + 干粮</b><small>荣成东线（沉船到那香海）路上便利店很少，出发前在市区买好</small></div></li>
+          <li class="chk"><input type="checkbox"><div class="tx"><b>矿泉水 + 干粮</b><small>荣成东线（那香海到沉船）路上便利店很少，出发前在市区买好</small></div></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>晕车药 / 薄荷口香糖</b><small>环海路弯道多，Day 2 往返约 180 公里</small></div></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>垃圾袋</b><small>海边没有垃圾桶</small></div></li>
           <li class="chk"><input type="checkbox"><div class="tx"><b>防晒霜 / 唇膏</b><small>10 月紫外线仍不弱，海风加剧干燥</small></div></li>
@@ -670,93 +672,122 @@
 
       <!-- ===== DAY 1 ===== -->
       <section class="view" id="v-day1">
-        <div class="sec-head"><h2>Day 1 · 10/13 周二</h2><span class="sec-note">抵达日 · 半天轻量 · 全程打车</span></div>
+        <div class="sec-head"><h2>Day 1 · 10/13 周二</h2><span class="sec-note">抵达日 · 环海路单向推进 · 全程打车</span></div>
         <div class="daybar">
-          <button class="daytab on" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="q1">0</b> / <span id="q1t">0</span></div></button>
-          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="q2">0</b> / <span id="q2t">0</span></div></button>
+          <button class="daytab on" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 环海路单向</div><div class="pg"><b id="q1">0</b> / <span id="q1t">0</span></div></button>
+          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 沉船看低潮</div><div class="pg"><b id="q2">0</b> / <span id="q2t">0</span></div></button>
           <button class="daytab" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="q3">0</b> / <span id="q3t">0</span></div></button>
         </div>
 
         <div class="sea-note" style="margin-top:0;">
-          <h4>今天不租车</h4>
-          <p><strong>13:41 落地 → 14:40 出门 → 17:10 日落</strong>，全程打车约 ¥50-70。火炬八街距韩乐坊只有 1 公里，走路就到。国际海水浴场和火炬八街停车位本来就紧张，不开车反而省心。</p>
+          <h4>今天的路线是「从东往西单向推进」，不走回头路</h4>
+          <p>环海路沿海岸东西延伸，各点位置从东到西是：<strong>火炬八街 → 国际海水浴场 → 葡萄滩 → 猫头山 → 半月湾 → 海源公园</strong>（依据官方观光巴士停靠顺序）。</p>
+          <p style="margin-top:8px;"><strong>关键：半月湾和海源公园在猫头山的西边</strong>，所以不能先去半月湾再折回来看猫头山。今天按东→西一路推进，<strong>全部走完再打车回酒店</strong>，零折返。</p>
+          <p style="margin-top:8px;"><b>限行提醒</b>：环海路辅线每年 4/25 - 10/7 禁止私家车进入，<b>10/7 后已解除</b>，10/13 可正常开到观景台脚下。但今天不租车，打车停在正规停车场即可。</p>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>下午 · 环海路西线</h3><span class="tm">13:41 - 17:10 · 日落 17:10</span></div>
+          <div class="card-h"><h3>上午 · 高铁抵达</h3><span class="tm">08:42 - 14:40</span></div>
           <div class="card-b">
             <div class="row"><input type="checkbox" data-k="d1_a"><div class="t">08:42</div><div class="c"><b>北京南 → 威海 G1085</b><small>07:50 前到站，安检 + 找车厢至少 40 分钟。车上补觉，4h59m 抵达</small></div><div class="cst">¥480×2</div></div>
             <div class="row"><input type="checkbox" data-k="d1_b"><div class="t">13:41</div><div class="c"><b>出站 → 打车去酒店</b><small>威海站到韩乐坊一带 15-20 元、10 分钟。拖行李不值得坐公交</small></div><div class="cst">¥15-20</div></div>
             <div class="row"><input type="checkbox" data-k="d1_c"><div class="t">14:20</div><div class="c"><b>酒店入住 · 放行李</b><small>选韩乐坊 / 威高广场一带：离火车站 10 分钟、火炬八街走路就到、晚上吃饭方便</small></div><div class="cst">¥200-300</div></div>
-            <div class="row"><input type="checkbox" data-k="d1_d"><div class="t">14:40</div><div class="c"><b>火炬八街</b><small>一条下坡路直通大海，路的尽头就是海。下午光线斜射，海水偏蓝。<b>从韩乐坊走过去约 1 公里</b></small></div><div class="cst">步行</div></div>
-            <div class="row"><input type="checkbox" data-k="d1_e"><div class="t">15:20</div><div class="c"><b>半月湾 / 海源公园</b><small>海岸线弯成月牙，有礁石和步道，适合慢慢走。停车位比火炬八街多</small></div><div class="cst">¥15</div></div>
-            <div class="row"><input type="checkbox" data-k="d1_f"><div class="t">16:10</div><div class="c"><b>国际海水浴场</b><small>3 公里细白沙，秋天人少。<b>海水表温 17℃，不能下水</b>，踩踩沙子看看海没问题</small></div><div class="cst">¥15</div></div>
-            <div class="row"><input type="checkbox" data-k="d1_g"><div class="t">17:10</div><div class="c"><b>看日落</b><small>好机位：半月湾观景台（能拍日落入海 + 海岸线延伸感）、国际海水浴场西侧堤坝。<b>日落后 20 分钟的"蓝调时刻"最出片</b></small></div><div class="cst">¥20 打车回</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>晚餐 · 第一顿海鲜</h3><span class="tm">18:30 · 步行 5-10 分钟</span></div>
+          <div class="card-h"><h3>下午 · 环海路西行（单向，不折返）</h3><span class="tm">14:40 - 17:30 · 日落 17:10</span></div>
           <div class="card-b">
-            <div class="row"><input type="checkbox" data-k="d1_h"><div class="t">18:30</div><div class="c"><b>聚朋大鲅鱼饺子饭店</b><small>华夏路金海湾花园 21-5（韩国美食街）。招牌<b>鲅鱼虾仁大饺子</b>手掌大、皮薄爆汁+<b>海肠捞饭</b>。避开 18:00-19:30 高峰</small></div><div class="cst">¥110-130/人</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_d"><div class="t">14:40</div><div class="c"><b>火炬八街（起点）</b><small>一条下坡路直通大海，路的尽头就是海，<b>坡顶俯拍能拍到街道+海的全景</b>。<b>避坑：别导航街中段，搜「北环海路与火炬八街交叉口」从北端进，人少一半</b>。下午光线斜射，海水偏蓝</small></div><div class="cst">步行</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_e"><div class="t">15:10</div><div class="c"><b>国际海水浴场 <span class="opt">（可不去）</span></b><small>与火炬八街步行 5 分钟互通，同一片海域。3 公里细白沙，秋天人少。<b>海水表温 17℃，不能下水</b>，踩沙看海没问题。<b>赶时间就跳过，不影响主线</b></small></div><div class="cst">¥8</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_f"><div class="t">15:30</div><div class="c"><b>葡萄滩海水浴场</b><small>猫头山脚下的小众沙滩，<b>人少安静，被本地人当私藏日落点</b>。旁边北山路可以拍「通天海幕」长焦大片。观景台停车场约 ¥2/小时</small></div><div class="cst">¥8</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_g"><div class="t">15:50</div><div class="c"><b>猫头山 2 号观景台「嬉海」</b><small><b>拍「猫头」全景的 C 位机位</b>，能看到完整卧猫山体轮廓，270° 悬崖观海，分层蓝绿海水。旁边有海浪彩绘墙和石雕装置。<b>免门票</b>，14 个观景台全免费</small></div><div class="cst">¥8</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_h"><div class="t">16:20</div><div class="c"><b>猫头山 3 号观景台「大项链」</b><small><b>公认的颜值天花板</b>：半圆形悬挑栈道从悬崖延伸入海，航拍像一条海上项链，栈道直通礁石滩。<b>时间紧只去一个就选这里</b>。日落金光+悬崖剪影，是全天最佳画面</small></div><div class="cst">步行</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_i"><div class="t">17:00</div><div class="c"><b>半月湾 + 海源公园（收尾）</b><small>半月湾在猫头山西侧约 1 公里，月牙形海湾、浅滩水清，<b>岸边有大片雏菊花田</b>。海源公园是临海广场+观海平台，有合庆码头渔船和一战华工纪念馆。<b>两处连着走 10 分钟搞定</b></small></div><div class="cst">¥8</div></div>
+            <div class="row"><input type="checkbox" data-k="d1_j"><div class="t">17:10</div><div class="c"><b>日落 · 蓝调时刻</b><small>10 月威海日落 17:10。<b>3 号观景台是最佳日落机位</b>（16:00-18:30 黄金时段）；龙王崖正西方无遮挡。黄金海面（橘子海）+ 逆光剪影最出片</small></div><div class="cst">¥10 回程</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>晚餐 · 第一顿海鲜</h3><span class="tm">18:30 · 打车 10 分钟回酒店方向</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d1_k"><div class="t">18:30</div><div class="c"><b>聚朋大鲅鱼饺子饭店</b><small>华夏路金海湾花园 21-5（韩国美食街）。招牌<b>鲅鱼虾仁大饺子</b>手掌大、皮薄爆汁+<b>海肠捞饭</b>。避开 18:00-19:30 高峰</small></div><div class="cst">¥110-130/人</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>今日费用小结</h3><span class="tm">打车约 ¥66-80 · 停车约 ¥6</span></div>
+          <div class="card-b">
+            <div class="row"><div class="t">合计</div><div class="c"><b>环海路全程打车约 ¥66-80（8 段）</b><small>韩乐坊→火炬八街→海水浴场→葡萄滩→猫头山→半月湾→海源公园→回酒店，全程约 12 公里。威海出租车白天起步价 8 元/3 公里，景点间多为 8 元短程。<b>不租车是对的</b>：这段全程单行道且坡多，打车反而不用找停车位</small></div><div class="cst">¥66-80</div></div>
           </div>
         </div>
       </section>
 
       <!-- ===== DAY 2 ===== -->
       <section class="view" id="v-day2">
-        <div class="sec-head"><h2>Day 2 · 10/14 周三</h2><span class="sec-note">唯一完整全天 · 唯一用车日</span></div>
+        <div class="sec-head"><h2>Day 2 · 10/14 周三</h2><span class="sec-note">沉船看低潮 · 唯一完整全天 · 唯一用车日</span></div>
         <div class="daybar">
-          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="w1">0</b> / <span id="w1t">0</span></div></button>
-          <button class="daytab on" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="w2">0</b> / <span id="w2t">0</span></div></button>
+          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 环海路单向</div><div class="pg"><b id="w1">0</b> / <span id="w1t">0</span></div></button>
+          <button class="daytab on" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 沉船看低潮</div><div class="pg"><b id="w2">0</b> / <span id="w2t">0</span></div></button>
           <button class="daytab" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="w3">0</b> / <span id="w3t">0</span></div></button>
         </div>
 
         <div class="bad-note" style="margin-top:0;">
-          <h4>出发前必看：里程上限和超时费</h4>
-          <p>经济型轿车通常<b>限 200 公里/天</b>，超 1 公里加收 0.8-1.5 元。今天威海站→沉船往返已占<b>约 160 公里</b>，加那香海和市区来回基本贴着上限——<b>临时想去猫头山（多 20 公里）一定要先确认</b>。</p>
-          <p style="margin-top:8px;">另外超时费 20-50 元/小时，<b>超 4 小时按半天算、超 8 小时按全天</b>。还车时间上限务必问清。</p>
+          <h4>今天的顺序按潮汐重排了：沉船挪到下午低潮</h4>
+          <p>工作台的实时潮汐数据显示：<strong>10/14 当天低潮在 05:00-07:00 和 17:00-18:00</strong>，而原计划上午 10:00-11:30 去看沉船时，<strong>潮位约 +0.6m 接近高潮，礁石会被淹没</strong>——只能远观，走不到跟前。</p>
+          <p style="margin-top:8px;">所以今天改成：<strong>上午那香海+ 孤独公约（都在东侧，先去）→ 下午沉船 → 17:00 低潮窗口看礁石露出</strong>。等潮的 2-3 小时正好用来吃海鲜午餐和拍照，不算干等。</p>
+          <p style="margin-top:8px;"><b>租车提示</b>：你选的一嗨 / 神舟<b>没有里程上限</b>，所以今天想临时加猫头山、成山头都不用担心超公里。<b>但超时费还在</b>——今天 07:50 取车、18:40 还车约 11 小时，<b>必然按全天计费</b>。这是为低潮窗口必须付的代价，沉船是这趟的核心，值得。<b>别再往后拖，18:40 还车最稳。</b></p>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>取车 · 出发</h3><span class="tm">07:50 - 09:00</span></div>
+          <div class="card-h"><h3>取车 · 出发</h3><span class="tm">07:50 - 08:50</span></div>
           <div class="card-b">
             <div class="row"><input type="checkbox" data-k="d2_a"><div class="t">07:50</div><div class="c"><b>打车去威海站取车</b><small>一嗨在客运楼一层（08:00-23:00，15263135626）或神舟在站南区地下停车场 E 区。<b>两处都支持站内取还</b></small></div><div class="cst">¥15-20</div></div>
             <div class="row"><input type="checkbox" data-k="d2_b"><div class="t">08:00</div><div class="c"><b>取车 · 验车</b><small><b>360° 录像存证</b>、核对油表刻度、查证件有效期。<b>铭牌和油表一定要拍</b>，这是还车时唯一的凭证</small></div><div class="cst">¥220-300</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_c"><div class="t">08:30</div><div class="c"><b>沿环海路 G228 东行</b><small>全程沿海岸线，风景本身就是目的地。约 1 小时到成山镇。可在<b>烟墩角</b>停一下（公交 4 号线也经过这带）</small></div><div class="cst">约 60 km</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_c"><div class="t">08:30</div><div class="c"><b>沿环海路 G228 东行</b><small>全程沿海岸线，风景本身就是目的地。约 1 小时到那香海/成山镇方向，沿途可在<b>烟墩角</b>停一下</small></div><div class="cst">约 60 km</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>上午 · 布鲁威斯号沉船 ★ 本日重点</h3><span class="tm">09:00 - 10:30 · 免费 · 24h 开放</span></div>
+          <div class="card-h"><h3>上午 · 那香海（东侧，先去）</h3><span class="tm">08:50 - 11:00 · 免费</span></div>
           <div class="card-b">
-            <div class="row"><input type="checkbox" data-k="d2_d"><div class="t">09:00</div><div class="c"><b>抵达沉船点</b><small>2022 年因台风搁浅的巴拿马籍散货轮，190 米长，45 度倾斜。<b>导航搜"布鲁威斯海滩地上停车场"</b>，别只搜"沉船"，会导到烂路多走 20 分钟</small></div><div class="cst">免费</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_e"><div class="t">09:10</div><div class="c"><b>拍照 · 三个机位</b><small>① 木栈道全景位（最稳，新手不废片）② 右侧礁石区（退潮时可走近拍锈蚀细节 + 人物）③ 堤坝长焦位（压缩画面，孤寂感最强，需长焦镜头）</small></div><div class="cst">—</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_f"><div class="t">10:00</div><div class="c"><b>安全检查</b><small><b>禁止攀爬船体</b>（围栏已拦、结构不稳）· 礁石湿滑穿防滑鞋 · <b>涨潮别靠近浪边</b> · 周边无遮阳，注意补水</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_d"><div class="t">08:50</div><div class="c"><b>那香海国际旅游度假区</b><small><b>16 公里海岸线 + 2.5 公里钻石沙滩</b>，沙细软、海水清，秋天人不多。标志性的<b>英伦蓝桥和风车海岸</b>是必拍点，沙滩上有大片<b>薰衣草田</b>（季节性，10 月可能已收，有也更好）</small></div><div class="cst">免费</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_e"><div class="t">09:30</div><div class="c"><b>钻石沙滩 · 慢走拍照</b><small>沙滩开阔，日光下海水呈浅蓝。周边有房车营地和沙雕艺术乐园。<b>这里比沉船更放松，适合作为第一站的"热身"</b></small></div><div class="cst">—</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>中午 · 那香海 + 午餐</h3><span class="tm">10:30 - 13:30</span></div>
+          <div class="card-h"><h3>中午 · 孤独公约 + 午餐</h3><span class="tm">11:00 - 13:30</span></div>
           <div class="card-b">
-            <div class="row"><input type="checkbox" data-k="d2_g"><div class="t">10:30</div><div class="c"><b>那香海 · 钻石沙滩</b><small>离沉船十几分钟车程。沙滩沙色偏白、海水清，秋天人不多。周边有房车营地和沙雕艺术乐园</small></div><div class="cst">—</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_h"><div class="t">12:00</div><div class="c"><b>午餐 · 渔家海鲜</b><small>那香海附近海鲜大排档。海肠捞饭 + 炒花蛤 + 鲅鱼水饺。<b>点单前先问清单价</b>，海鲜按斤算容易超预算。<b>周边便利店很少</b>，提前买水</small></div><div class="cst">¥80-120/人</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_f"><div class="t">11:00</div><div class="c"><b>那香海 → 孤独公约</b><small>向回走约 20 分钟。<b>孤独公约在布鲁维斯西侧，是个小文艺打卡点：靠海礁石 + 白房子</b>，出片但人不多</small></div><div class="cst">约 20 min</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_g"><div class="t">11:30</div><div class="c"><b>孤独公约 · 拍照</b><small>礁石和白墙构图很干净，40-60 分钟足够。<b>建议上午顺光或侧光</b>，比下午拍更立体</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_h"><div class="t">12:30</div><div class="c"><b>午餐 · 渔家海鲜</b><small>靖子渔港/ 那香海小镇一带海鲜大排档。海肠捞饭 + 炒花蛤 + 鲅鱼水饺。<b>点单前先问清单价</b>，海鲜按斤算容易超预算。<b>周边便利店很少</b>，提前买水</small></div><div class="cst">¥80-120/人</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>下午 · 买无花果 + 还车</h3><span class="tm">13:30 - 16:00</span></div>
+          <div class="card-h"><h3>下午 · 布鲁威斯号沉船 ★ 本日重点</h3><span class="tm">13:30 - 18:00 · 免费 · 24h 开放</span></div>
           <div class="card-b">
-            <div class="row"><input type="checkbox" data-k="d2_i"><div class="t">13:30</div><div class="c"><b>回市区路上买无花果</b><small>沿途埠柳镇、俚岛镇有果园和果干店。<b>重点买冻干 / 果干 / 果酱</b> —— 加工品不受季节限制，甜度高好带。鲜果皮薄易碰伤，高铁 5 小时损耗大</small></div><div class="cst">¥30-60</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_j"><div class="t">15:30</div><div class="c"><b>顺路去威海站还车</b><small>先买果再还车，一趟办完。<b>油量补到刻度线</b>，绕车拍照留证，务必最后拍一张车况照和油表照。还完打车回酒店</small></div><div class="cst">¥15-20 打车</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_i"><div class="t">13:30</div><div class="c"><b>前往布鲁威斯沉船点</b><small>从孤独公约约 30 分钟。2022 年因台风搁浅的巴拿马籍散货轮，190 米长，45 度倾斜。<b>导航搜"布鲁威斯海滩地上停车场"</b>，别只搜"沉船"，会导到烂路多走 20 分钟</small></div><div class="cst">免费</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_j"><div class="t">14:00</div><div class="c"><b>等潮 + 沙滩漫步</b><small>距离低潮还有 3 小时，<b>这段正好休息、拍照、补光</b>。船体周围沙滩可以走，有付费旅拍服务（不需要，礁石区自己拍更好）</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_k"><div class="t">17:00</div><div class="c"><b>★ 低潮窗口 · 礁石露出</b><small><b>今天的核心时段（17:00-18:00）</b>：潮位降到最低，礁石露出，能走近拍锈蚀细节和人物。<b>这是把沉船放在下午的唯一理由，别提前太久离开</b></small></div><div class="cst">最佳时段</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_l"><div class="t">17:30</div><div class="c"><b>三个机位 + 安全</b><small>① 木栈道全景位（最稳，新手不废片）② 右侧礁石区（低潮时可走近）③ 堤坝长焦位（压缩画面，孤寂感最强，需长焦镜头）。<b>禁止攀爬船体</b> · 礁石湿滑穿防滑鞋 · 补水</small></div><div class="cst">—</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-h"><h3>晚餐 · 海鲜大餐</h3><span class="tm">18:00 · 今日主打</span></div>
+          <div class="card-h"><h3>返程 · 买无花果 + 还车</h3><span class="tm">18:00 - 19:00</span></div>
           <div class="card-b">
-            <div class="row"><input type="checkbox" data-k="d2_k"><div class="t">18:00</div><div class="c"><b>巧克力渔家 · 蒸汽海鲜锅</b><small>清水直接上锅蒸，不靠酱料，所有海鲜的原生清甜都释放出来，店员会帮忙剥壳。配<b>海胆水饺</b>和<b>海鲜疙瘩汤</b>收尾。不想开车的话韩乐坊也有海鲜档</small></div><div class="cst">¥130-200/人</div></div>
-            <div class="row"><input type="checkbox" data-k="d2_l"><div class="t">20:00</div><div class="c"><b>收拾行李（为明天做准备）</b><small>明早 11:30 就要出发去车站，今晚把箱子收好，早上直接拎走</small></div><div class="cst">—</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_m"><div class="t">18:00</div><div class="c"><b>回市区路上买无花果</b><small>沿途埠柳镇、俚岛镇有果园和果干店。<b>重点买冻干 / 果干 / 果酱</b> —— 加工品不受季节限制，甜度高好带。鲜果皮薄易碰伤，高铁 5 小时损耗大</small></div><div class="cst">¥30-60</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_n"><div class="t">18:40</div><div class="c"><b>顺路去威海站还车</b><small>先买果再还车，一趟办完。<b>油量补到刻度线</b>，绕车拍照留证，务必最后拍一张车况照和油表照。还完打车回酒店</small></div><div class="cst">¥15-20 打车</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>晚餐 · 海鲜大餐</h3><span class="tm">19:00 · 今日主打</span></div>
+          <div class="card-b">
+            <div class="row"><input type="checkbox" data-k="d2_o"><div class="t">19:00</div><div class="c"><b>巧克力渔家 · 蒸汽海鲜锅</b><small>清水直接上锅蒸，不靠酱料，所有海鲜的原生清甜都释放出来，店员会帮忙剥壳。配<b>海胆水饺</b>和<b>海鲜疙瘩汤</b>收尾</small></div><div class="cst">¥130-200/人</div></div>
+            <div class="row"><input type="checkbox" data-k="d2_p"><div class="t">21:00</div><div class="c"><b>收拾行李（为明天做准备）</b><small>明早 11:30 就要出发去车站，今晚把箱子收好，早上直接拎走</small></div><div class="cst">—</div></div>
           </div>
         </div>
       </section>
@@ -765,8 +796,8 @@
       <section class="view" id="v-day3">
         <div class="sec-head"><h2>Day 3 · 10/15 周四</h2><span class="sec-note">慢逛收尾 · 车已还 · 全程步行+打车</span></div>
         <div class="daybar">
-          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 抵达环海路</div><div class="pg"><b id="e1">0</b> / <span id="e1t">0</span></div></button>
-          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 荣成东线</div><div class="pg"><b id="e2">0</b> / <span id="e2t">0</span></div></button>
+          <button class="daytab" data-go="day1"><div class="d">Day 1</div><div class="w">10/13 环海路单向</div><div class="pg"><b id="e1">0</b> / <span id="e1t">0</span></div></button>
+          <button class="daytab" data-go="day2"><div class="d">Day 2</div><div class="w">10/14 沉船看低潮</div><div class="pg"><b id="e2">0</b> / <span id="e2t">0</span></div></button>
           <button class="daytab on" data-go="day3"><div class="d">Day 3</div><div class="w">10/15 慢逛返京</div><div class="pg"><b id="e3">0</b> / <span id="e3t">0</span></div></button>
         </div>
 
@@ -862,9 +893,9 @@
         <div class="bad-note">
           <h4>选方案 B 必须注意的三件事</h4>
           <ol>
-            <li><b>单日租的里程上限（最关键）</b>。经济型通常限 <b>200 公里/天</b>，超 1 公里加收 0.8-1.5 元。Day 2 威海站→沉船往返已占<b>约 160 公里</b>，加那香海和市区来回基本贴着上限。<br>→ <b>下单时选不限里程车型，或直接确认每天含多少公里。</b>临时想去猫头山（多 20 公里）一定要先确认</li>
-            <li><b>单日租的第二个坑：超时费</b>。经济型 20-50 元/小时，<b>超 4 小时按半天、超 8 小时按全天</b>。如果 18:00 后才还车可能被算全天，比单日价还贵。<b>还车时间上限要问清</b></li>
-            <li><b>Day 1 日落只能打车</b>。K8 路半月湾支线威海站发车 8:25 / 10:15 / 11:15 / 12:45 / 14:15 / <b>15:25（末班）</b>，而日落在 17:10。其他大站快线末班多为 19:00</li>
+            <li><b>里程：一嗨 / 神州不限里程 ✓</b>。你选的平台<b>没有每天公里数上限</b>，临时加猫头山（+20 公里）、成山头都不用担心超公里加收。<b>这是选这两个平台的最大好处</b></li>
+            <li><b>但超时费要盯（唯一的坑）</b>。经济型 20-50 元/小时，<b>超 4 小时按半天、超 8 小时按全天</b>。今天计划 07:50取车、18:40 还车共约 11 小时——<b>已经跨过"全天"线，很可能按全天计费</b>。所以要么压缩用车时间，要么按全天价预算（比单日价贵）。<b>订车时问清"超过几小时按全天"</b></li>
+            <li><b>Day 1 日落只能打车</b>。K8 路半月湾支线威海站发车 8:25 / 10:15 / 11:15 / 12:45 / 14:15 / <b>15:25（末班）</b>，而日落在 17:10。其他大站快线末班多为19:00</li>
           </ol>
         </div>
 
@@ -1076,7 +1107,7 @@
   var nav=document.getElementById("nav");
   var CRUMB={dash:"总览台",booking:"预订看板",prep:"行前待办",pack:"打包清单",
     weather:"天气与潮汐",
-    day1:"Day 1 · 抵达环海路",day2:"Day 2 · 荣成东线",day3:"Day 3 · 慢逛返京",
+    day1:"Day 1 · 环海路单向",day2:"Day 2 · 沉船看低潮",day3:"Day 3 · 慢逛返京",
     food:"吃 · 排兵布阵",car:"租车与交通",fig:"无花果专题",tips:"避坑与安全"};
   var sb=document.getElementById("sidebar"),sc=document.getElementById("scrim");
   function close(){sb.classList.remove("open");sc.classList.remove("on");}
@@ -1122,7 +1153,7 @@
   function dir(deg){return DIRS[Math.round(deg/22.5)%16];}
 
   var TRIP=[["2026-10-13","Day 1","抵达 · 环海路日落"],
-            ["2026-10-14","Day 2","荣成东线 · 沉船"],
+            ["2026-10-14","Day 2","沉船 · 低潮窗口"],
             ["2026-10-15","Day 3","慢逛 · 返京"]];
 
   function wear(tmax,tmin,pop,gust){
@@ -1264,7 +1295,7 @@
         if(rainy)body+=" 环海路看日落遇雨的概率不低——半月的行程里海景是核心，值得留意是否有备用日（10/16 之后天气更好）。";
         else body+=" 环海路西线 + 日落条件可以期待，日落约 "+d.sunset[i].slice(11,16)+"。";
       }else if(t[1]==="Day 2"){
-        body="荣成东线沉船日。<b>风大浪高时礁石湿滑，务必穿防滑鞋</b>。";
+        body="沉船 + 低潮窗口日。<b>风大浪高时礁石湿滑，务必穿防滑鞋</b>。";
         if(gst>=40)body+=" 阵风 "+gst+" km/h 时，站在礁石上拍全景要格外小心，浪花可能够到礁石面。";
       }else{
         body="慢逛返京日。<b>"+wi[1]+"，降水 "+pop+"%</b>。赶海要挑低潮时段（见下方潮汐）。";
