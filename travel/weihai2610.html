@@ -255,6 +255,82 @@
     .view{display:block!important;}
     .kpi,.card,.panel,.chk,.bcol{break-inside:avoid;}
   }
+/* ===== 天气与潮汐模块 ===== */
+  .wx-bar{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+  .wx-stat{display:flex;flex-direction:column;gap:3px}
+  .wx-lb{font-size:12.5px;letter-spacing:.08em;color:var(--ink-3)}
+  .wx-vl{font-size:14px;font-weight:600;color:var(--ink)}
+  .wx-refresh{margin-left:auto;background:var(--sea);color:#fff;border:none;cursor:pointer;
+    padding:9px 18px;border-radius:9px;font-family:inherit;font-size:13.5px;font-weight:600;transition:opacity .18s}
+  .wx-refresh:hover{opacity:.86}
+  .wx-refresh[disabled]{opacity:.5;cursor:wait}
+  .wx-msg{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
+    padding:22px 18px;font-size:13.5px;color:var(--ink-2);text-align:center}
+  .wx-msg.bad{border-color:var(--red);color:var(--red)}
+
+  .wx-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .wx-card{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:17px 16px;
+    display:flex;flex-direction:column;gap:11px}
+  .wx-card .d1{font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:.04em}
+  .wx-card .d1 span{font-weight:400;color:var(--ink-3);margin-left:6px;font-size:12.5px}
+  .wx-card .ic{font-size:34px;line-height:1}
+  .wx-card .ph{font-size:14px;font-weight:600;color:var(--ink)}
+  .wx-card .tp{font-size:25px;font-weight:700;color:var(--sea);letter-spacing:-.02em}
+  .wx-card .tp em{font-size:14px;font-style:normal;color:var(--ink-3);font-weight:400}
+  .wx-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--ink-2);border-top:1px solid var(--line-2);padding-top:8px}
+  .wx-row b{color:var(--ink);font-weight:600}
+  .wx-bar-mini{height:5px;background:var(--line-2);border-radius:99px;overflow:hidden;margin-top:2px}
+  .wx-bar-mini i{display:block;height:100%;border-radius:99px}
+  .wx-wear{font-size:12.5px;color:var(--ink-2);background:var(--sea-soft);border-radius:8px;
+    padding:9px 11px;line-height:1.65}
+
+  .wx-alerts{display:flex;flex-direction:column;gap:10px}
+  .wx-al{display:flex;gap:12px;align-items:flex-start;border-radius:11px;padding:14px 16px;
+    border:1px solid;font-size:13.5px;line-height:1.7}
+  .wx-al .ic2{font-size:19px;line-height:1.3;flex-shrink:0}
+  .wx-al .bd{flex:1}
+  .wx-al .bd h4{font-size:14px;font-weight:700;margin-bottom:4px}
+  .wx-al.warn{background:var(--gold-soft);border-color:var(--gold);color:var(--ink-2)}
+  .wx-al.warn .bd h4{color:var(--gold)}
+  .wx-al.bad{background:var(--red-soft);border-color:var(--red);color:var(--ink-2)}
+  .wx-al.bad .bd h4{color:var(--red)}
+  .wx-al.ok{background:var(--green-soft);border-color:var(--green);color:var(--ink-2)}
+  .wx-al.ok .bd h4{color:var(--green)}
+  .wx-al.info{background:var(--sea-soft);border-color:var(--sea);color:var(--ink-2)}
+  .wx-al.info .bd h4{color:var(--sea)}
+
+  .wx-tide-wrap{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:17px 16px}
+  .wx-tide-day{margin-bottom:18px}
+  .wx-tide-day:last-child{margin-bottom:0}
+  .wx-tide-h{display:flex;align-items:baseline;gap:10px;margin-bottom:11px;flex-wrap:wrap}
+  .wx-tide-h b{font-size:14px}
+  .wx-tide-h span{font-size:12.5px;color:var(--ink-3)}
+  .wx-spark{width:100%;height:104px;display:block}
+  .wx-tide-facts{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:9px}
+  .wx-tide-facts b{color:var(--ink);font-weight:600}
+  .wx-tide-act{margin-top:11px;font-size:12.5px;border-radius:8px;padding:9px 11px;line-height:1.65}
+  .wx-tide-act.good{background:var(--green-soft);color:var(--green)}
+  .wx-tide-act.mid{background:var(--gold-soft);color:var(--gold)}
+  .wx-tide-act.poor{background:var(--red-soft);color:var(--red)}
+
+  .wx-hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:9px}
+  .wx-hour{border:1px solid var(--line);border-radius:10px;padding:11px 9px;text-align:center;
+    background:var(--paper-2)}
+  .wx-hour.peak{border-color:var(--gold);background:var(--gold-soft)}
+  .wx-hour .h{font-size:12.5px;color:var(--ink-3)}
+  .wx-hour .v{font-size:14px;font-weight:700;color:var(--ink);margin:5px 0 3px}
+  .wx-hour .w{font-size:12.5px;color:var(--ink-2)}
+
+  .wx-note{margin-top:26px;background:var(--slate-soft);border:1px solid var(--line);
+    border-radius:13px;padding:17px 18px}
+  .wx-note h4{font-size:14.5px;font-weight:700;margin-bottom:9px;color:var(--ink)}
+  .wx-note ul{margin:0;padding-left:19px}
+  .wx-note li{font-size:13.5px;color:var(--ink-2);line-height:1.85;margin-bottom:5px}
+
+  @media print{.wx-refresh{display:none}}
+  @media (max-width:640px){.wx-refresh{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
@@ -275,6 +351,7 @@
       <a data-view="prep"><span class="dot"></span>行前待办<span class="cnt" id="cPrep">0/0</span></a>
       <a data-view="pack"><span class="dot"></span>打包清单<span class="cnt" id="cPack">0/0</span></a>
       <div class="grp">现场</div>
+      <a data-view="weather"><span class="dot"></span>天气与潮汐<span class="cnt" id="cWx">·</span></a>
       <a data-view="day1"><span class="dot"></span>Day 1 抵达环海路</a>
       <a data-view="day2"><span class="dot"></span>Day 2 荣成东线</a>
       <a data-view="day3"><span class="dot"></span>Day 3 慢逛返京</a>
@@ -303,6 +380,50 @@
     </header>
 
     <div class="views">
+
+      <!-- ===== WEATHER ===== -->
+      <section class="view" id="v-weather">
+        <div class="head">
+          <div class="kicker">LIVE WEATHER &amp; TIDE</div>
+          <h1>天气与潮汐 · 实时</h1>
+          <p>数据在打开页面时从 Open-Meteo 实时获取（威海 37.51°N / 122.12°E）。<strong>出发前 3 天再刷一次</strong>——预报越近越准，尤其是阵风和降水概率。</p>
+        </div>
+
+        <div class="wx-bar">
+          <div class="wx-stat"><span class="wx-lb">数据源</span><span class="wx-vl">Open-Meteo</span></div>
+          <div class="wx-stat"><span class="wx-lb">更新时间</span><span class="wx-vl" id="wxTime">读取中…</span></div>
+          <div class="wx-stat"><span class="wx-lb">预报时效</span><span class="wx-vl" id="wxLead">—</span></div>
+          <button class="wx-refresh" id="wxRefresh">刷新数据</button>
+        </div>
+
+        <div id="wxMsg" class="wx-msg">正在从网络获取威海实时预报…</div>
+
+        <div id="wxBody" style="display:none">
+
+          <div class="sec-head"><h2>三日预报</h2><span class="sec-note">10/13 - 10/15 · 对应 Day 1-3</span></div>
+          <div class="wx-cards" id="wxCards"></div>
+
+          <div class="sec-head" style="margin-top:30px;"><h2>行动提示</h2><span class="sec-note">按实时数据自动生成</span></div>
+          <div class="wx-alerts" id="wxAlerts"></div>
+
+          <div class="sec-head" style="margin-top:30px;"><h2>潮汐时刻</h2><span class="sec-note">沉船与赶海靠它</span></div>
+          <div class="wx-tide-wrap" id="wxTide"></div>
+
+          <div class="sec-head" style="margin-top:30px;"><h2>逐小时明细</h2><span class="sec-note">风最大时段会标出</span></div>
+          <div class="wx-hours" id="wxHours"></div>
+
+          <div class="wx-note">
+            <h4>怎么看这些数据</h4>
+            <ul>
+              <li><strong>降水概率 ≥ 40%</strong>：带伞，海边风大伞容易翻，不如穿冲锋衣。</li>
+              <li><strong>阵风 &gt; 50 km/h</strong>：这是威海十月的常态，海边栈道、礁石区注意脚下，开车门要抓稳。</li>
+              <li><strong>低潮前后 2 小时</strong>是赶海和走近沉船的窗口，高潮时礁石会被淹没。</li>
+              <li><strong>浪高 &gt; 1.5m</strong>：别下水（10 月海水表温约 17℃，本来也不建议下水）。</li>
+              <li>潮汐为模型估算值，<strong>与实际观测可能有 30 分钟偏差</strong>，做礁石类活动前以现场实际海况为准。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <!-- ===== DASH ===== -->
       <section class="view is-active" id="v-dash">
@@ -954,6 +1075,7 @@
   /* ---- nav ---- */
   var nav=document.getElementById("nav");
   var CRUMB={dash:"总览台",booking:"预订看板",prep:"行前待办",pack:"打包清单",
+    weather:"天气与潮汐",
     day1:"Day 1 · 抵达环海路",day2:"Day 2 · 荣成东线",day3:"Day 3 · 慢逛返京",
     food:"吃 · 排兵布阵",car:"租车与交通",fig:"无花果专题",tips:"避坑与安全"};
   var sb=document.getElementById("sidebar"),sc=document.getElementById("scrim");
@@ -968,6 +1090,8 @@
     var act=nav.querySelector('a[data-view="'+id+'"]');
     if(act)act.classList.add("active");
     document.getElementById("crumb").textContent=CRUMB[id]||"";
+    // 首次进入或已过 30 分钟则重新拉取，保证"实时"
+    if(id==="weather"&&(!wxState||Date.now()-wxState>1800000))loadWeather();
     window.scrollTo({top:0,behavior:"smooth"});
     close();
   }
@@ -979,6 +1103,272 @@
   });
   document.getElementById("hamburger").addEventListener("click",function(){sb.classList.add("open");sc.classList.add("on");});
   sc.addEventListener("click",close);
+
+  /* ---- 天气与潮汐（Open-Meteo 实时）---- */
+  var WMO={
+    0:["☀️","晴"],1:["🌤","大部晴朗"],2:["⛅️","多云"],3:["☁️","阴"],
+    45:["🌫","雾"],48:["🌫","雾凇"],
+    51:["🌦","毛毛雨"],53:["🌦","小雨"],55:["🌧","中雨"],
+    61:["🌧","小雨"],63:["🌧","中雨"],65:["🌧","大雨"],
+    66:["🌨","冻雨"],67:["🌨","冻雨"],
+    71:["🌨","小雪"],73:["🌨","中雪"],75:["🌨","大雪"],77:["🌨","米雪"],
+    80:["🌦","阵雨"],81:["🌦","阵雨"],82:["⛈","强阵雨"],
+    85:["🌨","阵雪"],86:["🌨","强阵雪"],
+    95:["⛈","雷阵雨"],96:["⛈","雷阵雨伴冰雹"],99:["⛈","强雷暴伴冰雹"]
+  };
+  function wmo(c){return WMO[c]||["🌡","—"];}
+  var DIRS=["北","东北偏北","东北","东北偏东","东","东南偏东","东南","东南偏南",
+    "南","西南偏南","西南","西南偏西","西","西北偏西","西北","西北偏北"];
+  function dir(deg){return DIRS[Math.round(deg/22.5)%16];}
+
+  var TRIP=[["2026-10-13","Day 1","抵达 · 环海路日落"],
+            ["2026-10-14","Day 2","荣成东线 · 沉船"],
+            ["2026-10-15","Day 3","慢逛 · 返京"]];
+
+  function wear(tmax,tmin,pop,gust){
+    var t=(tmax+tmin)/2;
+    var base="";
+    if(tmax>=26)base="短袖 + 防晒衣，紫外线强";
+    else if(tmax>=21)base="长袖 T 恤 / 薄衬衫";
+    else if(tmax>=16)base="长袖 + 薄外套或卫衣";
+    else if(tmax>=11)base="厚外套 + 毛衣";
+    else base="羽绒服级别";
+    var ex=[];
+    if(gust>=45)ex.push("⚠️阵风大，风衣/冲锋衣优先，帽子收好");
+    else if(gust>=30)ex.push("海风偏大，薄外套挡风");
+    if(pop>=40)ex.push("☔带雨具，礁石湿滑");
+    if(tmax-tmin>=8)ex.push("昼夜温差大，内穿可脱");
+    return base+(ex.length?"。":"")+ex.join("；");
+  }
+
+  var wxState=null;
+
+  function drawTide(day,hours,sl,sea){
+    //找当天极值
+    var pts=[];
+    for(var i=0;i<hours.length;i++){
+      if(hours[i].indexOf(day)===0&&sl[i]!==null)pts.push({t:hours[i].slice(11,16),v:sl[i]});
+    }
+    if(!pts.length)return "";
+    var mn=pts.reduce(function(a,b){return b.v<a.v?b:a;});
+    var mx=pts.reduce(function(a,b){return b.v>a.v?b:a;});
+
+    // 关键：把行程时段跟潮位对齐
+    // Day2 沉船看 10:00-12:00；Day3 赶海看 09:00-11:00
+    var acts=[];
+    TRIP.forEach(function(t){
+      if(t[0]!==day)return;
+      var w = t[1]==="Day 2" ? [9,13] : (t[1]==="Day 3" ? [8,12] : null);
+      if(!w)return;
+      var inWin=pts.filter(function(p){var h=parseInt(p.t,10);return h>=w[0]&&h<=w[1];});
+      if(!inWin.length)return;
+      var avg=inWin.reduce(function(s,p){return s+p.v;},0)/inWin.length;
+      var cls=avg<=-0.3?"good":(avg<=0.4?"mid":"poor");
+      var txt=cls==="good"?"退潮时段，适合走近礁石":
+               (cls==="mid"?"接近平潮，礁石可能部分淹没":"高潮时段，礁石被淹没，不建议前往");
+      acts.push('<div class="wx-tide-act '+cls+'"><b>'+t[1]+' '+w[0]+':00-'+w[1]+':00（'+t[2]+'）</b>　'
+        +txt+'（该时段潮位约 '+avg.toFixed(2)+' m）</div>');
+    });
+
+    // sparkline
+    var W=560,H=104,P=6;
+    var vals=pts.map(function(p){return p.v;});
+    var lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);
+    var span=(hi-lo)||1;
+    var step=(W-P*2)/(pts.length-1);
+    var d="",a="",area="";
+    for(var k=0;k<pts.length;k++){
+      var x=P+k*step;
+      var y=P+(hi-pts[k].v)/span*(H-P*2);
+      d+=(k?" L":"M")+x.toFixed(1)+" "+y.toFixed(1);
+      a+=(k?" L":"M")+x.toFixed(1)+" "+y.toFixed(1);
+    }
+    area=a+" L"+(W-P)+" "+(H-P)+" L"+P+" "+(H-P)+" Z";
+
+    // 低潮窗口标注
+    var lowWin="";
+    for(var m=0;m<pts.length-1;m++){
+      if(pts[m].v<=-0.35&&pts[m+1].v<=-0.35){
+        lowWin+=pts[m].t+" - "+pts[m+1].t+" ";
+      }
+    }
+
+    var wAvg=sea?Math.round(sea.reduce(function(a,b){return a+b;},0)/sea.length*10)/10:0;
+
+    return '<div class="wx-tide-day">'
+      +'<div class="wx-tide-h"><b>'+day+'</b>'
+      +'<span>低潮 '+mn.t+'（'+mn.v.toFixed(2)+' m）　最高潮 '+mx.t+'（'+mx.v.toFixed(2)+' m）</span></div>'
+      +'<svg class="wx-spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">'
+      +'<path d="'+area+'" fill="var(--sea)" opacity=".12"/>'
+      +'<path d="'+d+'" fill="none" stroke="var(--sea)" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+      +'<line x1="'+P+'" y1="'+y2(0)+'" x2="'+(W-P)+'" y2="'+y2(0)+'" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>'
+      +'<text x="'+(P+3)+'" y="'+(y2(0)-4)+'" font-size="10" fill="var(--ink-3)">0 m 平潮线</text>'
+      +'</svg>'
+      +'<div class="wx-tide-facts">'
+      +'<span>低潮窗口 <b>'+(lowWin.trim()||"当日无明显低潮")+'</b></span>'
+      +'<span>平均浪高 <b>'+wAvg+' m</b></span>'
+      +'<span>潮差 <b>'+(hi-lo).toFixed(2)+' m</b></span>'
+      +'</div>'
+      +(acts.length?acts.join(""):"")
+      +'</div>';
+
+    function y2(val){return (P+(hi-val)/span*(H-P*2)).toFixed(1);}
+  }
+
+  function renderWeather(w,m){
+    var d=w.daily;
+    var idx={};
+    d.time.forEach(function(t,i){idx[t]=i;});
+
+    var cards="";
+    TRIP.forEach(function(t){
+      var i=idx[t[0]];
+      if(i===undefined)return;
+      var code=d.weather_code[i],wi=wmo(code);
+      var tmax=d.temperature_2m_max[i],tmin=d.temperature_2m_min[i];
+      var pop=d.precipitation_probability_max[i];
+      var wsp=d.wind_speed_10m_max[i],gst=d.wind_gusts_10m_max[i];
+      var popColor=pop>=40?"var(--red)":(pop>=20?"var(--gold)":"var(--green)");
+      var wColor=gst>=45?"var(--red)":(gst>=30?"var(--gold)":"var(--green)");
+      cards+='<div class="wx-card">'
+        +'<div class="d1">'+t[1]+'<span>'+t[2]+'</span></div>'
+        +'<div class="ic">'+wi[0]+'</div>'
+        +'<div class="ph">'+wi[1]+'</div>'
+        +'<div class="tp">'+tmax+'° <em>/ '+tmin+'°</em></div>'
+        +'<div class="wx-row"><span>降水概率</span><b style="color:'+popColor+'">'+pop+'%</b></div>'
+        +'<div class="wx-bar-mini"><i style="width:'+pop+'%;background:'+popColor+'"></i></div>'
+        +'<div class="wx-row"><span>风 '+dir(d.wind_direction_10m_dominant[i])+'</span><b>'+wsp+' km/h</b></div>'
+        +'<div class="wx-row"><span>阵风</span><b style="color:'+wColor+'">'+gst+' km/h</b></div>'
+        +'<div class="wx-row"><span>紫外线</span><b>'+(d.uv_index_max?d.uv_index_max[i]:"—")+'</b></div>'
+        +'<div class="wx-wear">👕 '+wear(tmax,tmin,pop,gst)+'</div>'
+        +'</div>';
+    });
+    document.getElementById("wxCards").innerHTML=cards;
+
+    // 行动提示
+    var al="";
+    TRIP.forEach(function(t){
+      var i=idx[t[0]];
+      if(i===undefined)return;
+      var pop=d.precipitation_probability_max[i],gst=d.wind_gusts_10m_max[i];
+      var tmax=d.temperature_2m_max[i],code=d.weather_code[i],wi=wmo(code);
+      var rainy=pop>=50||code>=51&&code<=82||code>=95;
+      var lv="info",ic="ℹ️",head="",body="";
+      if(gst>=50){lv="bad";ic="🌪️";head="阵风偏大";}
+      else if(gst>=35){lv="warn";ic="💨";head="海风偏大";}
+      else if(rainy){lv="warn";ic="☔️";head="有降水可能";}
+      else{lv="ok";ic="✨";head="天气不错";}
+
+      if(t[1]==="Day 1"){
+        body="抵达日。预报 <b>"+wi[1]+"，降水概率 "+pop+"%，阵风 "+gst+" km/h</b>。";
+        if(rainy)body+=" 环海路看日落遇雨的概率不低——半月的行程里海景是核心，值得留意是否有备用日（10/16 之后天气更好）。";
+        else body+=" 环海路西线 + 日落条件可以期待，日落约 "+d.sunset[i].slice(11,16)+"。";
+      }else if(t[1]==="Day 2"){
+        body="荣成东线沉船日。<b>风大浪高时礁石湿滑，务必穿防滑鞋</b>。";
+        if(gst>=40)body+=" 阵风 "+gst+" km/h 时，站在礁石上拍全景要格外小心，浪花可能够到礁石面。";
+      }else{
+        body="慢逛返京日。<b>"+wi[1]+"，降水 "+pop+"%</b>。赶海要挑低潮时段（见下方潮汐）。";
+      }
+      if(gst>=50)body+="<br>· 风太大时火炬八街观景平台、海边栈道尽量少停留，避免被阵风带偏。";
+      if(pop>=50)body+="<br>· 带防水外套，比伞实用。礁石被海水打湿后极滑。";
+      al+='<div class="wx-al '+lv+'"><div class="ic2">'+ic+'</div><div class="bd"><h4>'+t[1]+'（'+t[0].slice(5)+'）· '+head+'</h4>'+body+'</div></div>';
+    });
+    document.getElementById("wxAlerts").innerHTML=al;
+
+    // 潮汐
+    var tide="";
+    if(m&&m.hourly){
+      TRIP.forEach(function(t){
+        tide+=drawTide(t[0],m.hourly.time,m.hourly.sea_level_height_msl,m.hourly.wave_height);
+      });
+      // 未来 2 天，供改期参考
+      var extra="2026-10-16",ex="";
+      try{ex=drawTide(extra,m.hourly.time,m.hourly.sea_level_height_msl,m.hourly.wave_height);}catch(e){}
+      document.getElementById("wxTide").innerHTML=tide+ex
+        +'<div class="wx-note" style="margin-top:16px"><h4>潮汐与沉船/赶海的关系</h4><ul>'
+        +'<li><strong>沉船（Day 2 上午）</strong>：荣成海滩属半日潮，礁石区在低潮时才露出来。高潮时礁石被淹没，只能远观。</li>'
+        +'<li><strong>赶海（Day 3 上午）</strong>：低潮前后 2 小时是最佳窗口，小石岛区域尤其明显。</li>'
+        +'<li>上面标了「好/ 中 / 差」的时段就是按这个逻辑算的，差的时候别硬去。</li>'
+        +'</ul></div>';
+    }else{
+      document.getElementById("wxTide").innerHTML=
+        '<div class="wx-msg">潮汐数据暂不可用（海况数据源偶尔波动），天气模块不受影响。</div>';
+    }
+
+    // 逐小时（以出发日 10/13 为例）
+    if(w.hourly){
+      var ht=[],hs=w.hourly.time,hw=w.hourly.wind_speed_10m;
+      var maxW=Math.max.apply(null,hw.filter(function(v){return v!==null;}));
+      for(var i=0;i<hs.length;i++){
+        if(hs[i].indexOf("2026-10-13")!==0)continue;
+        var hh=parseInt(hs[i].slice(11,13),10);
+        if(hh<13||hh>22)continue;   // 只看白天+傍晚，贴合实际活动
+        ht.push('<div class="wx-hour'+(hw[i]>maxW*0.92?" peak":"")+'">'
+          +'<div class="h">'+hs[i].slice(11,16)+'</div>'
+          +'<div class="v">'+w.hourly.temperature_2m[i]+'°</div>'
+          +'<div class="w">'+w.hourly.wind_speed_10m[i]+' km/h</div>'
+          +(hw[i]>maxW*0.92?'<div class="w" style="color:var(--gold);margin-top:3px">风最大</div>':'')
+          +'</div>');
+      }
+      document.getElementById("wxHours").innerHTML=ht.join("")
+        ||'<div class="wx-msg">逐小时数据暂不可用。</div>';
+    }
+
+    // 侧栏计数
+    var cWx=document.getElementById("cWx");
+    if(cWx){
+      var worst=0;
+      TRIP.forEach(function(t){var i=idx[t[0]];
+        if(i!==undefined)worst=Math.max(worst,d.precipitation_probability_max[i]);});
+      cWx.textContent=worst>=40?"有雨":(worst>=20?"关注":"好");
+    }
+
+    document.getElementById("wxBody").style.display="";
+    document.getElementById("wxMsg").style.display="none";
+
+    var now=new Date();
+    document.getElementById("wxTime").textContent=
+      now.getFullYear()+"-"+pad(now.getMonth()+1)+"-"+pad(now.getDate())+" "
+      +pad(now.getHours())+":"+pad(now.getMinutes());
+    var lead=Math.round((new Date(2026,9,13)-now)/86400000);
+    document.getElementById("wxLead").textContent=lead>0?("距出发 "+lead+" 天"):"已出发";
+  }
+
+  function loadWeather(){
+    var btn=document.getElementById("wxRefresh");
+    var msg=document.getElementById("wxMsg");
+    btn.disabled=true;btn.textContent="获取中…";
+    msg.className="wx-msg";
+    msg.textContent="正在从网络获取威海实时预报…";
+
+    var wxUrl="https://api.open-meteo.com/v1/forecast?latitude=37.51&longitude=122.12"
+      +"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,"
+      +"wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,uv_index_max,sunrise,sunset"
+      +"&hourly=temperature_2m,wind_speed_10m"
+      +"&timezone=Asia%2FShanghai&forecast_days=7";
+    var mUrl="https://marine-api.open-meteo.com/v1/marine?latitude=37.51&longitude=122.12"
+      +"&hourly=wave_height,sea_level_height_msl"
+      +"&timezone=Asia%2FShanghai&forecast_days=7";
+
+    // 潮汐是加分项，失败不影响天气主模块
+    var tasks=[
+      fetch(wxUrl).then(function(r){if(!r.ok)throw new Error("weather "+r.status);return r.json();}),
+      fetch(mUrl).then(function(r){if(!r.ok)throw new Error("marine "+r.status);return r.json();})
+        .catch(function(){return null;})
+    ];
+
+    Promise.all(tasks).then(function(res){
+      renderWeather(res[0],res[1]);
+      wxState=Date.now();
+    }).catch(function(e){
+      msg.className="wx-msg bad";
+      msg.innerHTML="<b>天气数据获取失败</b><br>"+(e&&e.message?e.message:"网络异常")
+        +"<br>请检查网络后点「刷新数据」重试。<br>不影响工作台其他功能。";
+    }).then(function(){
+      btn.disabled=false;btn.textContent="刷新数据";
+    });
+  }
+  document.getElementById("wxRefresh").addEventListener("click",loadWeather);
 
   /* ---- countdown ---- */
   function pad(n){return n<10?"0"+n:""+n;}
@@ -1110,6 +1500,9 @@
     updateBooking();
   }
   updateAll();
+
+  /* ---- 天气预取：页面打开就开始拉，点进天气页时通常已有数据 ---- */
+  setTimeout(loadWeather,600);
 
   /* ---- reset ---- */
   document.getElementById("resetBtn").addEventListener("click",function(){
