@@ -391,6 +391,21 @@
   .ltl .c s{display:block;text-decoration:none;font-size:13px;color:var(--ink-3);margin-top:1px}
   .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);margin-top:9px;
     font-family:-apple-system,"PingFang SC",sans-serif}
+
+  /* 大/小交通对比 */
+  .cmp-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding:8px 0;border-bottom:1px dashed var(--line-2);
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .cmp-h:last-of-type{border-bottom:none}
+  .cmp-k{font-size:13.5px;color:var(--ink-3)}
+  .cmp-v{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .cmp-note{font-size:13px;color:var(--ink-2);background:var(--paper);border-radius:9px;
+    padding:11px 12px;line-height:1.8;margin-top:12px;
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .cmp-note b{color:var(--ink);font-weight:600}
+  .lt .grp td{background:var(--paper);font-size:12.5px;color:var(--ink-3);font-weight:600;
+    letter-spacing:.05em;padding:7px 10px}
+  .lt .sub td{background:var(--paper);font-weight:600;font-size:13.5px;color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -1138,23 +1153,52 @@
 <div class="lk sea"><div class="l">总支出</div><div class="v">¥3,868.93</div><div class="s">两人合计 · 31 笔</div></div>
 <div class="lk green"><div class="l">人均</div><div class="v">¥1,934.46</div><div class="s">低于预算下限 ¥69</div></div>
 <div class="lk sea"><div class="l">威海本地消费</div><div class="v">¥1,956.93</div><div class="s">人均 ¥978.46 · 不含高铁</div></div>
-<div class="lk rust"><div class="l">交通总占比</div><div class="v">59<small>%</small></div><div class="s">高铁占 ¥1,912.00</div></div>
+<div class="lk rust"><div class="l">大交通 · 高铁占比</div><div class="v">49.4<small>%</small></div><div class="s">小交通 ¥384.37 · 9.9%</div></div>
 </div>
-<div class="sec-head" style="margin-top:28px"><h2>分类汇总</h2><span class="sec-note">「路费」已并入交通</span></div>
+<div class="sec-head" style="margin-top:28px"><h2>分类汇总</h2><span class="sec-note">大交通与小交通分开计</span></div>
 <div class="card"><div class="card-b" style="padding:16px 18px 18px"><div class="lbars">
-<div class="lbrow"><div class="bl">交通出行</div><div class="bt"><i style="width:59.4%;background:var(--sea)"></i></div><div class="bv">¥2,296.37 · 59.4%</div></div>
+<div class="lbrow"><div class="bl">大交通 · 高铁</div><div class="bt"><i style="width:49.4%;background:var(--sea)"></i></div><div class="bv">¥1,912.00 · 49.4%</div></div>
+<div class="lbrow"><div class="bl">小交通 · 市内</div><div class="bt"><i style="width:9.9%;background:var(--slate)"></i></div><div class="bv">¥384.37 · 9.9%</div></div>
 <div class="lbrow"><div class="bl">餐饮</div><div class="bt"><i style="width:22.8%;background:var(--rust)"></i></div><div class="bv">¥881.80 · 22.8%</div></div>
 <div class="lbrow"><div class="bl">住宿</div><div class="bt"><i style="width:9.8%;background:var(--green)"></i></div><div class="bv">¥377.76 · 9.8%</div></div>
 <div class="lbrow"><div class="bl">咖啡探店</div><div class="bt"><i style="width:6.3%;background:var(--gold)"></i></div><div class="bv">¥242.00 · 6.3%</div></div>
-<div class="lbrow"><div class="bl">购物</div><div class="bt"><i style="width:1.8%;background:var(--slate)"></i></div><div class="bv">¥71.00 · 1.8%</div></div>
+<div class="lbrow"><div class="bl">购物</div><div class="bt"><i style="width:1.8%;background:var(--ink-3)"></i></div><div class="bv">¥71.00 · 1.8%</div></div>
 </div></div></div>
+
+<div class="sec-head" style="margin-top:24px"><h2>大交通 vs 小交通</h2><span class="sec-note">两种性质，分开看</span></div>
+<div class="lgrid">
+<div class="card"><div class="card-h"><h3>大交通 · 高铁往返</h3><span class="tm">2 笔 · 刚性</span></div>
+<div class="card-b" style="padding:14px 18px 18px">
+<div class="cmp-h"><span class="cmp-k">合计</span><span class="cmp-v">¥1,912.00</span></div>
+<div class="cmp-h"><span class="cmp-k">占总支出</span><span class="cmp-v">49.4%</span></div>
+<div class="cmp-h"><span class="cmp-k">人均</span><span class="cmp-v">¥956.00</span></div>
+<div class="cmp-h"><span class="cmp-k">单程人均</span><span class="cmp-v">¥478.00</span></div>
+<div class="cmp-note">北京南 ⇄ 威海，二等座。这部分由票价决定，<b>没有优化空间</b>，却吃掉近一半预算。</div>
+</div></div>
+<div class="card"><div class="card-h"><h3>小交通 · 威海市内</h3><span class="tm">10 笔 · 可优化</span></div>
+<div class="card-b" style="padding:14px 18px 18px">
+<div class="cmp-h"><span class="cmp-k">合计</span><span class="cmp-v">¥384.37</span></div>
+<div class="cmp-h"><span class="cmp-k">占总支出</span><span class="cmp-v">9.9%</span></div>
+<div class="cmp-h"><span class="cmp-k">人均</span><span class="cmp-v">¥192.19</span></div>
+<div class="cmp-h"><span class="cmp-k">日均</span><span class="cmp-v">¥128.12</span></div>
+<div class="cmp-note">租车 + 加油 + 滴滴。<b>3 天只花了高铁的 1/5</b>——其中租车仅 ¥222.80（单日），比全程打车省。</div>
+</div></div>
+</div>
+<div class="note" style="margin-top:12px"><div style="font-size:13.5px;color:var(--ink-2);line-height:1.85">
+<b>对比意义</b>：大交通占总支出 49.4%，是<b>刚性支出</b>；小交通只占 9.9%，但<b>是可支配的部分</b>。下次想压预算，能动的是这 384 元（比如全程公交 + 步行，能省一半以上），而不是那 1,912 元的高铁。
+</div></div>
 <div class="lgrid" style="margin-top:14px">
 <div class="card"><div class="card-h"><h3>交通拆解</h3><span class="tm">大头都在这</span></div><div class="card-b" style="padding:0 18px 14px"><div class="twrap"><table class="lt"><thead><tr><th>项目</th><th class="num">金额</th><th class="num">占总</th><th class="num">人均</th></tr></thead><tbody>
-<tr><td>高铁（两人往返）</td><td class="num">¥1,912.00</td><td class="num">49.4%</td><td class="num">¥956.00</td></tr>
-<tr><td>租车（一嗨 比亚迪秦PLUS）</td><td class="num">¥237.80</td><td class="num">6.1%</td><td class="num">¥118.90</td></tr>
+<tr class="grp"><td colspan="4">大交通 · 跨城（2 笔）</td></tr>
+<tr><td>高铁 G1085 去程 + G1092 返程</td><td class="num">¥1,912.00</td><td class="num">49.4%</td><td class="num">¥956.00</td></tr>
+<tr class="sub"><td>大交通小计</td><td class="num">¥1,912.00</td><td class="num">49.4%</td><td class="num">¥956.00</td></tr>
+<tr class="grp"><td colspan="4">小交通 · 威海市内（10 笔）</td></tr>
+<tr><td>租车（一嗨 比亚迪秦PLUS）</td><td class="num">¥222.80</td><td class="num">5.8%</td><td class="num">¥111.40</td></tr>
 <tr><td>加油 + 补油</td><td class="num">¥52.91</td><td class="num">1.4%</td><td class="num">¥26.45</td></tr>
 <tr><td>滴滴打车</td><td class="num">¥108.66</td><td class="num">2.8%</td><td class="num">¥54.33</td></tr>
-<tr class="sum"><td>合计</td><td class="num">¥2,311.37</td><td class="num">59.7%</td><td class="num">¥1,155.68</td></tr></tbody></table></div></div></div>
+<tr class="sub"><td>小交通小计</td><td class="num">¥384.37</td><td class="num">9.9%</td><td class="num">¥192.19</td></tr>
+<tr class="sum"><td>交通总计</td><td class="num">¥2,296.37</td><td class="num">59.4%</td><td class="num">¥1,148.19</td></tr>
+</tbody></table></div></div></div>
 <div class="card"><div class="card-h"><h3>咖啡探店专项</h3><span class="tm">4 家 · 人均 ¥151.00</span></div><div class="card-b" style="padding:0 18px 14px"><div class="twrap"><table class="lt"><thead><tr><th>店名</th><th class="num">金额</th><th class="num">笔</th><th class="num">占比</th></tr></thead><tbody>
 <tr><td><b>怒马咖啡</b></td><td class="num">¥134.00</td><td class="num">2</td><td class="num">44%</td></tr>
 <tr><td><b>逅船咖啡</b></td><td class="num">¥60.00</td><td class="num">1</td><td class="num">20%</td></tr>
@@ -1245,10 +1289,10 @@
 <div class="sea-note" style="margin-top:14px">
 <h4>这趟的花在哪 · 数据观察</h4>
 <ul style="padding-left:19px;margin-top:8px">
-<li><b>交通占了 59%</b>，但其中 ¥1,912（83%）是高铁，真正花在市内的租车+加油+打车只有 ¥400 出头——本地交通实际很省。</li>
+<li><b>交通占 59.4%</b>，但拆开看：<b>大交通（高铁）¥1,912 占 49.4%</b>，<b>小交通（市内）只有 ¥384.37 占 9.9%</b>——3 天市内交通只花了高铁的 1/5，本地交通实际很省。</li>
 <li><b>本地消费 ¥1,956.93，人均 ¥978</b>。住宿只占 ¥188.88/人，海鲜和咖啡才是本地消费的主体。</li>
 <li><b>咖啡是隐藏主角</b>：4 家店 ¥302，占本地消费 15.4%。Day 3 一个人连喝三家（怒马两杯 + 仓咖啡豆），¥134 + ¥50。</li>
-<li><b>Day 2 是消费高峰</b>（¥786），也是唯一花钱租车的一天——但租车总成本才 ¥237.80，比打车省钱。</li>
+<li><b>Day 2 是消费高峰</b>（¥786），也是唯一花钱租车的一天——但租车总成本才 ¥222.80（单日含基础险），比全程打车省钱。</li>
 <li><b>餐饮结构偏重正餐</b>：喜珠自助 ¥312 + 东源饭店 ¥219 + 文登烧烤 ¥115 = ¥646，三顿大餐占餐饮 73%。</li>
 </ul>
 </div>
