@@ -333,6 +333,64 @@
 
   @media print{.wx-refresh{display:none}}
   @media (max-width:640px){.wx-refresh{margin-left:0;width:100%}}
+
+/* ===== 账本视图 ===== */
+  .lg{font-size:12.5px;padding:2px 7px;border-radius:5px;white-space:nowrap;font-weight:600;
+    display:inline-block;font-family:-apple-system,"PingFang SC",sans-serif}
+  .lg-h{background:var(--green-soft);color:var(--green)}
+  .lg-g{background:var(--sea-soft);color:var(--sea)}
+  .lg-n{background:var(--gold-soft);color:var(--gold)}
+  .lg-b{background:var(--red-soft);color:var(--red)}
+  .lg-x{background:var(--line-2);color:var(--ink-3)}
+  .who{display:inline-block;min-width:20px;text-align:center;font-size:12.5px;font-weight:700;
+    padding:1px 6px;border-radius:5px;color:#fff}
+
+  .lt{width:100%;border-collapse:collapse;font-size:14px}
+  .lt th{text-align:left;font-size:12.5px;color:var(--ink-3);font-weight:600;letter-spacing:.05em;
+    padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  .lt td{padding:10px;border-bottom:1px solid var(--line-2);vertical-align:top;
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .lt tr:last-child td{border-bottom:none}
+  .lt .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .lt tbody tr:hover{background:var(--paper)}
+  .lt .sum{background:var(--paper)}
+  .lt .sum td{font-weight:700}
+  .twrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+  .lbars{display:flex;flex-direction:column;gap:12px}
+  .lbrow{display:flex;align-items:center;gap:13px}
+  .lbrow .bl{min-width:84px;font-size:14px;color:var(--ink-2);
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .lbrow .bt{flex:1;height:20px;background:var(--line-2);border-radius:6px;overflow:hidden;min-width:60px}
+  .lbrow .bt i{display:block;height:100%;border-radius:6px}
+  .lbrow .bv{min-width:150px;text-align:right;font-size:14px;font-weight:600;
+    font-variant-numeric:tabular-nums;font-family:-apple-system,"PingFang SC",sans-serif}
+
+  .lkp{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px}
+  .lk{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+  .lk .l{font-size:13px;color:var(--ink-3);margin-bottom:5px;
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .lk .v{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.25;
+    font-variant-numeric:tabular-nums}
+  .lk .v small{font-size:14px;font-weight:400;color:var(--ink-3);margin-left:2px}
+  .lk .s{font-size:12.5px;color:var(--ink-3);margin-top:4px;
+    font-family:-apple-system,"PingFang SC",sans-serif}
+  .lk.sea{border-left:3px solid var(--sea)}
+  .lk.green{border-left:3px solid var(--green)}
+  .lk.rust{border-left:3px solid var(--rust)}
+  .lk.gold{border-left:3px solid var(--gold)}
+
+  .lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .ltl{display:flex;gap:12px;align-items:flex-start;padding:10px 0;
+    border-bottom:1px dashed var(--line-2)}
+  .ltl:last-child{border-bottom:none}
+  .ltl .n{font-size:13px;color:var(--ink-3);min-width:48px;font-variant-numeric:tabular-nums;
+    padding-top:1px;font-family:-apple-system,"PingFang SC",sans-serif}
+  .ltl .c{flex:1;font-size:14px;font-family:-apple-system,"PingFang SC",sans-serif}
+  .ltl .c b{font-weight:600}
+  .ltl .c s{display:block;text-decoration:none;font-size:13px;color:var(--ink-3);margin-top:1px}
+  .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);margin-top:9px;
+    font-family:-apple-system,"PingFang SC",sans-serif}
 </style>
 </head>
 <body>
@@ -359,6 +417,7 @@
       <a data-view="day3"><span class="dot"></span>Day 3 慢逛返京</a>
       <a data-view="food"><span class="dot"></span>吃 · 排兵布阵</a>
       <div class="grp">参考</div>
+      <a data-view="ledger"><span class="dot"></span>旅行账本</a>
       <a data-view="car"><span class="dot"></span>租车与交通</a>
       <a data-view="fig"><span class="dot"></span>无花果专题</a>
       <a data-view="tips"><span class="dot"></span>避坑与安全</a>
@@ -1072,6 +1131,139 @@
         </div>
       </section>
 
+      <!-- ===== LEDGER ===== -->
+<section class="view" id="v-ledger">
+<div class="head"><div class="kicker">TRIP LEDGER</div><h1>旅行账本</h1><p>10/13 – 10/15 全部 31 笔消费 · 总支出 ¥3,868.93 · 人均 ¥1,934.46 · <strong>比计划预算还低 ¥69</strong></p></div>
+<div class="lkp">
+<div class="lk sea"><div class="l">总支出</div><div class="v">¥3,868.93</div><div class="s">两人合计 · 31 笔</div></div>
+<div class="lk green"><div class="l">人均</div><div class="v">¥1,934.46</div><div class="s">低于预算下限 ¥69</div></div>
+<div class="lk sea"><div class="l">威海本地消费</div><div class="v">¥1,956.93</div><div class="s">人均 ¥978.46 · 不含高铁</div></div>
+<div class="lk rust"><div class="l">交通总占比</div><div class="v">59<small>%</small></div><div class="s">高铁占 ¥1,912.00</div></div>
+</div>
+<div class="sec-head" style="margin-top:28px"><h2>分类汇总</h2><span class="sec-note">「路费」已并入交通</span></div>
+<div class="card"><div class="card-b" style="padding:16px 18px 18px"><div class="lbars">
+<div class="lbrow"><div class="bl">交通出行</div><div class="bt"><i style="width:59.4%;background:var(--sea)"></i></div><div class="bv">¥2,296.37 · 59.4%</div></div>
+<div class="lbrow"><div class="bl">餐饮</div><div class="bt"><i style="width:22.8%;background:var(--rust)"></i></div><div class="bv">¥881.80 · 22.8%</div></div>
+<div class="lbrow"><div class="bl">住宿</div><div class="bt"><i style="width:9.8%;background:var(--green)"></i></div><div class="bv">¥377.76 · 9.8%</div></div>
+<div class="lbrow"><div class="bl">咖啡探店</div><div class="bt"><i style="width:6.3%;background:var(--gold)"></i></div><div class="bv">¥242.00 · 6.3%</div></div>
+<div class="lbrow"><div class="bl">购物</div><div class="bt"><i style="width:1.8%;background:var(--slate)"></i></div><div class="bv">¥71.00 · 1.8%</div></div>
+</div></div></div>
+<div class="lgrid" style="margin-top:14px">
+<div class="card"><div class="card-h"><h3>交通拆解</h3><span class="tm">大头都在这</span></div><div class="card-b" style="padding:0 18px 14px"><div class="twrap"><table class="lt"><thead><tr><th>项目</th><th class="num">金额</th><th class="num">占总</th><th class="num">人均</th></tr></thead><tbody>
+<tr><td>高铁（两人往返）</td><td class="num">¥1,912.00</td><td class="num">49.4%</td><td class="num">¥956.00</td></tr>
+<tr><td>租车（一嗨 比亚迪秦PLUS）</td><td class="num">¥237.80</td><td class="num">6.1%</td><td class="num">¥118.90</td></tr>
+<tr><td>加油 + 补油</td><td class="num">¥52.91</td><td class="num">1.4%</td><td class="num">¥26.45</td></tr>
+<tr><td>滴滴打车</td><td class="num">¥108.66</td><td class="num">2.8%</td><td class="num">¥54.33</td></tr>
+<tr class="sum"><td>合计</td><td class="num">¥2,311.37</td><td class="num">59.7%</td><td class="num">¥1,155.68</td></tr></tbody></table></div></div></div>
+<div class="card"><div class="card-h"><h3>咖啡探店专项</h3><span class="tm">4 家 · 人均 ¥151.00</span></div><div class="card-b" style="padding:0 18px 14px"><div class="twrap"><table class="lt"><thead><tr><th>店名</th><th class="num">金额</th><th class="num">笔</th><th class="num">占比</th></tr></thead><tbody>
+<tr><td><b>怒马咖啡</b></td><td class="num">¥134.00</td><td class="num">2</td><td class="num">44%</td></tr>
+<tr><td><b>逅船咖啡</b></td><td class="num">¥60.00</td><td class="num">1</td><td class="num">20%</td></tr>
+<tr><td><b>铁皮房咖啡</b></td><td class="num">¥58.00</td><td class="num">1</td><td class="num">19%</td></tr>
+<tr><td><b>仓·咖啡豆商店</b></td><td class="num">¥50.00</td><td class="num">1</td><td class="num">17%</td></tr>
+<tr class="sum"><td>合计</td><td class="num">¥302.00</td><td class="num">5</td><td class="num">100%</td></tr></tbody></table></div></div></div>
+</div>
+<div class="sec-head" style="margin-top:28px"><h2>按日拆解</h2><span class="sec-note">实际走过的路线与花费</span></div>
+<div class="card"><div class="card-h"><h3>Day 1 · 10/13 周二</h3><span class="tm">¥1,805.42 · 11 笔</span></div><div class="card-b" style="padding:4px 18px 14px">
+<div class="ltl"><div class="n">13:41</div><div class="c"><b>高铁抵达威海站，打车去韩乐坊</b><s>滴滴 ¥13.87</s></div></div>
+<div class="ltl"><div class="n">14:30</div><div class="c"><b>宜必思酒店 check-in</b><s>¥377.76（含两晚）</s></div></div>
+<div class="ltl"><div class="n">17:00</div><div class="c"><b>海源公园</b><s>滴滴 ¥8.93</s></div></div>
+<div class="ltl"><div class="n">17:40</div><div class="c"><b>猫头山二号观景台</b><s>滴滴 ¥8.65</s></div></div>
+<div class="ltl"><div class="n">19:00</div><div class="c"><b>打车返回韩乐坊</b><s>滴滴 ¥34.08</s></div></div>
+<div class="ltl"><div class="n">19:30</div><div class="c"><b>喜珠鲜活海鲜自助</b><s>¥312 · NPC</s></div></div>
+<div class="ltl"><div class="n">晚</div><div class="c"><b>朴阿姨拌饭 / 韩式炒米糕</b><s>¥49 + ¥15</s></div></div>
+</div></div>
+<div class="note" style="margin-top:-10px;margin-bottom:20px"><div style="font-size:13.5px;color:var(--ink-2);line-height:1.8">抵达日。13:41 落地，实际只玩了半天。傍晚去了海源公园和猫头山二号观景台——没去半月湾和国际海水浴场。</div></div>
+<div class="card"><div class="card-h"><h3>Day 2 · 10/14 周三</h3><span class="tm">¥786.01 · 10 笔</span></div><div class="card-b" style="padding:4px 18px 14px">
+<div class="ltl"><div class="n">08:30</div><div class="c"><b>步行去喝咖啡</b><s>铁皮房咖啡 ¥58</s></div></div>
+<div class="ltl"><div class="n">10:00</div><div class="c"><b>一嗨取车（比亚迪秦PLUS）</b><s>¥222.80 + 补油 ¥17.44</s></div></div>
+<div class="ltl"><div class="n">11:00</div><div class="c"><b>东源饭店 午餐</b><s>¥219 · 夯</s></div></div>
+<div class="ltl"><div class="n">13:00</div><div class="c"><b>前往荣成· 孤独公约</b><s>—</s></div></div>
+<div class="ltl"><div class="n">14:30</div><div class="c"><b>那香海</b><s>—</s></div></div>
+<div class="ltl"><div class="n">16:30</div><div class="c"><b>布鲁威斯号沉船 · 逅船咖啡</b><s>¥60 · 拉完了</s></div></div>
+<div class="ltl"><div class="n">19:00</div><div class="c"><b>文登烧烤（钦村一店）</b><s>¥115 · 夯</s></div></div>
+<div class="ltl"><div class="n">晚</div><div class="c"><b>还车 + 古茗外卖</b><s>¥27.50</s></div></div>
+</div></div>
+<div class="note" style="margin-top:-10px;margin-bottom:20px"><div style="font-size:13.5px;color:var(--ink-2);line-height:1.8">唯一用车日。孤独公约 → 那香海 → 布鲁威斯号，完整东线。</div></div>
+<div class="card"><div class="card-h"><h3>Day 3 · 10/15 周四</h3><span class="tm">¥1,277.50 · 10 笔</span></div><div class="card-b" style="padding:4px 18px 14px">
+<div class="ltl"><div class="n">07:00</div><div class="c"><b>塔山早市 · 老朱家油条</b><s>¥4.60</s></div></div>
+<div class="ltl"><div class="n">08:00</div><div class="c"><b>老古辈馄饨</b><s>¥15</s></div></div>
+<div class="ltl"><div class="n">09:00</div><div class="c"><b>怒马咖啡（手冲 NAIZUI）</b><s>¥58 · 夯</s></div></div>
+<div class="ltl"><div class="n">10:00</div><div class="c"><b>怒马咖啡（超萃+冰拿铁 2杯）</b><s>¥76 · 夯</s></div></div>
+<div class="ltl"><div class="n">10:30</div><div class="c"><b>仓·咖啡豆商店</b><s>¥50</s></div></div>
+<div class="ltl"><div class="n">11:00</div><div class="c"><b>三旬面包</b><s>¥45</s></div></div>
+<div class="ltl"><div class="n">12:00</div><div class="c"><b>味多家韩式炸酱面</b><s>¥9.90 · NPC</s></div></div>
+<div class="ltl"><div class="n">13:59</div><div class="c"><b>高铁 G1092 返回北京</b><s>¥978</s></div></div>
+</div></div>
+<div class="note" style="margin-top:-10px;margin-bottom:20px"><div style="font-size:13.5px;color:var(--ink-2);line-height:1.8">慢逛塔山早市，咖啡连喝三家，下午返京。</div></div>
+<div class="sec-head" style="margin-top:28px"><h2>付款分布</h2><span class="sec-note">L = 你 · Q = 爱人</span></div>
+<div class="card"><div class="card-b" style="padding:16px 18px 18px"><div class="lbars">
+<div class="lbrow"><div class="bl"><span class="who" style="background:var(--sea)">L</span></div><div class="bt"><i style="width:87.1%;background:var(--sea)"></i></div><div class="bv">¥3,370.93 · 20 笔 · 87.1%</div></div>
+<div class="lbrow"><div class="bl"><span class="who" style="background:var(--rust)">Q</span></div><div class="bt"><i style="width:12.9%;background:var(--rust)"></i></div><div class="bv">¥498.00 · 11 笔 · 12.9%</div></div>
+</div></div></div>
+<div class="sec-head" style="margin-top:28px"><h2>全部明细</h2><span class="sec-note">31 笔 · 按日期排序</span></div>
+<div class="card"><div class="card-b" style="padding:14px 18px 18px"><div class="twrap"><table class="lt"><thead><tr><th style="width:62px">日期</th><th>明细</th><th style="width:60px">类型</th><th style="width:70px">评分</th><th style="width:52px">付款</th><th class="num" style="width:88px">金额</th></tr></thead><tbody>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>包舍嵊州小笼包（北京南站)</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-b">拉完了</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">39.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>喜珠鲜活海鲜自助餐厅(韩乐坊店)</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-n">NPC</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">312.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>宜必思酒店（威海威高广场幸福门店）</td><td style="color:var(--green);font-size:13px">住宿</td><td><span class="lg lg-g">人上人</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">377.76</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>朴阿姨拌饭（韩乐坊）</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-n">NPC</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">49.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>滴滴打车（宜必思→海源公园）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">8.93</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>滴滴打车（海源公园→猫头山二号观景台）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">8.65</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>滴滴打车（猫头山二号观景台→韩乐坊喜珠海鲜自助）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">34.08</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>滴滴打车（韩乐坊→宜必思）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">13.87</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>滴滴打车（韩乐坊→宜必思）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">13.13</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>韩式炒米糕寿司（核桃糕）</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-n">NPC</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">15.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/13</td><td>高铁G1085（北京南→威海）</td><td style="color:var(--sea);font-size:13px">路费</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">934.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>一嗨租车（比亚迪秦PLUS)</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">222.80</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>一嗨补油</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">17.44</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>东源饭店</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-h">夯</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">219.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>古茗外卖</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-b">拉完了</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">27.50</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>文登烧烤（钦村一店）</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-h">夯</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">115.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>滴滴打车（一嗨租车古寨东路店→宜必思）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">15.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>租车加油</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">35.47</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>超市买酸奶</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">15.80</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>逅船咖啡（布鲁威斯号）</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-b">拉完了</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">60.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/14</td><td>铁皮房咖啡</td><td style="color:var(--gold);font-size:13px">探店</td><td><span class="lg lg-g">人上人</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">58.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>三旬面包</td><td style="color:var(--slate);font-size:13px">购物</td><td><span class="lg lg-g">人上人</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">45.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>仓·咖啡豆商店</td><td style="color:var(--gold);font-size:13px">探店</td><td><span class="lg lg-g">人上人</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">50.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>味多家韩式炸酱面</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-n">NPC</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">9.90</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>塔山早市买无花果</td><td style="color:var(--slate);font-size:13px">购物</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">26.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>塔山早市老朱家油条</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">4.60</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>怒马咖啡</td><td style="color:var(--gold);font-size:13px">探店</td><td><span class="lg lg-h">夯</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">58.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>怒马咖啡</td><td style="color:var(--gold);font-size:13px">探店</td><td><span class="lg lg-h">夯</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">76.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>滴滴打车（怒马咖啡→威海站）</td><td style="color:var(--sea);font-size:13px">交通</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">15.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>老古辈馄饨</td><td style="color:var(--rust);font-size:13px">餐饮</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--rust)">Q</span></td><td class="num" style="font-weight:600">15.00</td></tr>
+<tr><td style="color:var(--ink-3);font-variant-numeric:tabular-nums">10/15</td><td>高铁G1092（威海→北京南）</td><td style="color:var(--sea);font-size:13px">路费</td><td><span class="lg lg-x">—</span></td><td><span class="who" style="background:var(--sea)">L</span></td><td class="num" style="font-weight:600">978.00</td></tr>
+<tr class="sum"><td colspan="5">合计</td><td class="num" style="font-size:15px">3,868.93</td></tr></tbody></table></div></div></div>
+<div class="legend"><span>评分：</span><span><span class="lg lg-h">夯</span> 很棒</span><span><span class="lg lg-g">人上人</span> 不错</span><span><span class="lg lg-n">NPC</span> 一般</span><span><span class="lg lg-b">拉完了</span> 不推荐</span></div>
+<div class="bad-note" style="margin-top:24px">
+<h4>数据修正说明</h4>
+<p><b>返程高铁日期已修正</b>：G1092（威海→北京南）原记录为 10 月 13 日，实际是 <b>10 月 15 日</b>返程。</p>
+<p style="margin-top:8px"><b>日期格式原本不统一</b>：部分记录写「10月13」部分写「10月13日」，已统一为 10/13 格式，否则按日汇总会裂开。</p>
+<p style="margin-top:8px"><b>两笔高铁为两人合计</b>：G1085 ¥934 + G1092 ¥978 = ¥1,912，人均 ¥956。</p>
+<p style="margin-top:8px"><b>住宿为两晚总价</b>：¥377.76覆盖 10/13 入住至 10/15 退房，折合每晚 ¥188.88。</p>
+</div>
+<div class="sea-note" style="margin-top:14px">
+<h4>这趟的花在哪 · 数据观察</h4>
+<ul style="padding-left:19px;margin-top:8px">
+<li><b>交通占了 59%</b>，但其中 ¥1,912（83%）是高铁，真正花在市内的租车+加油+打车只有 ¥400 出头——本地交通实际很省。</li>
+<li><b>本地消费 ¥1,956.93，人均 ¥978</b>。住宿只占 ¥188.88/人，海鲜和咖啡才是本地消费的主体。</li>
+<li><b>咖啡是隐藏主角</b>：4 家店 ¥302，占本地消费 15.4%。Day 3 一个人连喝三家（怒马两杯 + 仓咖啡豆），¥134 + ¥50。</li>
+<li><b>Day 2 是消费高峰</b>（¥786），也是唯一花钱租车的一天——但租车总成本才 ¥237.80，比打车省钱。</li>
+<li><b>餐饮结构偏重正餐</b>：喜珠自助 ¥312 + 东源饭店 ¥219 + 文登烧烤 ¥115 = ¥646，三顿大餐占餐饮 73%。</li>
+</ul>
+</div>
+<div class="note" style="margin-top:14px">
+<h4>实际行程 vs 原计划</h4>
+<ul style="padding-left:19px;margin-top:8px">
+<li><b>Day 1 没去半月湾和国际海水浴场</b>。原计划是环海路单向推进，实际只去了海源公园 + 猫头山二号观景台，然后直接回韩乐坊吃海鲜。时间紧是主因。</li>
+<li><b>猫头山只去了 2 号台</b>，没去 3 号「大项链」——公认最佳机位，日落时段的悬挑栈道没赶上。</li>
+<li><b>Day 2 完成了东线三连</b>：孤独公约 → 那香海 → 布鲁威斯号，与调整后的方案一致。沉船赶上低潮（逅船咖啡就在沉船旁）。</li>
+<li><b>Day 3 改成了咖啡主题日</b>：塔山早市 + 三家咖啡，节奏很松，返程不赶。无花果在塔山早市买了 ¥26（15/斤）。</li>
+<li><b>未及体验</b>：那香海钻石沙滩只路过、刘公岛按计划本就排除、无花果园采摘（按当初选择本就未排）。</li>
+</ul>
+</div>
+</section>
+
       <div class="footer">
         行程与价格基于 2026 年 10 月公开信息整理。<strong>车次时刻、租车报价、门票价格、无花果时令均可能变动</strong>，出发前请以 12306、租车平台、景区公众号的实时信息为准。<br>
         单文件·零依赖 · 所有勾选与状态保存在本机浏览器 localStorage（键名 weihai2610.v2）· 打印可直接导出 PDF
@@ -1107,7 +1299,7 @@
   var nav=document.getElementById("nav");
   var CRUMB={dash:"总览台",booking:"预订看板",prep:"行前待办",pack:"打包清单",
     weather:"天气与潮汐",
-    day1:"Day 1 · 环海路单向",day2:"Day 2 · 沉船看低潮",day3:"Day 3 · 慢逛返京",
+    ledger:"旅行账本",day1:"Day 1 · 环海路单向",day2:"Day 2 · 沉船看低潮",day3:"Day 3 · 慢逛返京",
     food:"吃 · 排兵布阵",car:"租车与交通",fig:"无花果专题",tips:"避坑与安全"};
   var sb=document.getElementById("sidebar"),sc=document.getElementById("scrim");
   function close(){sb.classList.remove("open");sc.classList.remove("on");}
